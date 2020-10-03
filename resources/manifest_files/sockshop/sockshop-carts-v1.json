@@ -1,0 +1,12 @@
+{
+  "service": "carts",
+  "version": "v1",
+  "requests": [
+    {
+      "type": "tcp",
+      "url": "mongodb://carts-db:27017/data",
+      "name": "carts-db",
+      "port": "27017"
+    }
+  ]
+}

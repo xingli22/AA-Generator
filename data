@@ -1,0 +1,149 @@
+single
+best
+mean before is 23.79
+mean after is 19.80
+std before is 0.41
+std after is 0.40
+
+mean before is 123.31
+mean after is 119.26
+std before is 0.75
+std after is 0.74
+
+mean before is 127.15
+mean after is 123.10
+std before is 0.54
+std after is 0.51
+
+worst
+mean before is 25.10
+mean after is 20.87
+std before is 1.38
+std after is 1.17
+
+mean before is 126.75
+mean after is 122.62
+std before is 1.12
+std after is 1.13
+
+mean before is 133.75
+mean after is 129.42
+std before is 0.60
+std after is 0.54
+
+
+
+
+batch
+1
+best
+mean before is 190.91
+std before is 2.23
+worst
+mean before is 198.97
+std before is 2.71
+
+best
+mean after is 156.69
+std after is 3.29
+worst
+mean after is 157.91
+std after is 3.23
+
+2
+best
+mean before is 1265.36
+std before is 10.95
+worst
+mean before is 1299.40
+std before is 25.68
+
+best
+mean after is 1115.85
+std after is 11.43
+worst
+mean after is 1122.42
+std after is 15.62
+
+3
+best
+
+mean before is 1842.09
+std before is 12.18
+worst
+mean before is 1908.58
+std before is 14.22
+
+best
+mean after is 1721.39
+std after is 9.93
+worst
+mean after is 1719.25
+std after is 9.24
+
+
+
+number
+
+
+
+
+
+
+update:
+mean update is 7.95
+std update is 0.42
+
+mean update is 17.48
+std update is 0.49
+
+mean update is 23.32
+std update is 0.74
+
+
+mean after is 19.80
+std after is 0.40
+
+mean after is 119.26
+std after is 0.74
+
+mean after is 123.10
+std after is 0.51
+
+
+
+policy
+mean update is 9.97
+std update is 0.39
+
+mean update is 21.10
+std update is 0.35
+
+mean update is 27.63
+std update is 0.71
+
+
+
+add logging
+
+mean update is 16.17
+std update is 0.62
+
+mean update is 34.34
+std update is 2.74
+
+
+mean update is 39.92
+std update is 0.82
+
+
+policy update
+
+mean update is 17.94
+std update is 0.32
+
+mean update is 116.70
+std update is 0.79
+
+mean update is 115.09
+std update is 1.22

@@ -1,0 +1,162 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: carts
+spec:
+  hosts:
+    - carts
+  http:
+    - match:
+        - sourceLabels:
+            version: v1
+      route:
+        - destination:
+            host: carts
+            subset: v1
+    - match:
+        - sourceLabels:
+            version: v2
+      route:
+        - destination:
+            host: carts
+            subset: v2
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: catalogue
+spec:
+  hosts:
+    - catalogue
+  http:
+    - match:
+        - sourceLabels:
+            version: v1
+      route:
+        - destination:
+            host: catalogue
+            subset: v1
+    - match:
+        - sourceLabels:
+            version: v2
+      route:
+        - destination:
+            host: catalogue
+            subset: v2
+
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: orders
+spec:
+  hosts:
+    - orders
+  http:
+    - match:
+        - sourceLabels:
+            version: v1
+      route:
+        - destination:
+            host: orders
+            subset: v1
+    - match:
+        - sourceLabels:
+            version: v2
+      route:
+        - destination:
+            host: orders
+            subset: v2
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: payment
+spec:
+  hosts:
+    - payment
+  http:
+    - match:
+        - sourceLabels:
+            version: v1
+      route:
+        - destination:
+            host: payment
+            subset: v1
+    - match:
+        - sourceLabels:
+            version: v2
+      route:
+        - destination:
+            host: payment
+            subset: v2
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: queue-master
+spec:
+  hosts:
+    - queue-master
+  http:
+    - match:
+        - sourceLabels:
+            version: v1
+      route:
+        - destination:
+            host: queue-master
+            subset: v1
+    - match:
+        - sourceLabels:
+            version: v2
+      route:
+        - destination:
+            host: queue-master
+            subset: v2
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: shipping
+spec:
+  hosts:
+    - shipping
+  http:
+    - match:
+        - sourceLabels:
+            version: v1
+      route:
+        - destination:
+            host: shipping
+            subset: v1
+    - match:
+        - sourceLabels:
+            version: v2
+      route:
+        - destination:
+            host: shipping
+            subset: v2
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: user
+spec:
+  hosts:
+    - user
+  http:
+    - match:
+        - sourceLabels:
+            version: v1
+      route:
+        - destination:
+            host: user
+            subset: v1
+    - match:
+        - sourceLabels:
+            version: v2
+      route:
+        - destination:
+            host: user
+            subset: v2

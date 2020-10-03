@@ -1,0 +1,208 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: emailservice
+spec:
+  hosts:
+    - emailservice
+  http:
+    - match:
+        - sourceLabels:
+            version: v1
+      route:
+        - destination:
+            host: emailservice
+            subset: v1
+    - match:
+        - sourceLabels:
+            version: v2
+      route:
+        - destination:
+            host: emailservice
+            subset: v2
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: checkoutservice
+spec:
+  hosts:
+    - checkoutservice
+  http:
+    - match:
+        - sourceLabels:
+            version: v1
+      route:
+        - destination:
+            host: checkoutservice
+            subset: v1
+    - match:
+        - sourceLabels:
+            version: v2
+      route:
+        - destination:
+            host: checkoutservice
+            subset: v2
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: recommendationservice
+spec:
+  hosts:
+    - recommendationservice
+  http:
+    - match:
+        - sourceLabels:
+            version: v1
+      route:
+        - destination:
+            host: recommendationservice
+            subset: v1
+    - match:
+        - sourceLabels:
+            version: v2
+      route:
+        - destination:
+            host: recommendationservice
+            subset: v2
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: paymentservice
+spec:
+  hosts:
+    - paymentservice
+  http:
+    - match:
+        - sourceLabels:
+            version: v1
+      route:
+        - destination:
+            host: paymentservice
+            subset: v1
+    - match:
+        - sourceLabels:
+            version: v2
+      route:
+        - destination:
+            host: paymentservice
+            subset: v2
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: productcatalogservice
+spec:
+  hosts:
+    - productcatalogservice
+  http:
+    - match:
+        - sourceLabels:
+            version: v1
+      route:
+        - destination:
+            host: productcatalogservice
+            subset: v1
+    - match:
+        - sourceLabels:
+            version: v2
+      route:
+        - destination:
+            host: productcatalogservice
+            subset: v2
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: cartservice
+spec:
+  hosts:
+    - cartservice
+  http:
+    - match:
+        - sourceLabels:
+            version: v1
+      route:
+        - destination:
+            host: cartservice
+            subset: v1
+    - match:
+        - sourceLabels:
+            version: v2
+      route:
+        - destination:
+            host: cartservice
+            subset: v2
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: currencyservice
+spec:
+  hosts:
+    - currencyservice
+  http:
+    - match:
+        - sourceLabels:
+            version: v1
+      route:
+        - destination:
+            host: currencyservice
+            subset: v1
+    - match:
+        - sourceLabels:
+            version: v2
+      route:
+        - destination:
+            host: currencyservice
+            subset: v2
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: shippingservice
+spec:
+  hosts:
+    - shippingservice
+  http:
+    - match:
+        - sourceLabels:
+            version: v1
+      route:
+        - destination:
+            host: shippingservice
+            subset: v1
+    - match:
+        - sourceLabels:
+            version: v2
+      route:
+        - destination:
+            host: shippingservice
+            subset: v2
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: adservice
+spec:
+  hosts:
+    - adservice
+  http:
+    - match:
+        - sourceLabels:
+            version: v1
+      route:
+        - destination:
+            host: adservice
+            subset: v1
+    - match:
+        - sourceLabels:
+            version: v2
+      route:
+        - destination:
+            host: adservice
+            subset: v2

@@ -1,0 +1,12 @@
+{
+  "service": "catalogue",
+  "version": "v1",
+  "requests": [
+    {
+      "type": "tcp",
+      "url": "catalogue-db:3306/socksdb",
+      "name": "catalogue-db",
+      "port": "3306"
+    }
+  ]
+}

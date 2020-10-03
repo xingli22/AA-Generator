@@ -1,0 +1,26 @@
+{
+  "service": "orders",
+  "version": "v1",
+  "requests": [
+    {
+      "type": "http",
+      "url": "http://payment/paymentAuth",
+      "name": "payment",
+      "path": "/paymentAuth",
+      "method": "POST"
+    },
+    {
+      "type": "http",
+      "url": "http://shipping/shipping",
+      "name": "shipping",
+      "path": "/shipping",
+      "method": "POST"
+    },
+    {
+      "type": "tcp",
+      "url": "mongodb://orders-db:27017/data",
+      "name": "orders-db",
+      "port": "27017"
+    }
+  ]
+}
