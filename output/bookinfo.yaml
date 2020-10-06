@@ -1,73 +1,14 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: reviews-v1--6188606475797773121
+  name: productpage-v1--8758011706445516708
   namespace: bookinfo
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/bookinfo/sa/reviews
-    to:
-    - operation:
-        methods:
-        - GET
-        paths:
-        - /ratings/*
-  selector:
-    matchLabels:
-      app: ratings
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: ratings-v1-893178427050421788
-  namespace: bookinfo
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/bookinfo/sa/ratings
-    to:
-    - operation:
-        ports:
-        - 3306
-  selector:
-    matchLabels:
-      app: mysqldb
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: ratings-v1--4025026106453416593
-  namespace: bookinfo
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/bookinfo/sa/ratings
-    to:
-    - operation:
-        ports:
-        - 27017
-  selector:
-    matchLabels:
-      app: mongodb
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: productpage-v1--7364738170245462855
-  namespace: bookinfo
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/bookinfo/sa/productpage
+        - cluster.local/ns/bookinfo/sa/bookinfo-productpage
     to:
     - operation:
         methods:
@@ -81,14 +22,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: productpage-v1--7842423235981579207
+  name: productpage-v1--3414766523030011505
   namespace: bookinfo
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/bookinfo/sa/productpage
+        - cluster.local/ns/bookinfo/sa/bookinfo-productpage
     to:
     - operation:
         methods:
@@ -102,14 +43,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: productpage-v1--6188606475797773121
+  name: productpage-v1-5955122638125155449
   namespace: bookinfo
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/bookinfo/sa/productpage
+        - cluster.local/ns/bookinfo/sa/bookinfo-productpage
     to:
     - operation:
         methods:
@@ -119,3 +60,62 @@ spec:
   selector:
     matchLabels:
       app: ratings
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: reviews-v1-5955122638125155449
+  namespace: bookinfo
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/bookinfo/sa/bookinfo-reviews
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /ratings/*
+  selector:
+    matchLabels:
+      app: ratings
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: ratings-v1--7557786260355741876
+  namespace: bookinfo
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/bookinfo/sa/bookinfo-ratings
+    to:
+    - operation:
+        ports:
+        - '3306'
+  selector:
+    matchLabels:
+      app: mysqldb
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: ratings-v1-3515842803907996647
+  namespace: bookinfo
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/bookinfo/sa/bookinfo-ratings
+    to:
+    - operation:
+        ports:
+        - '27017'
+  selector:
+    matchLabels:
+      app: mongodb

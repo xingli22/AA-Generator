@@ -1,0 +1,12 @@
+{
+  "service": "queue-master",
+  "version": "v2",
+  "requests": [
+    {
+      "type": "tcp",
+      "url": "rabbitmq",
+      "name": "rabbitmq",
+      "port": "5672"
+    }
+  ]
+}

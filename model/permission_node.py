@@ -3,7 +3,11 @@ class PermissionNode:
     def __init__(self, service_name, service_version):
         self.service_name = service_name
         self.service_version = service_version
+        self.service_account = ''
         self.permissions = {}
+
+    def set_service_account(self, service_account):
+        self.service_account = service_account
 
     def grant_permission(self, permission):
         permission_hash = permission.get_hashcode()

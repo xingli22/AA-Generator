@@ -59,7 +59,8 @@ def phase_1_generate_template(app, service_name, service_version, requests):
             if request['type'] == 'http':
                 rule = copy.deepcopy(rule_template)
                 del rule['to'][0]['operation']['ports']
-                rule['from'][0]['source']['principals'].append('cluster.local/ns/' + app + '/sa/' + service_name)
+                rule['from'][0]['source']['principals'].append(
+                    'cluster.local/ns/' + app + '/sa/' + app + '-' + service_name)
                 rule['to'][0]['operation']['methods'].append(request['method'])
                 rule['to'][0]['operation']['paths'].append(request['path'])
                 rule['when'][0]['request.headers[version]'].append(service_version)
@@ -295,6 +296,8 @@ def generate_for_batch_optimized_mt(app, type, mode):
     return policy_r, policy_b, new_phase_1 / thd_num
 
 
+
+
 def build_permission(request):
     permission = ""
     if request['name'] != '':  # todo: for external access
@@ -317,30 +320,38 @@ def build_policy_with_version(current_node, permission):
     policy['metadata']['namespace'] = graph.application_name  # todo: need confirmation
     policy['spec']['selector']['matchLabels']['app'] = permission.target_service
 
+    service_account = graph.application_name + '-' + current_node.service_name
+    if current_node.service_account != '':
+        service_account = current_node.service_account
+
+
     rule = load_yaml(rule_temp_path)
     if permission.type == 'http':
         del rule['to'][0]['operation']['ports']
         rule['from'][0]['source']['principals'].append(
-            'cluster.local/ns/' + graph.application_name + '/sa/' + current_node.service_name)
+            'cluster.local/ns/' + graph.application_name + '/sa/' + service_account)
         rule['to'][0]['operation']['methods'].append(permission.method)
         rule['to'][0]['operation']['paths'].append(permission.path)
-        rule['when'][0]['values'].append(current_node.service_version)
+        # rule['when'][0]['values'].append(current_node.service_version)
+        del rule['when']
         # pprint(rule)
     elif permission.type == 'grpc':
         del rule['to'][0]['operation']['ports']
         del rule['to'][0]['operation']['methods']
         rule['from'][0]['source']['principals'].append(
-            'cluster.local/ns/' + graph.application_name + '/sa/' + current_node.service_name)
+            'cluster.local/ns/' + graph.application_name + '/sa/' + service_account)
         rule['to'][0]['operation']['paths'].append(permission.path)
-        rule['when'][0]['values'].append(current_node.service_version)
+        # rule['when'][0]['values'].append(current_node.service_version)
+        del rule['when']
     elif permission.type == 'tcp':
         del rule['to'][0]['operation']['methods']
         del rule['to'][0]['operation']['paths']
-        rule['to'][0]['operation']['ports'].append(int(permission.port))
+        rule['to'][0]['operation']['ports'].append(permission.port)
         rule['from'][0]['source']['principals'].append(
-            'cluster.local/ns/' + graph.application_name + '/sa/' + current_node.service_name)
+            'cluster.local/ns/' + graph.application_name + '/sa/' + service_account)
         # pprint(rule['when'][0])
-        rule['when'][0]['values'].append(current_node.service_version)
+        # rule['when'][0]['values'].append(current_node.service_version)
+        del rule['when']
         # pprint(rule)
     else:
         print('error: unknown request kind')
@@ -358,11 +369,12 @@ def build_policy_without_version(current_node, permission):
     policy['metadata']['namespace'] = graph.application_name  # todo: need confirmation
     policy['spec']['selector']['matchLabels']['app'] = permission.target_service
 
+    service_account_prefix = graph.application_name.replace('-', '')
     rule = load_yaml(rule_temp_path)
     if permission.type == 'http':
         del rule['to'][0]['operation']['ports']
         rule['from'][0]['source']['principals'].append(
-            'cluster.local/ns/' + graph.application_name + '/sa/' + current_node.service_name)
+            'cluster.local/ns/' + graph.application_name + '/sa/' + service_account_prefix + '-' + current_node.service_name)
         rule['to'][0]['operation']['methods'].append(permission.method)
         rule['to'][0]['operation']['paths'].append(permission.path)
         del rule['when']
@@ -372,15 +384,15 @@ def build_policy_without_version(current_node, permission):
         del rule['to'][0]['operation']['ports']
         del rule['to'][0]['operation']['methods']
         rule['from'][0]['source']['principals'].append(
-            'cluster.local/ns/' + graph.application_name + '/sa/' + current_node.service_name)
+            'cluster.local/ns/' + graph.application_name + '/sa/' + service_account_prefix + '-' + current_node.service_name)
         rule['to'][0]['operation']['paths'].append(permission.path)
         del rule['when']
     elif permission.type == 'tcp':
         del rule['to'][0]['operation']['methods']
         del rule['to'][0]['operation']['paths']
-        rule['to'][0]['operation']['ports'].append(int(permission.port))
+        rule['to'][0]['operation']['ports'].append(permission.port)
         rule['from'][0]['source']['principals'].append(
-            'cluster.local/ns/' + graph.application_name + '/sa/' + current_node.service_name)
+            'cluster.local/ns/' + graph.application_name + '/sa/' + service_account_prefix + '-' + current_node.service_name)
         # pprint(rule['when'][0])
         del rule['when']
         # pprint(rule)
@@ -388,7 +400,7 @@ def build_policy_without_version(current_node, permission):
         print('error: unknown request kind')
 
     policy['spec']['rules'].append(rule)
-    pprint(policy)
+    # pprint(policy)
     return policy
 
 
@@ -396,7 +408,13 @@ def policy_generation(app, ifversion, mode):
     phase_1 = 0
     deployment_path = deployment_prefix + app + '-' + mode + deployment_suffix
     # time1 = time.time()
+    temp_data = []
     deployment_data = load_yamls(deployment_path)
+    for loaded_data in deployment_data:
+        if loaded_data.get('kind') == 'List':
+            temp_data = loaded_data.get('items')
+    deployment_data = temp_data
+
     # time2 = time.time()
     # print(time2-time1)
     roles = {}
@@ -411,13 +429,16 @@ def policy_generation(app, ifversion, mode):
             if yaml_data.get('kind') == 'Deployment':  # deployment: generate from template
                 # build the node
                 if 'labels' not in yaml_data.get('metadata'):
-                    print('[AA error]: deployment '+yaml_data.get('metadata').get('name')+' no labels')
+                    print('[AA error]: deployment ' + yaml_data.get('metadata').get('name') + ' no labels')
                     continue
                 if 'app' not in yaml_data.get('metadata').get('labels'):
                     service_name = yaml_data.get('metadata').get('labels').get('name')
                 else:
                     service_name = yaml_data.get('metadata').get('labels').get('app')
                 service_version = yaml_data.get('metadata').get('labels').get('version')
+                if service_version == None:
+                    service_version = 'noversion'
+                    print('[AA error]: deployment ' + service_name + ' no version')
                 node = PermissionNode(service_name, service_version)
                 manifest_path = manifest_prefix[app] + service_name + '-' + service_version + manifest_suffix
                 try:
@@ -435,6 +456,8 @@ def policy_generation(app, ifversion, mode):
                         permission.active = True
                         candidate_nodes.add(node)
                     else:
+                        if permission.target_service not in cache:
+                            cache[permission.target_service] = []
                         cache[permission.target_service].append(node)
                     node.grant_permission(permission)
 
@@ -451,7 +474,7 @@ def policy_generation(app, ifversion, mode):
                 if service_name in cache and len(cache[service_name]) != 0:
                     # active permissions after registration
                     for node in cache[service_name]:
-                        for permission in node.permissions:
+                        for permission in node.permissions.values():
                             if permission.active is False and permission.target_service == service_name:
                                 permission.active = True
                         candidate_nodes.add(node)
@@ -468,6 +491,7 @@ def policy_generation(app, ifversion, mode):
                 print('[AA error]: unsupported yaml kind')
 
     # finish deployment file analysis, start to generate policies
+    build_start = time.time()
     for current_node in candidate_nodes:
         if len(current_node.permissions) != 0:
             for permission in current_node.permissions.values():
@@ -480,37 +504,326 @@ def policy_generation(app, ifversion, mode):
                     policies.append(policy)
         else:
             print('[AA error]: candidate does not have permissions')
-
+    build_end = time.time()
+    build_time = (build_end - build_start) * 1000
     # pprint(roles)
-    return policies
+    return policies, build_time
+
+
+def policy_generation_anyway(app, ifversion, mode):
+    phase_1 = 0
+    deployment_path = deployment_prefix + app + '-' + mode + deployment_suffix
+    # time1 = time.time()
+    temp_data = []
+    deployment_data = load_yamls(deployment_path)
+    for loaded_data in deployment_data:
+        if loaded_data.get('kind') == 'List':
+            temp_data = loaded_data.get('items')
+    deployment_data = temp_data
+
+    # time2 = time.time()
+    # print(time2-time1)
+    roles = {}
+    bindings = {}
+    policies = []
+    # graph = Graph(app)
+
+    candidate_nodes = set()
+
+    for yaml_data in deployment_data:
+        if yaml_data is not None:
+            if yaml_data.get('kind') == 'Deployment':  # deployment: generate from template
+                # build the node
+                if 'labels' not in yaml_data.get('metadata'):
+                    print('[AA error]: deployment ' + yaml_data.get('metadata').get('name') + ' no labels')
+                    continue
+                if 'app' not in yaml_data.get('metadata').get('labels'):
+                    service_name = yaml_data.get('metadata').get('labels').get('name')
+                else:
+                    service_name = yaml_data.get('metadata').get('labels').get('app')
+                service_version = yaml_data.get('metadata').get('labels').get('version')
+                if service_version is None:
+                    service_version = 'noversion'
+                    print('[AA error]: deployment ' + service_name + ' no version')
+
+                node = PermissionNode(service_name, service_version)
+
+                service_account = yaml_data.get('spec').get('template').get('spec').get('serviceAccountName')
+                if service_account is not None:
+                    node.set_service_account(service_account)
+
+                manifest_path = manifest_prefix[app] + service_name + '-' + service_version + manifest_suffix
+                try:
+                    manifest_file = load_manifest(manifest_path)
+                except FileNotFoundError:
+                    print('[AA error]: ' + manifest_path + ' not found')
+                    graph.add_node(node)
+                    continue
+                requests = manifest_file['requests']
+                for request in requests:
+                    permission = build_permission(request)
+                    if permission == "":
+                        continue
+                    if permission.target_service in graph.registration:
+                        permission.active = True
+                        candidate_nodes.add(node)
+                    else:
+                        if permission.target_service not in cache:
+                            cache[permission.target_service] = []
+                        cache[permission.target_service].append(node)
+                    node.grant_permission(permission)
+
+                # equal_with_exist_node = graph.add_node(node)
+                # if equal_with_exist_node is True:
+                #     candidate_nodes.remove(node)
+
+            elif yaml_data.get('kind') == 'Service':  # service: register it
+                # if 'labels' not in yaml_data.get('metadata'):
+                service_name = yaml_data.get('metadata').get('name')
+                # else:
+                #     service_name = yaml_data.get('metadata').get('labels').get('app')
+                graph.register(service_name)
+                if service_name in cache and len(cache[service_name]) != 0:
+                    # active permissions after registration
+                    for node in cache[service_name]:
+                        for permission in node.permissions.values():
+                            if permission.active is False and permission.target_service == service_name:
+                                permission.active = True
+                        candidate_nodes.add(node)
+                    del cache[service_name]
+                # pprint(cache)
+                # if service_name in cache.keys():
+                #     for caller, permissions in cache[service_name].items():
+                #         strs = caller.split('-')
+                #         version = strs[len(strs) - 1]
+                #         permissions = phase_3_scan_traffic(caller, version, permissions, app, type)
+                #         roles[caller]['spec']['rules'].extend(permissions)
+                #     cache.pop(service_name)
+            else:
+                print('[AA error]: unsupported yaml kind')
+
+    # finish deployment file analysis, start to generate policies
+    build_start = time.time()
+    for current_node in candidate_nodes:
+        if len(current_node.permissions) != 0:
+            for permission in current_node.permissions.values():
+                if permission.active is True and permission.generated is False:
+                    # if ifversion:
+                    policy = build_policy_with_version(current_node, permission)
+                    # else:
+                    #     policy = build_policy_without_version(current_node, permission)
+                    permission.generated = True
+                    policies.append(policy)
+        else:
+            print('[AA error]: candidate does not have permissions')
+    build_end = time.time()
+    build_time = (build_end - build_start) * 1000
+    # pprint(roles)
+    return policies, build_time
+
+def generate_from_template(app, service_name, service_version, requests):
+    # role, binding = get_template()
+    policy = load_yaml(policy_temp_path)
+    policy['metadata']['name'] = service_name
+    policy['metadata']['namespace'] = app  # todo: need confirmation
+    # binding['metadata']['name'] = 'bind-' + service_name
+    # binding['metadata']['namespace'] = app  # todo: need confirmation
+    # binding['spec']['subjects'][0]['user'] = 'cluster.local/ns/default/sa/' + service_name
+    # binding['spec']['roleRef']['name'] = service_name
+    rules = []
+
+    rule_template = load_yaml(rule_temp_path)
+    for request in requests:
+        if request['name'] != '':  # todo: for external access
+            if request['type'] == 'http':
+                rule = copy.deepcopy(rule_template)
+                del rule['to'][0]['operation']['ports']
+                rule['from'][0]['source']['principals'].append(
+                    'cluster.local/ns/' + app + '/sa/' + app + '-' + service_name)
+                rule['to'][0]['operation']['methods'].append(request['method'])
+                rule['to'][0]['operation']['paths'].append(request['path'])
+                rule['when'][0]['request.headers[version]'].append(service_version)
+                # pprint(rule)
+                rules.append(rule)
+            elif request['type'] == 'grpc':
+                rule = copy.deepcopy(rule_template)
+                rule['constraints'].pop()
+                rule['services'].append(request['name'] + '.' + app + '.' + 'svc.cluster.local')
+                rule['methods'].append('PUT')
+                rule['paths'].append(request['path'])
+                rules.append(rule)
+            elif request['type'] == 'tcp':
+                rule = copy.deepcopy(rule_template)
+                del rule['to'][0]['operation']['methods']
+                del rule['to'][0]['operation']['paths']
+                del rule['when']
+                rule['to'][0]['operation']['ports'].append(request['port'])
+                rule['from'][0]['source']['principals'].append('cluster.local/ns/' + app + '/sa/' + service_name)
+                # pprint(rule)
+                rules.append(rule)
+            else:
+                print('error: unknown request kind')
+    # else:
+    # print('cache: the callee has not been registered')
+
+    policy['spec']['rules'] = rules
+    if len(rules) == 0:
+        return 0
+    pprint(policy)
+    # phase_1_output(role, binding, app, service_name, output_path + 'phase_1/')
+    return policy
+
+
+def old_way(app, ifversion, mode):
+    phase_1 = 0
+    deployment_path = deployment_prefix + app + '-' + mode + deployment_suffix
+    # time1 = time.time()
+    temp_data = []
+    deployment_data = load_yamls(deployment_path)
+    for loaded_data in deployment_data:
+        if loaded_data.get('kind') == 'List':
+            temp_data = loaded_data.get('items')
+    deployment_data = temp_data
+
+    # time2 = time.time()
+    # print(time2-time1)
+    roles = {}
+    bindings = {}
+    policies = []
+    # graph = Graph(app)
+
+    candidate_nodes = set()
+
+    for yaml_data in deployment_data:
+        if yaml_data is not None:
+            if yaml_data.get('kind') == 'Deployment':  # deployment: generate from template
+                # build the node
+                if 'labels' not in yaml_data.get('metadata'):
+                    print('[AA error]: deployment ' + yaml_data.get('metadata').get('name') + ' no labels')
+                    continue
+                if 'app' not in yaml_data.get('metadata').get('labels'):
+                    service_name = yaml_data.get('metadata').get('labels').get('name')
+                else:
+                    service_name = yaml_data.get('metadata').get('labels').get('app')
+                service_version = yaml_data.get('metadata').get('labels').get('version')
+                if service_version == None:
+                    service_version = 'noversion'
+                    print('[AA error]: deployment ' + service_name + ' no version')
+
+                #node = PermissionNode(service_name, service_version)
+                manifest_path = manifest_prefix[app] + service_name + '-' + service_version + manifest_suffix
+                try:
+                    manifest_file = load_manifest(manifest_path)
+                except FileNotFoundError:
+                    print('[AA error]: ' + manifest_path + ' not found')
+                    #graph.add_node(node)
+                    continue
+                requests = manifest_file['requests']
+                for request in requests:
+                    permission = build_permission(request)
+                    if permission == "":
+                        continue
+                    if permission.target_service in graph.registration:
+                        permission.active = True
+                        candidate_nodes.add(node)
+                    else:
+                        if permission.target_service not in cache:
+                            cache[permission.target_service] = []
+                        cache[permission.target_service].append(node)
+                    node.grant_permission(permission)
+
+                # equal_with_exist_node = graph.add_node(node)
+                # if equal_with_exist_node is True:
+                #     candidate_nodes.remove(node)
+
+            elif yaml_data.get('kind') == 'Service':  # service: register it
+                # if 'labels' not in yaml_data.get('metadata'):
+                service_name = yaml_data.get('metadata').get('name')
+                # else:
+                #     service_name = yaml_data.get('metadata').get('labels').get('app')
+                graph.register(service_name)
+                if service_name in cache and len(cache[service_name]) != 0:
+                    # active permissions after registration
+                    for node in cache[service_name]:
+                        for permission in node.permissions.values():
+                            if permission.active is False and permission.target_service == service_name:
+                                permission.active = True
+                        candidate_nodes.add(node)
+                    del cache[service_name]
+                # pprint(cache)
+                # if service_name in cache.keys():
+                #     for caller, permissions in cache[service_name].items():
+                #         strs = caller.split('-')
+                #         version = strs[len(strs) - 1]
+                #         permissions = phase_3_scan_traffic(caller, version, permissions, app, type)
+                #         roles[caller]['spec']['rules'].extend(permissions)
+                #     cache.pop(service_name)
+            else:
+                print('[AA error]: unsupported yaml kind')
+
+    # finish deployment file analysis, start to generate policies
+    build_start = time.time()
+    for current_node in candidate_nodes:
+        if len(current_node.permissions) != 0:
+            for permission in current_node.permissions.values():
+                if permission.active is True and permission.generated is False:
+                    # if ifversion:
+                    policy = build_policy_with_version(current_node, permission)
+                    # else:
+                    #     policy = build_policy_without_version(current_node, permission)
+                    permission.generated = True
+                    policies.append(policy)
+        else:
+            print('[AA error]: candidate does not have permissions')
+    build_end = time.time()
+    build_time = (build_end - build_start) * 1000
+    # pprint(roles)
+    return policies, build_time
 
 
 if __name__ == '__main__':
 
     apps = ['bookinfo', 'onlineboutique', 'sockshop']
     # number = {'bookinfo': 4, 'onlineboutique': 5, 'sockshop': 7}
-    modes = ['ordered', 'disordered']
+    modes = ['ordered', 'double', 'second', 'multi', 'multisa']
     version = False
 
     this_app = 2
-    this_mode = 0
-    this_test = 0
+    this_mode = 4
+    this_test = 1
     this_round = 1
 
     app_name = apps[this_app]
     # clean_registration(registration_file)
     # type = '11'
 
-    tests = [policy_generation, generate_for_batch_optimized, generate_for_batch_optimized_mt]
+    tests = [policy_generation, policy_generation_anyway, old_way]
     mode = modes[this_mode]
     before = []
     after = []
 
+    process_time = []
+    build_times = []
+
     for i in range(this_round):
         graph = Graph(app_name)
-        policies = policy_generation(app_name, version, mode)
-        output(policies, app_name, output_path)
+
+        start_time = time.time()
+        policies, build_time = tests[this_test](app_name, version, mode)
+        output(policies, app_name+'-'+mode, output_path)
+        end_time = time.time()
+
         print('Great! You made it!!!')
+
+        total_time = (end_time - start_time) * 1000
+        process_time.append(total_time)
+        build_times.append(build_time)
+        # print(total_time)
+
+    mean_time = mean(process_time)
+    mean_build_time = mean(build_times)
+    print(mean_time)
+    print(mean_build_time)
 
     #     start_time = time.time()
     #     roles, bindings, phase_1 = tests[this_test](app_name, type, mode)

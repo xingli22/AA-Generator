@@ -1,14 +1,14 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: recommendationservice-v1--1301207550623354952
+  name: frontend-v1--6434523149234180633
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/recommendationservice
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
     to:
     - operation:
         paths:
@@ -20,37 +20,18 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: cartservice-v1--5039758663300042058
+  name: frontend-v1--3226402228242507227
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/cartservice
-    to:
-    - operation:
-        ports:
-        - 6379
-  selector:
-    matchLabels:
-      app: redis-cart
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: frontend-v1--1301207550623354952
-  namespace: onlineboutique
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/onlineboutique/sa/frontend
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
     to:
     - operation:
         paths:
-        - /hipstershop.ProductCatalogService/ListProducts
+        - /hipstershop.ProductCatalogService/GetProduct
   selector:
     matchLabels:
       app: productcatalogservice
@@ -58,33 +39,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v1-3549130245003436548
+  name: frontend-v1--6938115480562670649
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/frontend
-    to:
-    - operation:
-        paths:
-        - /hipstershop.ProductCatalogService/GetProducts
-  selector:
-    matchLabels:
-      app: productcatalogservice
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: frontend-v1--6058699537593951600
-  namespace: onlineboutique
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/onlineboutique/sa/frontend
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
     to:
     - operation:
         paths:
@@ -96,14 +58,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v1--2804974769014460864
+  name: frontend-v1-7523634362686786848
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/frontend
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
     to:
     - operation:
         paths:
@@ -115,14 +77,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v1--2976932381334806235
+  name: frontend-v1-7096778857435570520
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/frontend
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
     to:
     - operation:
         paths:
@@ -134,14 +96,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v1--8943582322061358127
+  name: frontend-v1--4866626242493196419
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/frontend
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
     to:
     - operation:
         paths:
@@ -153,14 +115,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v1--5259303874469570460
+  name: frontend-v1--5192870624405528386
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/frontend
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
     to:
     - operation:
         paths:
@@ -172,14 +134,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v1--6599708437034844543
+  name: frontend-v1-8576832182818681599
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/frontend
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
     to:
     - operation:
         paths:
@@ -191,14 +153,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v1--6961699014161676520
+  name: frontend-v1--7950101317022451464
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/frontend
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
     to:
     - operation:
         paths:
@@ -210,14 +172,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v1--2499137528250143271
+  name: frontend-v1-6758218041573598809
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/frontend
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
     to:
     - operation:
         paths:
@@ -229,14 +191,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v1--7881509517351416418
+  name: frontend-v1--1987174821619658580
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/frontend
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
     to:
     - operation:
         paths:
@@ -248,14 +210,33 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v1--419838785270757453
+  name: cartservice-v1-4334452719418980732
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/checkoutservice
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-cartservice
+    to:
+    - operation:
+        ports:
+        - '6379'
+  selector:
+    matchLabels:
+      app: redis-cart
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: checkoutservice-v1--2930631123089893157
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-checkoutservice
     to:
     - operation:
         paths:
@@ -267,18 +248,18 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v1-3549130245003436548
+  name: checkoutservice-v1--3226402228242507227
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/checkoutservice
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-checkoutservice
     to:
     - operation:
         paths:
-        - /hipstershop.ProductCatalogService/GetProducts
+        - /hipstershop.ProductCatalogService/GetProduct
   selector:
     matchLabels:
       app: productcatalogservice
@@ -286,14 +267,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v1--6058699537593951600
+  name: checkoutservice-v1--6938115480562670649
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/checkoutservice
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-checkoutservice
     to:
     - operation:
         paths:
@@ -305,14 +286,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v1--8943582322061358127
+  name: checkoutservice-v1--4866626242493196419
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/checkoutservice
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-checkoutservice
     to:
     - operation:
         paths:
@@ -324,14 +305,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v1--5259303874469570460
+  name: checkoutservice-v1--5192870624405528386
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/checkoutservice
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-checkoutservice
     to:
     - operation:
         paths:
@@ -343,14 +324,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v1-4955230277748920454
+  name: checkoutservice-v1-130145968532475194
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/checkoutservice
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-checkoutservice
     to:
     - operation:
         paths:
@@ -362,14 +343,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v1--6961699014161676520
+  name: checkoutservice-v1--7950101317022451464
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/checkoutservice
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-checkoutservice
     to:
     - operation:
         paths:
@@ -381,14 +362,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v1-1317501793094751511
+  name: checkoutservice-v1--3762410236441963452
   namespace: onlineboutique
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/onlineboutique/sa/checkoutservice
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-checkoutservice
     to:
     - operation:
         paths:
@@ -396,3 +377,22 @@ spec:
   selector:
     matchLabels:
       app: shippingservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: recommendationservice-v1--6434523149234180633
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-recommendationservice
+    to:
+    - operation:
+        paths:
+        - /hipstershop.ProductCatalogService/ListProducts
+  selector:
+    matchLabels:
+      app: productcatalogservice

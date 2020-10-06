@@ -1,26 +1,7 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: user-v1-7743434787483138399
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-user
-    to:
-    - operation:
-        ports:
-        - '27017'
-  selector:
-    matchLabels:
-      app: user-db
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: carts-v2-8197161118963150426
+  name: carts-v2-4733184042837442269
   namespace: sockshop
 spec:
   rules:
@@ -39,14 +20,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: catalogue-v2-1294243295839851579
+  name: catalogue-v3--4427622579908658593
   namespace: sockshop
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sockshop/sa/sockshop-catalogue-v2
+        - cluster.local/ns/sockshop/sa/sockshop-catalogue-v3
     to:
     - operation:
         ports:
@@ -58,26 +39,26 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: queue-master-v1--1793892268720928952
+  name: user-v1--2892784511126089012
   namespace: sockshop
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sockshop/sa/sockshop-queue-master
+        - cluster.local/ns/sockshop/sa/sockshop-user
     to:
     - operation:
         ports:
-        - '5672'
+        - '27017'
   selector:
     matchLabels:
-      app: rabbitmq
+      app: user-db
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: orders-v1-51531080212454015
+  name: orders-v1-3130845447993757282
   namespace: sockshop
 spec:
   rules:
@@ -98,7 +79,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: orders-v1--5789615097146790055
+  name: orders-v1--5054651137204555366
   namespace: sockshop
 spec:
   rules:
@@ -119,7 +100,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: orders-v1-1174893642171695141
+  name: orders-v1-3239307876195621798
   namespace: sockshop
 spec:
   rules:
@@ -138,7 +119,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: orders-v1--1553313779809410740
+  name: orders-v1-5808680815626073337
   namespace: sockshop
 spec:
   rules:
@@ -159,7 +140,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: orders-v1-7963355824758522332
+  name: orders-v1--7058288596285854700
   namespace: sockshop
 spec:
   rules:
@@ -180,7 +161,83 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1-7963355824758522332
+  name: queue-master-v1-6319779075039956040
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-queue-master
+    to:
+    - operation:
+        ports:
+        - '5672'
+  selector:
+    matchLabels:
+      app: rabbitmq
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: catalogue-v2--4427622579908658593
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-catalogue-v2
+    to:
+    - operation:
+        ports:
+        - '3306'
+  selector:
+    matchLabels:
+      app: catalogue-db
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: carts-v1-4733184042837442269
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-carts-v1
+    to:
+    - operation:
+        ports:
+        - '27017'
+  selector:
+    matchLabels:
+      app: carts-db
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: shipping-v1-6319779075039956040
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-shipping
+    to:
+    - operation:
+        ports:
+        - '5672'
+  selector:
+    matchLabels:
+      app: rabbitmq
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1--7058288596285854700
   namespace: sockshop
 spec:
   rules:
@@ -201,7 +258,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1--1375114450751853995
+  name: front-end-v1-4877397371698057146
   namespace: sockshop
 spec:
   rules:
@@ -222,7 +279,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1-9125171138802917819
+  name: front-end-v1-1784623063415138691
   namespace: sockshop
 spec:
   rules:
@@ -243,7 +300,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1--67207068679368707
+  name: front-end-v1--1279766251429698608
   namespace: sockshop
 spec:
   rules:
@@ -264,7 +321,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1--6210038132088187728
+  name: front-end-v1-2142050671961824146
   namespace: sockshop
 spec:
   rules:
@@ -285,7 +342,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1--2515010099069436632
+  name: front-end-v1--8283481982669653494
   namespace: sockshop
 spec:
   rules:
@@ -306,7 +363,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1--2408847294193653113
+  name: front-end-v1--6513501911112888641
   namespace: sockshop
 spec:
   rules:
@@ -327,7 +384,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1-4027556914224517049
+  name: front-end-v1--8738452678034221759
   namespace: sockshop
 spec:
   rules:
@@ -348,7 +405,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1-3351162597834082666
+  name: front-end-v1--5857497697051156096
   namespace: sockshop
 spec:
   rules:
@@ -369,7 +426,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1--6668152228771706074
+  name: front-end-v1--6286133001387028612
   namespace: sockshop
 spec:
   rules:
@@ -390,7 +447,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1--1553313779809410740
+  name: front-end-v1-5808680815626073337
   namespace: sockshop
 spec:
   rules:
@@ -411,7 +468,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1--6482895380914258253
+  name: front-end-v1--2188106312576795492
   namespace: sockshop
 spec:
   rules:
@@ -432,7 +489,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1-3521988413322590436
+  name: front-end-v1-3997495741153538859
   namespace: sockshop
 spec:
   rules:
@@ -453,7 +510,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1--7260660756983203611
+  name: front-end-v1--1158689615638135985
   namespace: sockshop
 spec:
   rules:
@@ -474,7 +531,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1--9214290157521653376
+  name: front-end-v1--4264142150508615650
   namespace: sockshop
 spec:
   rules:
@@ -495,7 +552,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1--6558701368867116866
+  name: front-end-v1-4076244233049547991
   namespace: sockshop
 spec:
   rules:
@@ -516,7 +573,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1--8077044620768369872
+  name: front-end-v1-6331375730825751493
   namespace: sockshop
 spec:
   rules:
@@ -537,7 +594,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1-4313505887969708810
+  name: front-end-v1--6568150414132776362
   namespace: sockshop
 spec:
   rules:
@@ -558,7 +615,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1--6233138678240021035
+  name: front-end-v1--3846464813432443287
   namespace: sockshop
 spec:
   rules:
@@ -579,7 +636,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1-7575746836126649016
+  name: front-end-v1-1598524272169983448
   namespace: sockshop
 spec:
   rules:
@@ -600,7 +657,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1-5726860257731787025
+  name: front-end-v1--7382192749410682585
   namespace: sockshop
 spec:
   rules:
@@ -621,7 +678,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1--5506517145526746398
+  name: front-end-v1--1653370521632694687
   namespace: sockshop
 spec:
   rules:
@@ -642,7 +699,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1--2289105590166030342
+  name: front-end-v1--2326083409201051812
   namespace: sockshop
 spec:
   rules:
@@ -663,7 +720,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1--5633217989922692763
+  name: front-end-v1--5361999250988800663
   namespace: sockshop
 spec:
   rules:
@@ -684,26 +741,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: carts-v1-8197161118963150426
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-carts-v1
-    to:
-    - operation:
-        ports:
-        - '27017'
-  selector:
-    matchLabels:
-      app: carts-db
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: catalogue-v1-1294243295839851579
+  name: catalogue-v1--4427622579908658593
   namespace: sockshop
 spec:
   rules:
@@ -711,44 +749,6 @@ spec:
     - source:
         principals:
         - cluster.local/ns/sockshop/sa/sockshop-catalogue-v1
-    to:
-    - operation:
-        ports:
-        - '3306'
-  selector:
-    matchLabels:
-      app: catalogue-db
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: shipping-v1--1793892268720928952
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-shipping
-    to:
-    - operation:
-        ports:
-        - '5672'
-  selector:
-    matchLabels:
-      app: rabbitmq
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: catalogue-v3-1294243295839851579
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-catalogue-v3
     to:
     - operation:
         ports:

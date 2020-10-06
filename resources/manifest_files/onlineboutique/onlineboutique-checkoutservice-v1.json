@@ -12,7 +12,7 @@
       "type": "grpc",
       "url": "productcatalogservice:3550",
       "name": "productcatalogservice",
-      "path": "/hipstershop.ProductCatalogService/GetProducts"
+      "path": "/hipstershop.ProductCatalogService/GetProduct"
     },
     {
       "type": "grpc",

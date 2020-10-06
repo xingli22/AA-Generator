@@ -1,0 +1,12 @@
+{
+  "service": "user",
+  "version": "v2",
+  "requests": [
+    {
+      "type": "tcp",
+      "url": "mongodb://user-db:27017/users",
+      "name": "user-db",
+      "port": "27017"
+    }
+  ]
+}

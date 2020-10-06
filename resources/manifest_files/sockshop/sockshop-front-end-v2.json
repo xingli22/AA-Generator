@@ -1,6 +1,6 @@
 {
   "service": "front-end",
-  "version": "v1",
+  "version": "v2",
   "requests": [
     {
       "type": "http",

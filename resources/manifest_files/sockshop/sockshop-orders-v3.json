@@ -1,6 +1,6 @@
 {
   "service": "orders",
-  "version": "v1",
+  "version": "v3",
   "requests": [
     {
       "type": "http",
