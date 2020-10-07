@@ -1,0 +1,27 @@
+{
+  "service": "productpage",
+  "version": "v2",
+  "requests": [
+    {
+      "type": "http",
+      "url": "http://details:9080/details/*",
+      "name": "details",
+      "path": "/details/*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://reviews:9080/reviews/*",
+      "name": "reviews",
+      "path": "/reviews/*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://ratings:9080/ratings/*",
+      "name": "ratings",
+      "path": "/ratings/*",
+      "method": "GET"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "service": "ratings",
+  "version": "v2",
+  "requests": [
+    {
+      "type": "tcp",
+      "url": "",
+      "name": "mysqldb",
+      "port": 3306
+    },
+    {
+      "type": "tcp",
+      "url": "mongodb://mongodb:27017/test",
+      "name": "mongodb",
+      "port": 27017
+    }
+  ]
+}

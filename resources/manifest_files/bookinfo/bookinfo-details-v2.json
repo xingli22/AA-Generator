@@ -1,0 +1,13 @@
+{
+  "service": "details",
+  "version": "v2",
+  "requests": [
+    {
+      "type": "http",
+      "url": "https://www.googleapis.com/books/v1/volumes?q=isbn:0486424618",
+      "name": "",
+      "path": "",
+      "method": "GET"
+    }
+  ]
+}

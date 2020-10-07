@@ -1,0 +1,398 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: recommendationservice-v1-4487618424815215329
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-recommendationservice
+    to:
+    - operation:
+        paths:
+        - /hipstershop.ProductCatalogService/ListProducts
+  selector:
+    matchLabels:
+      app: productcatalogservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: cartservice-v1-3321369179942093058
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-cartservice
+    to:
+    - operation:
+        ports:
+        - '6379'
+  selector:
+    matchLabels:
+      app: redis-cart
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: checkoutservice-v1-8031291843856495885
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-checkoutservice
+    to:
+    - operation:
+        paths:
+        - /hipstershop.PaymentService/Charge
+  selector:
+    matchLabels:
+      app: paymentservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: checkoutservice-v1--2559767620782261518
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-checkoutservice
+    to:
+    - operation:
+        paths:
+        - /hipstershop.ProductCatalogService/GetProduct
+  selector:
+    matchLabels:
+      app: productcatalogservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: checkoutservice-v1--738998630869871812
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-checkoutservice
+    to:
+    - operation:
+        paths:
+        - /hipstershop.CurrencyService/Convert
+  selector:
+    matchLabels:
+      app: currencyservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: checkoutservice-v1-5245634009344524182
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-checkoutservice
+    to:
+    - operation:
+        paths:
+        - /hipstershop.CartService/GetCart
+  selector:
+    matchLabels:
+      app: cartservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: checkoutservice-v1--590231116556960508
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-checkoutservice
+    to:
+    - operation:
+        paths:
+        - /hipstershop.CartService/EmptyCart
+  selector:
+    matchLabels:
+      app: cartservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: checkoutservice-v1-4626658160099669480
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-checkoutservice
+    to:
+    - operation:
+        paths:
+        - /hipstershop.EmailService/SendOrderConfirmation
+  selector:
+    matchLabels:
+      app: emailservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: checkoutservice-v1-8511686199816985581
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-checkoutservice
+    to:
+    - operation:
+        paths:
+        - /hipstershop.ShippingService/GetQuote
+  selector:
+    matchLabels:
+      app: shippingservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: checkoutservice-v1--4507121179066809083
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-checkoutservice
+    to:
+    - operation:
+        paths:
+        - /hipstershop.ShippingService/ShipOrder
+  selector:
+    matchLabels:
+      app: shippingservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1-4487618424815215329
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.ProductCatalogService/ListProducts
+  selector:
+    matchLabels:
+      app: productcatalogservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1--2559767620782261518
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.ProductCatalogService/GetProduct
+  selector:
+    matchLabels:
+      app: productcatalogservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1--738998630869871812
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.CurrencyService/Convert
+  selector:
+    matchLabels:
+      app: currencyservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1-4005349607048554736
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.CurrencyService/GetSupportedCurrencies
+  selector:
+    matchLabels:
+      app: currencyservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1-8300575495119206839
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.CartService/AddItem
+  selector:
+    matchLabels:
+      app: cartservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1-5245634009344524182
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.CartService/GetCart
+  selector:
+    matchLabels:
+      app: cartservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1--590231116556960508
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.CartService/EmptyCart
+  selector:
+    matchLabels:
+      app: cartservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1-2354830392994745386
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.RecommendationService/ListRecommendations
+  selector:
+    matchLabels:
+      app: recommendationservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1-8511686199816985581
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.ShippingService/GetQuote
+  selector:
+    matchLabels:
+      app: shippingservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1--4341179545256510055
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.CheckoutService/PlaceOrder
+  selector:
+    matchLabels:
+      app: checkoutservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1--1984267162395345509
+  namespace: onlineboutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/onlineboutique/sa/onlineboutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.AdService/GetAds
+  selector:
+    matchLabels:
+      app: adservice

@@ -6,6 +6,11 @@ def output(target, app_name, path):
     yaml.dump_all(target, policy)
     policy.close()
 
+def output_name(target, app_name, path):
+    policy = open(path + app_name + '.yaml', 'w+')
+    policy.write(str(target))
+    policy.close()
+
 
 def phase_1_output(role, binding, app, service_name, path):
     role_file = open(path + app + '-' + service_name + '-role.yaml', 'w+')
