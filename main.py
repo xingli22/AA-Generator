@@ -14,7 +14,7 @@ from utils.registrant import register, clean_registration, get_registration
 from utils.yaml_loader import load_yaml, load_yamls
 
 manifest_prefix = {'bookinfo': 'resources/manifest_files/bookinfo/bookinfo-',
-                   'onlineboutique': 'resources/manifest_files/onlineboutique/onlineboutique-',
+                   'boutique': 'resources/manifest_files/boutique/boutique-',
                    'sockshop': 'resources/manifest_files/sockshop/sockshop-'}
 manifest_suffix = '.json'
 deployment_prefix = 'resources/deployment_files/'
@@ -90,7 +90,7 @@ def phase_1_generate_template(app, service_name, service_version, requests):
     policy['spec']['rules'] = rules
     if len(rules) == 0:
         return 0
-    pprint(policy)
+    #pprint(policy)
     # phase_1_output(role, binding, app, service_name, output_path + 'phase_1/')
     return policy
 
@@ -354,7 +354,7 @@ def build_policy_with_version(current_node, permission):
         print('error: unknown request kind')
 
     policy['spec']['rules'].append(rule)
-    pprint(policy)
+    # pprint(policy)
     return policy
 
 
@@ -426,16 +426,20 @@ def policy_generation(app, ifversion, mode, islist):
         if yaml_data is not None:
             if yaml_data.get('kind') == 'Deployment':  # deployment: generate from template
                 # build the node
-                if 'labels' not in yaml_data.get('metadata'):
+                if 'labels' not in yaml_data.get('metadata') and app != 'boutique':
                     print('[AA error]: deployment ' + yaml_data.get('metadata').get('name') + ' no labels')
                     continue
-                if 'app' not in yaml_data.get('metadata').get('labels'):
-                    service_name = yaml_data.get('metadata').get('labels').get('name')
+                if 'labels' not in yaml_data.get('metadata') and app == 'boutique' and (mode.startswith('multi')):
+                    service_name = yaml_data.get('spec').get('selector').get('matchLabels').get('app')
+                    service_version = yaml_data.get('spec').get('selector').get('matchLabels').get('version')
                 else:
-                    service_name = yaml_data.get('metadata').get('labels').get('app')
-                service_version = yaml_data.get('metadata').get('labels').get('version')
+                    if 'app' not in yaml_data.get('metadata').get('labels'):
+                        service_name = yaml_data.get('metadata').get('labels').get('name')
+                    else:
+                        service_name = yaml_data.get('metadata').get('labels').get('app')
+                    service_version = yaml_data.get('metadata').get('labels').get('version')
                 if service_version == None:
-                    service_version = 'noversion'
+                    service_version = 'v1' # todo default v1
                     print('[AA error]: deployment ' + service_name + ' no version')
                 node = PermissionNode(service_name, service_version)
                 manifest_path = manifest_prefix[app] + service_name + '-' + service_version + manifest_suffix
@@ -460,8 +464,10 @@ def policy_generation(app, ifversion, mode, islist):
                     node.grant_permission(permission)
 
                 equal_with_exist_node = graph.add_node(node)
-                if equal_with_exist_node is True and node in candidate_nodes:
-                    candidate_nodes.remove(node)
+                if equal_with_exist_node is True:
+                    node.set_covered()
+                    if node in candidate_nodes:
+                        candidate_nodes.remove(node)
 
             elif yaml_data.get('kind') == 'Service':  # service: register it
                 # if 'labels' not in yaml_data.get('metadata'):
@@ -475,7 +481,8 @@ def policy_generation(app, ifversion, mode, islist):
                         for permission in node.permissions.values():
                             if permission.active is False and permission.target_service == service_name:
                                 permission.active = True
-                        candidate_nodes.add(node)
+                        if not node.covered:
+                            candidate_nodes.add(node)
                     del cache[service_name]
                 # pprint(cache)
                 # if service_name in cache.keys():
@@ -654,18 +661,21 @@ def policy_generation_anyway(app, ifversion, mode, islist):
         if yaml_data is not None:
             if yaml_data.get('kind') == 'Deployment':  # deployment: generate from template
                 # build the node
-                if 'labels' not in yaml_data.get('metadata'):
+                if 'labels' not in yaml_data.get('metadata') and app != 'boutique':
                     print('[AA error]: deployment ' + yaml_data.get('metadata').get('name') + ' no labels')
                     continue
-                if 'app' not in yaml_data.get('metadata').get('labels'):
-                    service_name = yaml_data.get('metadata').get('labels').get('name')
+                if 'labels' not in yaml_data.get('metadata') and app == 'boutique':
+                    service_name = yaml_data.get('spec').get('selector').get('matchLabels').get('app')
+                    service_version = yaml_data.get('spec').get('selector').get('matchLabels').get('version')
                 else:
-                    service_name = yaml_data.get('metadata').get('labels').get('app')
-                service_version = yaml_data.get('metadata').get('labels').get('version')
-                if service_version is None:
-                    service_version = 'noversion'
+                    if 'app' not in yaml_data.get('metadata').get('labels'):
+                        service_name = yaml_data.get('metadata').get('labels').get('name')
+                    else:
+                        service_name = yaml_data.get('metadata').get('labels').get('app')
+                    service_version = yaml_data.get('metadata').get('labels').get('version')
+                if service_version == None:
+                    service_version = 'v1'  # todo default v1
                     print('[AA error]: deployment ' + service_name + ' no version')
-
                 node = PermissionNode(service_name, service_version)
 
                 service_account = yaml_data.get('spec').get('template').get('spec').get('serviceAccountName')
@@ -693,6 +703,7 @@ def policy_generation_anyway(app, ifversion, mode, islist):
                         cache[permission.target_service].append(node)
                     node.grant_permission(permission)
 
+                graph.add_node(node)
                 # equal_with_exist_node = graph.add_node(node)
                 # if equal_with_exist_node is True:
                 #     candidate_nodes.remove(node)
@@ -904,7 +915,7 @@ def old_way(app, ifversion, mode):
 
 if __name__ == '__main__':
 
-    apps = ['bookinfo', 'onlineboutique', 'sockshop']
+    apps = ['bookinfo', 'boutique', 'sockshop']
     # number = {'bookinfo': 4, 'onlineboutique': 5, 'sockshop': 7}
     modes = ['ordered', 'second', 'remove', 'multi', 'multisa']
     version = False
@@ -933,42 +944,54 @@ if __name__ == '__main__':
     for i in range(this_round):
         graph = Graph(app_name)
 
-        start_time_1 = time.time()
-        mode = modes[0]
-        policies, build_time_1 = tests[this_test](app_name, version, mode, islist)
-        output(policies, app_name + '-' + mode + '-' + str(this_test), output_path)
-        end_time_1 = time.time()
-        total_time_1 = (end_time_1 - start_time_1) * 1000
-        process_time_1.append(total_time_1)
+        if this_mode > 2:
+            start_t = time.time()
+            policies, build_t = tests[this_test](app_name, version, mode, islist)
+            output(policies, app_name + '-' + mode + '-' + str(this_test), output_path)
+            print(len(policies))
+            end_t = time.time()
+            total_t = (end_t - start_t) * 1000
+            print(total_t)
+        else:
+            start_time_1 = time.time()
+            mode = modes[0]
+            policies, build_time_1 = tests[this_test](app_name, version, mode, islist)
+            output(policies, app_name + '-' + mode + '-' + str(this_test), output_path)
+            end_time_1 = time.time()
+            total_time_1 = (end_time_1 - start_time_1) * 1000
+            process_time_1.append(total_time_1)
 
-        start_time_2 = time.time()
-        mode = modes[1]
-        policies, build_time_2 = tests[this_test](app_name, version, mode, islist)
-        output(policies, app_name + '-' + mode + '-' + str(this_test), output_path)
-        end_time_2 = time.time()
-        total_time_2 = (end_time_2 - start_time_2) * 1000
-        process_time_2.append(total_time_2)
+            start_time_2 = time.time()
+            mode = modes[1]
+            policies, build_time_2 = tests[this_test](app_name, version, mode, islist)
+            output(policies, app_name + '-' + mode + '-' + str(this_test), output_path)
+            end_time_2 = time.time()
+            total_time_2 = (end_time_2 - start_time_2) * 1000
+            process_time_2.append(total_time_2)
 
-        start_time_3 = time.time()
-        mode = modes[2]
-        policies, build_time_3 = removes[this_test](app_name, version, mode, islist)
-        output_name(policies, app_name + '-' + mode + '-' + str(this_test), output_path)
-        end_time_3 = time.time()
-        total_time_3 = (end_time_3 - start_time_3) * 1000
-        process_time_3.append(total_time_3)
+            start_time_3 = time.time()
+            mode = modes[2]
+            policies, build_time_3 = removes[this_test](app_name, version, mode, islist)
+            output_name(policies, app_name + '-' + mode + '-' + str(this_test), output_path)
+            end_time_3 = time.time()
+            total_time_3 = (end_time_3 - start_time_3) * 1000
+            process_time_3.append(total_time_3)
 
-        print('Great! You made it!!!')
+            print('Great! You made it!!!')
 
         # build_times.append(build_time)
         # print(total_time)
 
     mean_time_1 = mean(process_time_1)
+    std_time_1 = std(process_time_1)
     mean_time_2 = mean(process_time_2)
+    std_time_2 = std(process_time_2)
     mean_time_3 = mean(process_time_3)
+    std_time_3 = std(process_time_3)
     # mean_build_time = mean(build_times)
-    print(mean_time_1)
-    print(mean_time_2)
-    print(mean_time_3)
+    print('d-mean: %d std: %.2f' % (round(mean_time_1), round(std_time_1,2)))
+    print('rd-mean: %d std: %.2f' % (round(mean_time_2), round(std_time_2,2)))
+    print('r-mean: %d std: %.2f' % (round(mean_time_3), round(std_time_3, 2)))
     # print(mean_build_time)
 
     #     start_time = time.time()

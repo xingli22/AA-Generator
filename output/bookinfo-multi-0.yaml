@@ -1,7 +1,7 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: productpage-v1-2118670291430995387
+  name: productpage-v1-1989434023617941508
   namespace: bookinfo
 spec:
   rules:
@@ -22,7 +22,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: productpage-v1-7295045696186394831
+  name: productpage-v1--2983485552106909141
   namespace: bookinfo
 spec:
   rules:
@@ -43,7 +43,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: productpage-v1--304136418683152754
+  name: productpage-v1--5336477401113566332
   namespace: bookinfo
 spec:
   rules:
@@ -64,7 +64,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: ratings-v1--3531795015322518304
+  name: ratings-v1-2112425218778707167
   namespace: bookinfo
 spec:
   rules:
@@ -83,7 +83,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: ratings-v1--1564882878180935580
+  name: ratings-v1--8750049773593996233
   namespace: bookinfo
 spec:
   rules:
@@ -102,7 +102,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: reviews-v1--304136418683152754
+  name: reviews-v1--5336477401113566332
   namespace: bookinfo
 spec:
   rules:

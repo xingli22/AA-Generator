@@ -1,0 +1,12 @@
+{
+  "service": "cartservice",
+  "version": "v3",
+  "requests": [
+    {
+      "type": "tcp",
+      "url": "redis-cart:6379",
+      "name": "redis-cart",
+      "port": 6379
+    }
+  ]
+}

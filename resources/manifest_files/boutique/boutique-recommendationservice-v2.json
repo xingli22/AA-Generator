@@ -1,0 +1,12 @@
+{
+  "service": "recommendationservice",
+  "version": "v2",
+  "requests": [
+    {
+      "type": "grpc",
+      "url": "productcatalogservice:3550",
+      "name": "productcatalogservice",
+      "path": "/hipstershop.ProductCatalogService/ListProducts"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: ratings-v1-7143714993593847776
+  name: ratings-v1-4970504836178972525
   namespace: bookinfo
 spec:
   rules:
@@ -20,7 +20,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: ratings-v1-3006372309723258167
+  name: ratings-v1--3363768378460614381
   namespace: bookinfo
 spec:
   rules:
@@ -39,7 +39,28 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: productpage-v1--7062555653235287295
+  name: reviews-v1-7800763266828581446
+  namespace: bookinfo
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/bookinfo/sa/bookinfo-reviews
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /ratings/*
+  selector:
+    matchLabels:
+      app: ratings
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: productpage-v1-494770783357058263
   namespace: bookinfo
 spec:
   rules:
@@ -60,7 +81,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: productpage-v1-687740812436633463
+  name: productpage-v1--4592533933413001733
   namespace: bookinfo
 spec:
   rules:
@@ -81,7 +102,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: productpage-v1--2523879506885518227
+  name: productpage-v1-7800763266828581446
   namespace: bookinfo
 spec:
   rules:
@@ -89,27 +110,6 @@ spec:
     - source:
         principals:
         - cluster.local/ns/bookinfo/sa/bookinfo-productpage
-    to:
-    - operation:
-        methods:
-        - GET
-        paths:
-        - /ratings/*
-  selector:
-    matchLabels:
-      app: ratings
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: reviews-v1--2523879506885518227
-  namespace: bookinfo
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/bookinfo/sa/bookinfo-reviews
     to:
     - operation:
         methods:

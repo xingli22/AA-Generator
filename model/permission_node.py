@@ -5,6 +5,7 @@ class PermissionNode:
         self.service_version = service_version
         self.service_account = ''
         self.permissions = {}
+        self.covered = False
 
     def set_service_account(self, service_account):
         self.service_account = service_account
@@ -21,3 +22,5 @@ class PermissionNode:
         else:
             return False
 
+    def set_covered(self):
+        self.covered = True
