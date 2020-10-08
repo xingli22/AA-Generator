@@ -535,6 +535,11 @@ def remove_anyway(app, ifversion, mode, islist):
     # graph = Graph(app)
 
     candidate_nodes = set()
+    policy_path = output_path + app + '-ordered-1.yaml'
+    existing_policies_1 = list(load_yamls(policy_path))
+
+    policy_path = output_path + app + '-second-1.yaml'
+    existing_policies_2 = list(load_yamls(policy_path))
 
     for yaml_data in deployment_data:
         if yaml_data is not None:
@@ -557,17 +562,17 @@ def remove_anyway(app, ifversion, mode, islist):
                     node.set_service_account(service_account)
                 graph.remove_node(node)
 
-                policy_path = output_path + app + '-ordered-1.yaml'
-                existing_policies = load_yamls(policy_path)
-                for existing_policy in existing_policies:
-                    if existing_policy['metadata']['name'].startswith(service_name + '-' + service_version):
-                        policies.append(existing_policy['metadata']['name'])
 
-                policy_path = output_path + app + '-second-1.yaml'
-                existing_policies = load_yamls(policy_path)
-                for existing_policy in existing_policies:
+                for existing_policy in existing_policies_1:
                     if existing_policy['metadata']['name'].startswith(service_name + '-' + service_version):
                         policies.append(existing_policy['metadata']['name'])
+                        existing_policies_1.remove(existing_policy)
+
+
+                for existing_policy in existing_policies_2:
+                    if existing_policy['metadata']['name'].startswith(service_name + '-' + service_version):
+                        policies.append(existing_policy['metadata']['name'])
+                        existing_policies_1.remove(existing_policy)
             else:
                 print('[AA error]: unsupported yaml kind')
 
@@ -595,6 +600,10 @@ def remove(app, ifversion, mode, islist):
     # graph = Graph(app)
 
     candidate_nodes = set()
+    policy_path = output_path + app + '-ordered-0.yaml'
+    existing_policies_1 = list(load_yamls(policy_path))
+    policy_path = output_path + app + '-second-0.yaml'
+    existing_policies_2 = list(load_yamls(policy_path))
 
     for yaml_data in deployment_data:
         if yaml_data is not None:
@@ -617,18 +626,18 @@ def remove(app, ifversion, mode, islist):
                     node.set_service_account(service_account)
                 graph.remove_node(node)
 
-                policy_path = output_path + app + '-ordered-0.yaml'
-                existing_policies = load_yamls(policy_path)
-                for existing_policy in existing_policies:
+
+                for existing_policy in existing_policies_1:
                     if existing_policy['spec']['rules'][0]['from'][0]['source'][
                         'principals'] == 'cluster.local/ns/' + app + '/sa/' + app + '-' + service_name + '-' + service_version:
                         policies.append(existing_policy['metadata']['name'])
-                policy_path = output_path + app + '-second-0.yaml'
-                existing_policies = load_yamls(policy_path)
-                for existing_policy in existing_policies:
+                        existing_policies_1.remove(existing_policy)
+
+                for existing_policy in existing_policies_2:
                     if existing_policy['spec']['rules'][0]['from'][0]['source'][
                         'principals'] == 'cluster.local/ns/' + app + '/sa/' + app + '-' + service_name + '-' + service_version:
                         policies.append(existing_policy['metadata']['name'])
+                        existing_policies_2.remove(existing_policy)
             else:
                 print('[AA error]: unsupported yaml kind')
 
@@ -921,7 +930,7 @@ if __name__ == '__main__':
     version = False
     islist = False
 
-    this_app = 1
+    this_app = 2
     this_mode = 0
     this_test = 1
     this_round = 1

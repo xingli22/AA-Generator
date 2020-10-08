@@ -1,0 +1,701 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1--3701812973588196432
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /carts/*
+  selector:
+    matchLabels:
+      app: carts
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1--146325447009012132
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - DELETE
+        paths:
+        - /carts/*
+  selector:
+    matchLabels:
+      app: carts
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1--8125321878469748223
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /carts/*
+  selector:
+    matchLabels:
+      app: carts
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1-4476500585130057016
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /catalogue/*
+  selector:
+    matchLabels:
+      app: catalogue
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1--5707684666302446438
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - PATCH
+        paths:
+        - /carts/*
+  selector:
+    matchLabels:
+      app: carts
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1--5046112549554591384
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /catalogue/images*
+  selector:
+    matchLabels:
+      app: catalogue
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1-4095928413758934425
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /catalogue*
+  selector:
+    matchLabels:
+      app: catalogue
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1-434210303595953761
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /tags/tags
+  selector:
+    matchLabels:
+      app: catalogue
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1--8137769996485609025
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /orders/search/customerId?sort=date&custId=*
+  selector:
+    matchLabels:
+      app: orders
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1-6682729312896039889
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /orders/*
+  selector:
+    matchLabels:
+      app: orders
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1-5278870639793279168
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /customers/*
+  selector:
+    matchLabels:
+      app: user
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1--3194397323267198497
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /orders
+  selector:
+    matchLabels:
+      app: orders
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1--3380850960646113782
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /customers
+  selector:
+    matchLabels:
+      app: user
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1--8081337653661499397
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /cards/*
+  selector:
+    matchLabels:
+      app: user
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1-8142589511167160652
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /cards
+  selector:
+    matchLabels:
+      app: user
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1-4273715238448863716
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /addresses
+  selector:
+    matchLabels:
+      app: user
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1-3135626404909861857
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /customers
+  selector:
+    matchLabels:
+      app: user
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1--543913012677385527
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /addresses
+  selector:
+    matchLabels:
+      app: user
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1--1598782638598141099
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /cards
+  selector:
+    matchLabels:
+      app: user
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1--7934992181654961153
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - DELETE
+        paths:
+        - /customers/*
+  selector:
+    matchLabels:
+      app: user
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1-551923445326393536
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - DELETE
+        paths:
+        - /addresses/*
+  selector:
+    matchLabels:
+      app: user
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1--5765628838670122900
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - DELETE
+        paths:
+        - /cards/*
+  selector:
+    matchLabels:
+      app: user
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1--4905944729123864951
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /register
+  selector:
+    matchLabels:
+      app: user
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: front-end-v1-5738359487927284902
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-front-end
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /login
+  selector:
+    matchLabels:
+      app: user
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: orders-v1--4421719869829485891
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-orders
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /paymentAuth
+  selector:
+    matchLabels:
+      app: payment
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: orders-v1--8541911908866621448
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-orders
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /shipping
+  selector:
+    matchLabels:
+      app: shipping
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: orders-v1-304300724700094138
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-orders
+    to:
+    - operation:
+        ports:
+        - '27017'
+  selector:
+    matchLabels:
+      app: orders-db
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: orders-v1-5278870639793279168
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-orders
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /customers/*
+  selector:
+    matchLabels:
+      app: user
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: orders-v1--3701812973588196432
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-orders
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /carts/*
+  selector:
+    matchLabels:
+      app: carts
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: user-v1-4923305630654265328
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-user
+    to:
+    - operation:
+        ports:
+        - '27017'
+  selector:
+    matchLabels:
+      app: user-db
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: shipping-v1-8981610525974373980
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-shipping
+    to:
+    - operation:
+        ports:
+        - '5672'
+  selector:
+    matchLabels:
+      app: rabbitmq
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: carts-v1-4755536582952044311
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-carts
+    to:
+    - operation:
+        ports:
+        - '27017'
+  selector:
+    matchLabels:
+      app: carts-db
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: queue-master-v1-8981610525974373980
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-queue-master
+    to:
+    - operation:
+        ports:
+        - '5672'
+  selector:
+    matchLabels:
+      app: rabbitmq
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: catalogue-v1-6886525584483291257
+  namespace: sockshop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sockshop/sa/sockshop-catalogue
+    to:
+    - operation:
+        ports:
+        - '3306'
+  selector:
+    matchLabels:
+      app: catalogue-db

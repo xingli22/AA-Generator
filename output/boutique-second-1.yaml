@@ -1,7 +1,26 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v2--3898416845630461720
+  name: cartservice-v2--8504028894572516221
+  namespace: boutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/boutique/sa/boutique-cartservice
+    to:
+    - operation:
+        ports:
+        - '6379'
+  selector:
+    matchLabels:
+      app: redis-cart
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v2-698178796792792112
   namespace: boutique
 spec:
   rules:
@@ -20,7 +39,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v2-7765128073654704611
+  name: frontend-v2--5586419599128168342
   namespace: boutique
 spec:
   rules:
@@ -39,7 +58,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v2-703988332435443615
+  name: frontend-v2-8541383293977334337
   namespace: boutique
 spec:
   rules:
@@ -58,7 +77,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v2--8121390245124194233
+  name: frontend-v2--4763172457450262115
   namespace: boutique
 spec:
   rules:
@@ -77,7 +96,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v2-3366134919894008204
+  name: frontend-v2-4822476867144065999
   namespace: boutique
 spec:
   rules:
@@ -96,7 +115,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v2-3842605284210578609
+  name: frontend-v2-5731054742236924864
   namespace: boutique
 spec:
   rules:
@@ -115,7 +134,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v2--6435605464111072117
+  name: frontend-v2--3444543885882631603
   namespace: boutique
 spec:
   rules:
@@ -134,7 +153,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v2--6401125983613677041
+  name: frontend-v2-5892884339870094906
   namespace: boutique
 spec:
   rules:
@@ -153,7 +172,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v2--7849675126779013255
+  name: frontend-v2-9106598805764706794
   namespace: boutique
 spec:
   rules:
@@ -172,7 +191,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v2-1698205727370176933
+  name: frontend-v2--7246007115906228391
   namespace: boutique
 spec:
   rules:
@@ -191,7 +210,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: frontend-v2--5512264073221152183
+  name: frontend-v2-5485543111594079889
   namespace: boutique
 spec:
   rules:
@@ -210,7 +229,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v2-926263914423041544
+  name: checkoutservice-v2--8531921281342697013
   namespace: boutique
 spec:
   rules:
@@ -229,7 +248,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v2-7765128073654704611
+  name: checkoutservice-v2--5586419599128168342
   namespace: boutique
 spec:
   rules:
@@ -248,7 +267,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v2-703988332435443615
+  name: checkoutservice-v2-8541383293977334337
   namespace: boutique
 spec:
   rules:
@@ -267,7 +286,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v2-3842605284210578609
+  name: checkoutservice-v2-5731054742236924864
   namespace: boutique
 spec:
   rules:
@@ -286,7 +305,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v2--6435605464111072117
+  name: checkoutservice-v2--3444543885882631603
   namespace: boutique
 spec:
   rules:
@@ -305,7 +324,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v2-3182884908961592264
+  name: checkoutservice-v2-5715055111435568508
   namespace: boutique
 spec:
   rules:
@@ -324,7 +343,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v2--7849675126779013255
+  name: checkoutservice-v2-9106598805764706794
   namespace: boutique
 spec:
   rules:
@@ -343,7 +362,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v2-2585014418870934680
+  name: checkoutservice-v2--5455079445226275703
   namespace: boutique
 spec:
   rules:
@@ -362,7 +381,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: recommendationservice-v2--3898416845630461720
+  name: recommendationservice-v2-698178796792792112
   namespace: boutique
 spec:
   rules:
@@ -377,22 +396,3 @@ spec:
   selector:
     matchLabels:
       app: productcatalogservice
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: cartservice-v2-6453660110324177785
-  namespace: boutique
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/boutique/sa/boutique-cartservice
-    to:
-    - operation:
-        ports:
-        - '6379'
-  selector:
-    matchLabels:
-      app: redis-cart
