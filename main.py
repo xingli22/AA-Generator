@@ -15,7 +15,8 @@ from utils.yaml_loader import load_yaml, load_yamls
 
 manifest_prefix = {'bookinfo': 'resources/manifest_files/bookinfo/bookinfo-',
                    'boutique': 'resources/manifest_files/boutique/boutique-',
-                   'sockshop': 'resources/manifest_files/sockshop/sockshop-'}
+                   'sockshop': 'resources/manifest_files/sockshop/sockshop-',
+                   'pitstop': 'resources/manifest_files/pitstop/pitstop-'}
 manifest_suffix = '.json'
 deployment_prefix = 'resources/deployment_files/'
 deployment_suffix = '.yaml'
@@ -924,16 +925,16 @@ def old_way(app, ifversion, mode):
 
 if __name__ == '__main__':
 
-    apps = ['bookinfo', 'boutique', 'sockshop']
+    apps = ['bookinfo', 'boutique', 'sockshop','pitstop']
     # number = {'bookinfo': 4, 'onlineboutique': 5, 'sockshop': 7}
     modes = ['ordered', 'second', 'remove', 'multi', 'multisa']
     version = False
     islist = False
 
-    this_app = 2
+    this_app = 3
     this_mode = 0
-    this_test = 1
-    this_round = 1
+    this_test = 0
+    this_round = 20
 
     app_name = apps[this_app]
     # clean_registration(registration_file)

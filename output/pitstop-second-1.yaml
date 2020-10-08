@@ -1,14 +1,35 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: queue-master-v1--3508382098092162915
-  namespace: sockshop
+  name: workshopmanagementeventhandler-v2-7744352817145689074
+  namespace: pitstop
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sockshop/sa/sockshop-queue-master
+        - cluster.local/ns/pitstop/sa/pitstop-workshopmanagementeventhandler
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /seq
+  selector:
+    matchLabels:
+      app: logserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: workshopmanagementeventhandler-v2-6833061494364899507
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-workshopmanagementeventhandler
     to:
     - operation:
         ports:
@@ -20,33 +41,33 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: carts-v1--1124199684688152225
-  namespace: sockshop
+  name: workshopmanagementeventhandler-v2-2698517513010042616
+  namespace: pitstop
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sockshop/sa/sockshop-carts
+        - cluster.local/ns/pitstop/sa/pitstop-workshopmanagementeventhandler
     to:
     - operation:
         ports:
-        - '27017'
+        - '1433'
   selector:
     matchLabels:
-      app: carts-db
+      app: sqlserver
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: shipping-v1--3508382098092162915
-  namespace: sockshop
+  name: customermanagementapi-v2-6833061494364899507
+  namespace: pitstop
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sockshop/sa/sockshop-shipping
+        - cluster.local/ns/pitstop/sa/pitstop-customermanagementapi
     to:
     - operation:
         ports:
@@ -58,644 +79,666 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: front-end-v1-6341780857913039414
-  namespace: sockshop
+  name: customermanagementapi-v2-2698517513010042616
+  namespace: pitstop
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - GET
-        paths:
-        - /carts/*
-  selector:
-    matchLabels:
-      app: carts
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1-8272549769481421867
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - DELETE
-        paths:
-        - /carts/*
-  selector:
-    matchLabels:
-      app: carts
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1-3232786365438563563
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - POST
-        paths:
-        - /carts/*
-  selector:
-    matchLabels:
-      app: carts
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1--865593437035992883
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - GET
-        paths:
-        - /catalogue/*
-  selector:
-    matchLabels:
-      app: catalogue
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1--3209223991094029156
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - PATCH
-        paths:
-        - /carts/*
-  selector:
-    matchLabels:
-      app: carts
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1-9130390744451030119
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - GET
-        paths:
-        - /catalogue/images*
-  selector:
-    matchLabels:
-      app: catalogue
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1-6317920189315029255
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - GET
-        paths:
-        - /catalogue*
-  selector:
-    matchLabels:
-      app: catalogue
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1-5968219515691102956
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - GET
-        paths:
-        - /tags/tags
-  selector:
-    matchLabels:
-      app: catalogue
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1--1311536964871013459
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - GET
-        paths:
-        - /orders/search/customerId?sort=date&custId=*
-  selector:
-    matchLabels:
-      app: orders
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1--7214604705548182902
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - GET
-        paths:
-        - /orders/*
-  selector:
-    matchLabels:
-      app: orders
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1--7287997203435533369
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - GET
-        paths:
-        - /customers/*
-  selector:
-    matchLabels:
-      app: user
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1--5284310123905475628
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - POST
-        paths:
-        - /orders
-  selector:
-    matchLabels:
-      app: orders
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1-8246250052525622112
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - GET
-        paths:
-        - /customers
-  selector:
-    matchLabels:
-      app: user
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1--6873378376419580673
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - GET
-        paths:
-        - /cards/*
-  selector:
-    matchLabels:
-      app: user
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1--5903446312078549724
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - GET
-        paths:
-        - /cards
-  selector:
-    matchLabels:
-      app: user
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1-799623649386288464
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - GET
-        paths:
-        - /addresses
-  selector:
-    matchLabels:
-      app: user
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1--8042343417968862450
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - POST
-        paths:
-        - /customers
-  selector:
-    matchLabels:
-      app: user
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1--8633962189939430329
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - POST
-        paths:
-        - /addresses
-  selector:
-    matchLabels:
-      app: user
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1--1312062080441791152
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - POST
-        paths:
-        - /cards
-  selector:
-    matchLabels:
-      app: user
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1-4307339766834098032
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - DELETE
-        paths:
-        - /customers/*
-  selector:
-    matchLabels:
-      app: user
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1--2825649376138565781
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - DELETE
-        paths:
-        - /addresses/*
-  selector:
-    matchLabels:
-      app: user
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1-7650212207747484697
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - DELETE
-        paths:
-        - /cards/*
-  selector:
-    matchLabels:
-      app: user
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1-8813378378483058815
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - POST
-        paths:
-        - /register
-  selector:
-    matchLabels:
-      app: user
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: front-end-v1--2018478036613313212
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-front-end
-    to:
-    - operation:
-        methods:
-        - GET
-        paths:
-        - /login
-  selector:
-    matchLabels:
-      app: user
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: orders-v1-6706009424541235111
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-orders
-    to:
-    - operation:
-        methods:
-        - POST
-        paths:
-        - /paymentAuth
-  selector:
-    matchLabels:
-      app: payment
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: orders-v1-9023152433053906221
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-orders
-    to:
-    - operation:
-        methods:
-        - POST
-        paths:
-        - /shipping
-  selector:
-    matchLabels:
-      app: shipping
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: orders-v1--8927473268993093382
-  namespace: sockshop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sockshop/sa/sockshop-orders
+        - cluster.local/ns/pitstop/sa/pitstop-customermanagementapi
     to:
     - operation:
         ports:
-        - '27017'
+        - '1433'
   selector:
     matchLabels:
-      app: orders-db
+      app: sqlserver
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: orders-v1--7287997203435533369
-  namespace: sockshop
+  name: auditlogservice-v2-7744352817145689074
+  namespace: pitstop
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sockshop/sa/sockshop-orders
+        - cluster.local/ns/pitstop/sa/pitstop-auditlogservice
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /seq
+  selector:
+    matchLabels:
+      app: logserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: auditlogservice-v2-6833061494364899507
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-auditlogservice
+    to:
+    - operation:
+        ports:
+        - '5672'
+  selector:
+    matchLabels:
+      app: rabbitmq
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: vehiclemanagementapi-v2-6833061494364899507
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-vehiclemanagementapi
+    to:
+    - operation:
+        ports:
+        - '5672'
+  selector:
+    matchLabels:
+      app: rabbitmq
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: vehiclemanagementapi-v2-2698517513010042616
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-vehiclemanagementapi
+    to:
+    - operation:
+        ports:
+        - '1433'
+  selector:
+    matchLabels:
+      app: sqlserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: workshopmanagementapi-v2-7744352817145689074
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-workshopmanagementapi
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /seq
+  selector:
+    matchLabels:
+      app: logserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: workshopmanagementapi-v2-6833061494364899507
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-workshopmanagementapi
+    to:
+    - operation:
+        ports:
+        - '5672'
+  selector:
+    matchLabels:
+      app: rabbitmq
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: workshopmanagementapi-v2-2698517513010042616
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-workshopmanagementapi
+    to:
+    - operation:
+        ports:
+        - '1433'
+  selector:
+    matchLabels:
+      app: sqlserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: webapp-v2-7744352817145689074
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-webapp
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /seq
+  selector:
+    matchLabels:
+      app: logserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: webapp-v2-4552189182114541606
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-webapp
     to:
     - operation:
         methods:
         - GET
         paths:
-        - /customers/*
+        - /api/customers
   selector:
     matchLabels:
-      app: user
+      app: customermanagementapi
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: orders-v1-6341780857913039414
-  namespace: sockshop
+  name: webapp-v2--6144305812710212865
+  namespace: pitstop
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sockshop/sa/sockshop-orders
+        - cluster.local/ns/pitstop/sa/pitstop-webapp
     to:
     - operation:
         methods:
         - GET
         paths:
-        - /carts/*
+        - /api/customers/*
   selector:
     matchLabels:
-      app: carts
+      app: customermanagementapi
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: user-v1--5677696278338898242
-  namespace: sockshop
+  name: webapp-v2--6164972405441898961
+  namespace: pitstop
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sockshop/sa/sockshop-user
+        - cluster.local/ns/pitstop/sa/pitstop-webapp
     to:
     - operation:
-        ports:
-        - '27017'
+        methods:
+        - POST
+        paths:
+        - /api/customers
   selector:
     matchLabels:
-      app: user-db
+      app: customermanagementapi
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: catalogue-v1--3729025355206064200
-  namespace: sockshop
+  name: webapp-v2--1990175929358624239
+  namespace: pitstop
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sockshop/sa/sockshop-catalogue
+        - cluster.local/ns/pitstop/sa/pitstop-webapp
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /api/vehicles
+  selector:
+    matchLabels:
+      app: vehiclemanagementapi
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: webapp-v2-1147266284113988368
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-webapp
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /api/vehicles/*
+  selector:
+    matchLabels:
+      app: vehiclemanagementapi
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: webapp-v2-5081155238240210619
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-webapp
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /api/vehicles
+  selector:
+    matchLabels:
+      app: vehiclemanagementapi
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: webapp-v2-6320169838080265281
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-webapp
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /api/workshopplanning/*
+  selector:
+    matchLabels:
+      app: workshopmanagementapi
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: webapp-v2--8869922159144799330
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-webapp
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /api/workshopplanning
+  selector:
+    matchLabels:
+      app: workshopmanagementapi
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: webapp-v2-1885140163458218009
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-webapp
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /api/workshopplanning/*
+  selector:
+    matchLabels:
+      app: workshopmanagementapi
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: webapp-v2--8086669905422111169
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-webapp
+    to:
+    - operation:
+        methods:
+        - PUT
+        paths:
+        - /api/workshopplanning/*
+  selector:
+    matchLabels:
+      app: workshopmanagementapi
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: webapp-v2--5882637614377307929
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-webapp
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /api/refdata/customers
+  selector:
+    matchLabels:
+      app: workshopmanagementapi
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: webapp-v2-127011674221880214
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-webapp
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /api/refdata/customers/*
+  selector:
+    matchLabels:
+      app: workshopmanagementapi
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: webapp-v2--5680040564267922887
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-webapp
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /api/refdata/vehicles
+  selector:
+    matchLabels:
+      app: workshopmanagementapi
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: webapp-v2-538645907242522154
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-webapp
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /api/refdata/vehicles/*
+  selector:
+    matchLabels:
+      app: workshopmanagementapi
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: invoiceservice-v2-7744352817145689074
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-invoiceservice
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /seq
+  selector:
+    matchLabels:
+      app: logserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: invoiceservice-v2-6833061494364899507
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-invoiceservice
     to:
     - operation:
         ports:
-        - '3306'
+        - '5672'
   selector:
     matchLabels:
-      app: catalogue-db
+      app: rabbitmq
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: invoiceservice-v2-2698517513010042616
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-invoiceservice
+    to:
+    - operation:
+        ports:
+        - '1433'
+  selector:
+    matchLabels:
+      app: sqlserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: invoiceservice-v2--5198372924628053668
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-invoiceservice
+    to:
+    - operation:
+        ports:
+        - '25'
+  selector:
+    matchLabels:
+      app: mailserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: notificationservice-v2-7744352817145689074
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-notificationservice
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /seq
+  selector:
+    matchLabels:
+      app: logserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: notificationservice-v2-6833061494364899507
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-notificationservice
+    to:
+    - operation:
+        ports:
+        - '5672'
+  selector:
+    matchLabels:
+      app: rabbitmq
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: notificationservice-v2-2698517513010042616
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-notificationservice
+    to:
+    - operation:
+        ports:
+        - '1433'
+  selector:
+    matchLabels:
+      app: sqlserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: notificationservice-v2--5198372924628053668
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-notificationservice
+    to:
+    - operation:
+        ports:
+        - '25'
+  selector:
+    matchLabels:
+      app: mailserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: timeservice-v2-7744352817145689074
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-timeservice
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /seq
+  selector:
+    matchLabels:
+      app: logserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: timeservice-v2-6833061494364899507
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-timeservice
+    to:
+    - operation:
+        ports:
+        - '5672'
+  selector:
+    matchLabels:
+      app: rabbitmq

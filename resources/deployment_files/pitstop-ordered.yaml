@@ -1,0 +1,658 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rabbitmq
+    version: v1
+  name: rabbitmq
+  namespace: pitstop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitmq
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: rabbitmq
+    spec:
+      containers:
+      - env:
+        - name: RABBITMQ_DEFAULT_PASS
+          value: DEBmbwkSrzy9D1T9cJfa
+        - name: RABBITMQ_DEFAULT_USER
+          value: rabbitmquser
+        image: rabbitmq:3-management
+        imagePullPolicy: IfNotPresent
+        name: rabbitmq
+        ports:
+        - containerPort: 15672
+        - containerPort: 5672
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: rabbitmq
+  name: rabbitmq
+  namespace: pitstop
+spec:
+  type: NodePort
+  ports:
+  - name: "http-admin"
+    port: 15672
+    targetPort: 15672
+    nodePort: 30001
+  - name: "data"
+    port: 5672
+    targetPort: 5672
+  selector:
+    app: rabbitmq
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: logserver
+    version: v1
+  name: logserver
+  namespace: pitstop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: logserver
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: logserver
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: ACCEPT_EULA
+          value: "Y"
+        image: datalust/seq:latest
+        imagePullPolicy: IfNotPresent
+        name: logserver
+        ports:
+        - containerPort: 80
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: logserver
+    version: v1
+  name: logserver
+  namespace: pitstop
+spec:
+  type: NodePort
+  ports:
+  - name: "http-5341"
+    port: 5341
+    targetPort: 80
+    nodePort: 30003
+  selector:
+    app: logserver
+    version: v1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mailserver
+    version: v1
+  name: mailserver
+  namespace: pitstop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mailserver
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: mailserver
+        version: v1
+    spec:
+      containers:
+      - image: djfarrelly/maildev
+        imagePullPolicy: IfNotPresent
+        name: mailserver
+        ports:
+        - containerPort: 25
+        - containerPort: 80
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mailserver
+    version: v1
+  name: mailserver
+  namespace: pitstop
+spec:
+  type: NodePort
+  ports:
+  - name: "smtp"
+    port: 25
+    targetPort: 25
+  - name: "web"
+    port: 4000
+    targetPort: 80
+    nodePort: 30002
+  selector:
+    app: mailserver
+    version: v1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sqlserver
+  name: sqlserver
+  namespace: pitstop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sqlserver
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: sqlserver
+    spec:
+      containers:
+      - env:
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: MSSQL_PID
+          value: Developer
+        - name: SA_PASSWORD
+          value: 8jkGh47hnDw89Haq8LN2
+        image: microsoft/mssql-server-linux:latest
+        imagePullPolicy: IfNotPresent
+        name: sqlserver
+        ports:
+        - containerPort: 1433
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: sqlserver
+  name: sqlserver
+  namespace: pitstop
+spec:
+  type: NodePort
+  ports:
+  - name: "tds"
+    port: 1433
+    targetPort: 1433
+    nodePort: 30000
+  selector:
+    app: sqlserver
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: timeservice
+    version: v1
+  name: timeservice
+  namespace: pitstop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: timeservice
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: timeservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: DOTNET_ENVIRONMENT
+          value: Production
+        image: pitstop/timeservice:1.0
+        imagePullPolicy: IfNotPresent
+        name: timeservice
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: timeservice
+  name: timeservice
+  namespace: pitstop
+spec:
+  type: NodePort
+  ports:
+  - name: "tds"
+    port: 1433
+    targetPort: 1433
+    nodePort: 30000
+  selector:
+    app: timeservice
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: invoiceservice
+    version: v1
+  name: invoiceservice
+  namespace: pitstop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: invoiceservice
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: invoiceservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: DOTNET_ENVIRONMENT
+          value: Production
+        image: pitstop/invoiceservice:1.0
+        imagePullPolicy: IfNotPresent
+        name: invoiceservice
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: invoiceservice
+  name: invoiceservice
+  namespace: pitstop
+spec:
+  type: NodePort
+  ports:
+  - name: "tds"
+    port: 1433
+    targetPort: 1433
+    nodePort: 30000
+  selector:
+    app: invoiceservice
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: notificationservice
+    version: v1
+  name: notificationservice
+  namespace: pitstop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notificationservice
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: notificationservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: DOTNET_ENVIRONMENT
+          value: Production
+        image: pitstop/notificationservice:1.0
+        imagePullPolicy: IfNotPresent
+        name: notificationservice
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: notificationservice
+  name: notificationservice
+  namespace: pitstop
+spec:
+  type: NodePort
+  ports:
+  - name: "tds"
+    port: 1433
+    targetPort: 1433
+    nodePort: 30000
+  selector:
+    app: notificationservice
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: workshopmanagementeventhandler
+    version: v1
+  name: workshopmanagementeventhandler
+  namespace: pitstop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: workshopmanagementeventhandler
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: workshopmanagementeventhandler
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: DOTNET_ENVIRONMENT
+          value: Production
+        image: pitstop/workshopmanagementeventhandler:1.0
+        imagePullPolicy: IfNotPresent
+        name: workshopmanagementeventhandler
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: workshopmanagementeventhandler
+  name: workshopmanagementeventhandler
+  namespace: pitstop
+spec:
+  type: NodePort
+  ports:
+  - name: "tds"
+    port: 1433
+    targetPort: 1433
+    nodePort: 30000
+  selector:
+    app: workshopmanagementeventhandler
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: workshopmanagementapi
+    version: v1
+  name: workshopmanagementapi
+  namespace: pitstop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: workshopmanagementapi
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: workshopmanagementapi
+        version: v1
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        image: pitstop/workshopmanagementapi:1.0
+        imagePullPolicy: IfNotPresent
+        name: workshopmanagementapi
+        ports:
+        - containerPort: 5200
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: workshopmanagementapi
+  name: workshopmanagementapi
+  namespace: pitstop
+spec:
+  type: NodePort
+  ports:
+  - name: "http-5200"
+    port: 5200
+    targetPort: 5200
+    nodePort: 30007
+  selector:
+    app: workshopmanagementapi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: vehiclemanagementapi
+    version: v1
+  name: vehiclemanagementapi
+  namespace: pitstop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vehiclemanagementapi
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: vehiclemanagementapi
+        version: v1
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        image: pitstop/vehiclemanagementapi:1.0
+        imagePullPolicy: IfNotPresent
+        name: vehiclemanagementapi
+        ports:
+        - containerPort: 5000
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: vehiclemanagementapi
+  name: vehiclemanagementapi
+  namespace: pitstop
+spec:
+  type: NodePort
+  ports:
+  - name: "http-5000"
+    port: 5000
+    targetPort: 5000
+    nodePort: 30006
+  selector:
+    app: vehiclemanagementapi
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: customermanagementapi
+    version: v1
+  name: customermanagementapi-v1
+  namespace: pitstop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customermanagementapi
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: customermanagementapi
+        version: v1
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        image: pitstop/customermanagementapi:1.0
+        imagePullPolicy: IfNotPresent
+        name: customermanagementapi
+        ports:
+        - containerPort: 5100
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: customermanagementapi
+  name: customermanagementapi
+  namespace: pitstop
+spec:
+  type: NodePort
+  ports:
+  - name: "http-5100"
+    port: 5100
+    targetPort: 5100
+    nodePort: 30005
+  selector:
+    app: customermanagementapi
+    #version: v1
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webapp
+    version: v1
+  name: webapp
+  namespace: pitstop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: webapp
+        version: v1
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        image: pitstop/webapp:1.0
+        imagePullPolicy: IfNotPresent
+        name: webapp
+        ports:
+        - containerPort: 7000
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: webapp
+  name: webapp
+  namespace: pitstop
+spec:
+  type: LoadBalancer
+  ports:
+  - name: "7000"
+    port: 7000
+    targetPort: 7000
+  selector:
+    app: webapp
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: auditlogservice
+    version: v1
+  name: auditlogservice
+  namespace: pitstop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auditlogservice
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: auditlogservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: DOTNET_ENVIRONMENT
+          value: Production
+        image: pitstop/auditlogservice:1.0
+        imagePullPolicy: IfNotPresent
+        name: auditlogservice
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: auditlogservice
+  name: auditlogservice
+  namespace: pitstop
+spec:
+  type: LoadBalancer
+  ports:
+  - name: "7000"
+    port: 7000
+    targetPort: 7000
+  selector:
+    app: auditlogservice

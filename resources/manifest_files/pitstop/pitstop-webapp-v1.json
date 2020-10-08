@@ -1,0 +1,119 @@
+{
+  "service": "webapp",
+  "version": "v1",
+  "requests": [
+    {
+      "type": "http",
+      "url": "http://logserver:5341",
+      "name": "logserver",
+      "path": "/seq",
+      "method": "POST"
+    },
+    {
+      "type": "http",
+      "url": "http://customermanagementapi:5100",
+      "name": "customermanagementapi",
+      "path": "/api/customers",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://customermanagementapi:5100",
+      "name": "customermanagementapi",
+      "path": "/api/customers/*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://customermanagementapi:5100",
+      "name": "customermanagementapi",
+      "path": "/api/customers",
+      "method": "POST"
+    },
+    {
+      "type": "http",
+      "url": "http://vehiclemanagementapi:5000",
+      "name": "vehiclemanagementapi",
+      "path": "/api/vehicles",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://vehiclemanagementapi:5000",
+      "name": "vehiclemanagementapi",
+      "path": "/api/vehicles/*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://vehiclemanagementapi:5000",
+      "name": "vehiclemanagementapi",
+      "path": "/api/vehicles",
+      "method": "POST"
+    },
+    {
+      "type": "http",
+      "url": "http://workshopmanagementapi:5200",
+      "name": "workshopmanagementapi",
+      "path": "/api/workshopplanning/*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://workshopmanagementapi:5200/workshopplanning/{planningDate}/jobs/{jobId}",
+      "name": "workshopmanagementapi",
+      "path": "/api/workshopplanning/*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://workshopmanagementapi:5200",
+      "name": "workshopmanagementapi",
+      "path": "/api/workshopplanning",
+      "method": "POST"
+    },
+    {
+      "type": "http",
+      "url": "http://workshopmanagementapi:5200",
+      "name": "workshopmanagementapi",
+      "path": "/api/workshopplanning/*",
+      "method": "POST"
+    },
+    {
+      "type": "http",
+      "url": "http://workshopmanagementapi:5200",
+      "name": "workshopmanagementapi",
+      "path": "/api/workshopplanning/*",
+      "method": "PUT"
+    },
+    {
+      "type": "http",
+      "url": "http://workshopmanagementapi:5200",
+      "name": "workshopmanagementapi",
+      "path": "/api/refdata/customers",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://workshopmanagementapi:5200",
+      "name": "workshopmanagementapi",
+      "path": "/api/refdata/customers/*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://workshopmanagementapi:5200",
+      "name": "workshopmanagementapi",
+      "path": "/api/refdata/vehicles",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://workshopmanagementapi:5200",
+      "name": "workshopmanagementapi",
+      "path": "/api/refdata/vehicles/*",
+      "method": "GET"
+    }
+
+  ]
+}

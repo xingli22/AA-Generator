@@ -2,24 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec36f5b4-457b-4b22-8536-292f63913f3c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/output/sockshop-ordered-0.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output/sockshop-ordered-1.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output/sockshop-remove-0.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output/sockshop-remove-1.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output/sockshop-second-0.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output/sockshop-second-1.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/deployment_files/sockshop-remove.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/deployment_files/sockshop-second.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/pitstop-ordered-0.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/pitstop-ordered-1.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/pitstop-remove-0.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/pitstop-remove-1.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/pitstop-second-0.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/pitstop-second-1.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/deployment_files/pitstop-ordered.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/deployment_files/pitstop-remove.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/deployment_files/pitstop-second.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-auditlogservice-v1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-auditlogservice-v2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-customermanagementapi-v1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-customermanagementapi-v2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-invoiceservice-v1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-invoiceservice-v2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-notificationservice-v1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-notificationservice-v2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-timeservice-v1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-timeservice-v2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-vehiclemanagementapi-v1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-vehiclemanagementapi-v2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-webapp-v1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-webapp-v2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-workshopmanagementapi-v1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-workshopmanagementapi-v2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-workshopmanagementeventhandler-v1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/manifest_files/pitstop/pitstop-workshopmanagementeventhandler-v2.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/bookinfo-ordered-0.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/output/bookinfo-ordered-0.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/bookinfo-ordered-1.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/output/bookinfo-ordered-1.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/bookinfo-remove-1.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/output/bookinfo-remove-1.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/bookinfo-second-1.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/output/bookinfo-second-1.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/boutique-ordered-0.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/output/boutique-ordered-0.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/boutique-ordered-1.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/output/boutique-ordered-1.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/boutique-remove-1.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/output/boutique-remove-1.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/boutique-second-1.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/output/boutique-second-1.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/sockshop-ordered-0.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/output/sockshop-ordered-0.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/sockshop-ordered-1.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/output/sockshop-ordered-1.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/sockshop-remove-1.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/output/sockshop-remove-1.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/sockshop-second-1.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/output/sockshop-second-1.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,7 +270,7 @@
       <workItem from="1568308743447" duration="8000" />
       <workItem from="1601650916772" duration="26327000" />
       <workItem from="1601915062999" duration="3904000" />
-      <workItem from="1602000052357" duration="35637000" />
+      <workItem from="1602000052357" duration="38145000" />
     </task>
     <servers />
   </component>
@@ -274,30 +289,30 @@
     </state>
     <state x="674" y="-733" key="#com.intellij.fileTypes.FileTypeChooser/43.23.1397.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1601651071278" />
     <state x="674" y="-733" key="#com.intellij.fileTypes.FileTypeChooser/45.23.1395.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1602023181288" />
-    <state width="1868" height="241" key="GridCell.Tab.0.bottom" timestamp="1602119768103">
+    <state width="1868" height="241" key="GridCell.Tab.0.bottom" timestamp="1602131740913">
       <screen x="0" y="-1057" width="1920" height="1057" />
     </state>
     <state width="1868" height="241" key="GridCell.Tab.0.bottom/39.23.1401.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1602115107145" />
     <state width="1868" height="327" key="GridCell.Tab.0.bottom/44.23.1396.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1602099584948" />
-    <state width="1868" height="241" key="GridCell.Tab.0.bottom/45.23.1395.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1602119768103" />
-    <state width="1868" height="241" key="GridCell.Tab.0.center" timestamp="1602119768100">
+    <state width="1868" height="241" key="GridCell.Tab.0.bottom/45.23.1395.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1602131740913" />
+    <state width="1868" height="241" key="GridCell.Tab.0.center" timestamp="1602131740911">
       <screen x="0" y="-1057" width="1920" height="1057" />
     </state>
     <state width="1868" height="241" key="GridCell.Tab.0.center/39.23.1401.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1602115107143" />
     <state width="1868" height="327" key="GridCell.Tab.0.center/44.23.1396.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1602099584947" />
-    <state width="1868" height="241" key="GridCell.Tab.0.center/45.23.1395.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1602119768100" />
-    <state width="1868" height="241" key="GridCell.Tab.0.left" timestamp="1602119768098">
+    <state width="1868" height="241" key="GridCell.Tab.0.center/45.23.1395.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1602131740911" />
+    <state width="1868" height="241" key="GridCell.Tab.0.left" timestamp="1602131740909">
       <screen x="0" y="-1057" width="1920" height="1057" />
     </state>
     <state width="1868" height="241" key="GridCell.Tab.0.left/39.23.1401.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1602115107142" />
     <state width="1868" height="327" key="GridCell.Tab.0.left/44.23.1396.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1602099584947" />
-    <state width="1868" height="241" key="GridCell.Tab.0.left/45.23.1395.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1602119768098" />
-    <state width="1868" height="241" key="GridCell.Tab.0.right" timestamp="1602119768100">
+    <state width="1868" height="241" key="GridCell.Tab.0.left/45.23.1395.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1602131740909" />
+    <state width="1868" height="241" key="GridCell.Tab.0.right" timestamp="1602131740912">
       <screen x="0" y="-1057" width="1920" height="1057" />
     </state>
     <state width="1868" height="241" key="GridCell.Tab.0.right/39.23.1401.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1602115107144" />
     <state width="1868" height="327" key="GridCell.Tab.0.right/44.23.1396.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1602099584948" />
-    <state width="1868" height="241" key="GridCell.Tab.0.right/45.23.1395.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1602119768100" />
+    <state width="1868" height="241" key="GridCell.Tab.0.right/45.23.1395.877/0.-1057.1920.1057@0.-1057.1920.1057" timestamp="1602131740912" />
     <state width="1868" height="327" key="GridCell.Tab.1.bottom" timestamp="1602118982876">
       <screen x="0" y="-1057" width="1920" height="1057" />
     </state>
@@ -362,17 +377,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>67</line>
+          <line>68</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>94</line>
+          <line>95</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>498</line>
+          <line>499</line>
           <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -382,17 +397,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>428</line>
+          <line>429</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>566</line>
+          <line>567</line>
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>629</line>
+          <line>630</line>
           <option name="timeStamp" value="62" />
         </line-breakpoint>
       </breakpoints>
@@ -413,7 +428,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/generator$manifest_loader.coverage" NAME="manifest_loader Coverage Results" MODIFIED="1567860330373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
-    <SUITE FILE_PATH="coverage/generator$main.coverage" NAME="main Coverage Results" MODIFIED="1602119768065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/generator$main.coverage" NAME="main Coverage Results" MODIFIED="1602131740732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/generator$yaml_loader.coverage" NAME="yaml_loader Coverage Results" MODIFIED="1567862105497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/generator$update.coverage" NAME="update Coverage Results" MODIFIED="1568180583080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/generator$drawer.coverage" NAME="drawer Coverage Results" MODIFIED="1568027601879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

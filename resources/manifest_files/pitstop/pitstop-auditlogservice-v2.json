@@ -1,0 +1,19 @@
+{
+  "service": "auditlogservice",
+  "version": "v2",
+  "requests": [
+    {
+      "type": "http",
+      "url": "http://logserver:5341",
+      "name": "logserver",
+      "path": "/seq",
+      "method": "POST"
+    },
+    {
+      "type": "tcp",
+      "url": "",
+      "name": "rabbitmq",
+      "port": 5672
+    }
+  ]
+}

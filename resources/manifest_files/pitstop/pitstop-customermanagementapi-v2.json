@@ -1,0 +1,18 @@
+{
+  "service": "customermanagementapi",
+  "version": "v2",
+  "requests": [
+    {
+      "type": "tcp",
+      "url": "",
+      "name": "rabbitmq",
+      "port": 5672
+    },
+    {
+      "type": "tcp",
+      "url": "mongodb://mongodb:27017/test",
+      "name": "sqlserver",
+      "port": 1433
+    }
+  ]
+}

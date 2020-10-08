@@ -1,0 +1,31 @@
+{
+  "service": "notificationservice",
+  "version": "v1",
+  "requests": [
+    {
+      "type": "http",
+      "url": "http://logserver:5341",
+      "name": "logserver",
+      "path": "/seq",
+      "method": "POST"
+    },
+    {
+      "type": "tcp",
+      "url": "",
+      "name": "rabbitmq",
+      "port": 5672
+    },
+    {
+      "type": "tcp",
+      "url": "mongodb://mongodb:27017/test",
+      "name": "sqlserver",
+      "port": 1433
+    },
+    {
+      "type": "tcp",
+      "url": "mongodb://mongodb:27017/test",
+      "name": "mailserver",
+      "port": 25
+    }
+  ]
+}
