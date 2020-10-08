@@ -1,1750 +1,7 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s0-0-v1-57359768596474464
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s0-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s0-0-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s0-0-v1-1576176274066354262
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s0-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s0-0-1
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s0-0-v1--189715850018601187
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s0-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s0-0-2
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s0-0-v1--416697076062875485
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s0-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s0-0-3
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s0-0-v1-3870244054215367113
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s0-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s0-0-4
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s0-0-v1-5612383948467281810
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s0-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s0-0-5
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s0-0-v1-7414530479547385677
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s0-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s0-0-6
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s0-0-v1-2815053682477576377
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s0-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s0-0-7
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s0-0-v1-1249611226613978773
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s0-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s0-0-8
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s3-0-6-v1--7028546181778953485
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s3-0-6
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s3-0-6-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s3-0-7-v1--2641542721195379346
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s3-0-7
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s3-0-7-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s7-0-0-v1-4026112703876641650
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s7-0-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s7-0-0-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s9-0-7-v1--2871461032988561145
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s9-0-7
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s9-0-7-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s0-0-1-v1--1676611731651512889
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s0-0-1
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s0-0-1-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-6-v1-2272198834503322151
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0-6
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-6-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s8-0-3-v1-1467148320767153101
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s8-0-3
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s8-0-3-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-2-v1--4680566645038567158
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0-2
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-2-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s6-0-2-v1--5311596235516605385
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s6-0-2
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s6-0-2-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s0-0-4-v1--2485841136609112228
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s0-0-4
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s0-0-4-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s7-0-4-v1--4680221307166140331
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s7-0-4
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s7-0-4-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s1-0-v1--1305808616856329337
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s1-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s1-0-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s1-0-v1--3681211875715726544
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s1-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s1-0-1
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s1-0-v1--822828873288138071
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s1-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s1-0-2
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s1-0-v1-7049504480983688347
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s1-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s1-0-3
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s1-0-v1-5723787285964113293
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s1-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s1-0-4
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s1-0-v1-1018367490906498959
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s1-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s1-0-5
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s1-0-v1-6775263322261018894
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s1-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s1-0-6
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s1-0-v1--285046215966639577
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s1-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s1-0-7
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s1-0-v1-8160475768339514768
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s1-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s1-0-8
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-v1--8229189707871687251
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-v1--5501536818077424663
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-1
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-v1-598752129665172948
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-2
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-v1-1602691851196947621
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-3
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-v1-8362447190223879336
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-4
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-v1--4178306336164731146
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-5
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-v1--4931306326245676256
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-6
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-v1--3735307319245745481
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-7
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-v1--2201467225595148177
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-8
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s2-0-v1-5765247850748352140
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s2-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s2-0-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s2-0-v1--8585972053689584197
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s2-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s2-0-1
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s2-0-v1--6799787327478548891
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s2-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s2-0-2
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s2-0-v1--3926162144289516816
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s2-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s2-0-3
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s2-0-v1--8550804133624912772
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s2-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s2-0-4
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s2-0-v1--6364505841600372204
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s2-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s2-0-5
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s2-0-v1-3033058943582309508
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s2-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s2-0-6
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s2-0-v1--966905265269744695
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s2-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s2-0-7
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s2-0-v1-237260479560198252
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s2-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s2-0-8
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s1-0-7-v1--2199624467806836347
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s1-0-7
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s1-0-7-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-6-v1-2789266868671658880
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0-6
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-6-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s1-0-1-v1-8238294325578293531
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s1-0-1
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s1-0-1-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s8-0-7-v1-691642201535107591
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s8-0-7
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s8-0-7-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-0-v1-4644059255777009760
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-0-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-v1--928959439217911656
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-v1--8709806269683701826
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-1
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-v1-6458593077222740852
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-2
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-v1-7136337611341838625
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-3
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-v1-1791310043028411919
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-4
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-v1-413822553978684450
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-5
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-v1--5910743653596037427
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-6
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-v1--1336256532710070830
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-7
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-v1--6652038639514216906
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-8
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s7-0-5-v1-2703292586443498242
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s7-0-5
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s7-0-5-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s0-0-0-v1--4325480722888538805
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s0-0-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s0-0-0-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s8-0-1-v1-512778215867115197
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s8-0-1
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s8-0-1-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s8-0-4-v1--533432161664001349
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s8-0-4
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s8-0-4-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-4-v1--5575779781576652196
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0-4
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-4-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s6-0-3-v1-6277463147235439025
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s6-0-3
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s6-0-3-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-1-v1--8333147257042873403
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0-1
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-1-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-0-v1--1640296583768506269
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-0-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s6-0-v1--4179507409734584730
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s6-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s6-0-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s6-0-v1--2676801432514668154
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s6-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s6-0-1
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s6-0-v1--3462382446808647622
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s6-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s6-0-2
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s6-0-v1--2896605711860904933
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s6-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s6-0-3
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s6-0-v1--3971981560496498436
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s6-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s6-0-4
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s6-0-v1-7076766562565532156
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s6-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s6-0-5
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s6-0-v1--1368439711608970925
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s6-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s6-0-6
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s6-0-v1-770984860098203127
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s6-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s6-0-7
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s6-0-v1-5584746286130107218
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s6-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s6-0-8
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s7-0-8-v1--4469407944765248906
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s7-0-8
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s7-0-8-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s1-0-6-v1-8185776495685132042
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s1-0-6
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s1-0-6-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-2-v1-924401013055217310
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0-2
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-2-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-7-v1--1232466762729523437
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0-7
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-7-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s6-0-0-v1--533177167114082580
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s6-0-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s6-0-0-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s7-0-3-v1--7878406357689341569
+  name: s7-0-3-v1-3694045089849056144
   namespace: '10'
 spec:
   rules:
@@ -1765,1120 +22,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s1-0-3-v1-2861444883375206767
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s1-0-3
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s1-0-3-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s2-0-4-v1--8541616307891004971
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s2-0-4
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s2-0-4-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s3-0-4-v1--3223713039884614239
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s3-0-4
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s3-0-4-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s3-0-5-v1-5201926031636177905
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s3-0-5
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s3-0-5-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-1-v1--8968717755805221604
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0-1
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-1-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s1-0-0-v1--7225535115948758686
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s1-0-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s1-0-0-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s3-0-1-v1-60491837875718542
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s3-0-1
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s3-0-1-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s3-0-8-v1-986820299982121502
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s3-0-8
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s3-0-8-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s7-0-2-v1--7548471671017129330
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s7-0-2
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s7-0-2-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s1-0-5-v1-2766337546548027526
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s1-0-5
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s1-0-5-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-8-v1--2808592922068363173
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0-8
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-8-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s3-0-3-v1--9093114112374881869
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s3-0-3
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s3-0-3-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-5-v1-3880910667057928521
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0-5
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-5-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-3-v1--4737632296065910241
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0-3
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-3-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s2-0-3-v1-8152812615985650308
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s2-0-3
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s2-0-3-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s9-0-3-v1--3895843354016231110
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s9-0-3
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s9-0-3-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s7-0-7-v1--3423130130867642814
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s7-0-7
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s7-0-7-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s2-0-8-v1--2254633873562486488
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s2-0-8
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s2-0-8-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s9-0-2-v1--8880551950408929839
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s9-0-2
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s9-0-2-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s8-0-6-v1--3019516974783153981
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s8-0-6
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s8-0-6-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s9-0-8-v1--8043346786512247616
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s9-0-8
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s9-0-8-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-3-v1--7037375414857599307
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0-3
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-3-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s7-0-v1--8792938774169741974
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s7-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s7-0-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s7-0-v1--8869730557144991478
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s7-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s7-0-1
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s7-0-v1-4246400947669971418
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s7-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s7-0-2
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s7-0-v1--3481313777793981519
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s7-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s7-0-3
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s7-0-v1-4699890905678317113
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s7-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s7-0-4
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s7-0-v1--6403243286129500963
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s7-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s7-0-5
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s7-0-v1-1029635504809039319
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s7-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s7-0-6
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s7-0-v1-5210220683105263892
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s7-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s7-0-7
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s7-0-v1-2335722828241603820
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s7-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s7-0-8
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s0-0-6-v1--1726661900367207873
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s0-0-6
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s0-0-6-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s8-0-8-v1--2050201769066688965
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s8-0-8
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s8-0-8-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s3-0-2-v1-9138910912690805031
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s3-0-2
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s3-0-2-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s0-0-5-v1--8405172811765389064
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s0-0-5
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s0-0-5-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s6-0-8-v1-2159829698902309521
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s6-0-8
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s6-0-8-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-4-v1--8273378127282506238
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0-4
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-4-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s3-0-0-v1--8932730316827671168
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s3-0-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s3-0-0-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s5-0-5-v1--6803867065930054863
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s5-0-5
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s5-0-5-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s9-0-6-v1--5366526266543909980
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s9-0-6
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s9-0-6-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s1-0-2-v1-7676019712412332844
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s1-0-2
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s1-0-2-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s8-0-5-v1--5801438260218354431
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s8-0-5
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s8-0-5-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s0-0-8-v1-826386596604121763
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s0-0-8
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s0-0-8-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s8-0-v1-6350325814520489732
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s8-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s8-0-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s8-0-v1-2572121840146523707
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s8-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s8-0-1
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s8-0-v1--8577135592521943275
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s8-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s8-0-2
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s8-0-v1--5645798165151881870
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s8-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s8-0-3
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s8-0-v1--8642357930206726510
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s8-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s8-0-4
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s8-0-v1-5615835599141712691
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s8-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s8-0-5
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s8-0-v1--8935499011436226998
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s8-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s8-0-6
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s8-0-v1-4624229221549734711
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s8-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s8-0-7
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s8-0-v1-8903977700789827099
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s8-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s8-0-8
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s2-0-5-v1--8764707942883380428
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s2-0-5
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s2-0-5-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s2-0-7-v1-4096522956676287343
+  name: s2-0-7-v1--1585824002533605064
   namespace: '10'
 spec:
   rules:
@@ -2899,14 +43,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s3-0-v1-6494592599893300878
+  name: s5-0-5-v1-9032131251961617450
   namespace: '10'
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/10/sa/10-s3-0
+        - cluster.local/ns/10/sa/10-s5-0-5
     to:
     - operation:
         methods:
@@ -2915,19 +59,19 @@ spec:
         - /api
   selector:
     matchLabels:
-      app: s3-0-0
+      app: s5-0-5-0
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s3-0-v1-777888289379844483
+  name: s0-0-1-v1--2479275794870030552
   namespace: '10'
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/10/sa/10-s3-0
+        - cluster.local/ns/10/sa/10-s0-0-1
     to:
     - operation:
         methods:
@@ -2936,558 +80,12 @@ spec:
         - /api
   selector:
     matchLabels:
-      app: s3-0-1
+      app: s0-0-1-0
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s3-0-v1--2316321784825889844
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s3-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s3-0-2
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s3-0-v1-7485593951393405278
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s3-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s3-0-3
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s3-0-v1--5431284924096861330
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s3-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s3-0-4
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s3-0-v1-3840613311789635639
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s3-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s3-0-5
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s3-0-v1-2452222190357165497
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s3-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s3-0-6
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s3-0-v1-4004917449655575188
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s3-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s3-0-7
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s3-0-v1-5616267292076654079
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s3-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s3-0-8
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s6-0-1-v1--7738698219544573532
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s6-0-1
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s6-0-1-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s7-0-6-v1-1833282611063261913
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s7-0-6
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s7-0-6-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s2-0-1-v1--5731502650981387922
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s2-0-1
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s2-0-1-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s9-0-4-v1--160378660612686751
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s9-0-4
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s9-0-4-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s0-0-3-v1--290838786947727099
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s0-0-3
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s0-0-3-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s9-0-v1-4981848926025800523
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s9-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s9-0-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s9-0-v1-1764757216878146947
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s9-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s9-0-1
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s9-0-v1-6196091695694266563
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s9-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s9-0-2
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s9-0-v1-8122106588677363267
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s9-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s9-0-3
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s9-0-v1--7189326455561312430
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s9-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s9-0-4
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s9-0-v1--3473236233827755435
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s9-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s9-0-5
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s9-0-v1--5652846804086628465
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s9-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s9-0-6
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s9-0-v1-1145492446993180121
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s9-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s9-0-7
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s9-0-v1-1036271312357754415
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s9-0
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s9-0-8
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s8-0-2-v1--640846297897703212
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s8-0-2
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s8-0-2-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-8-v1-1217730423169668356
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0-8
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-8-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s9-0-1-v1-9050336328479072166
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s9-0-1
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s9-0-1-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s4-0-7-v1--416319028594244866
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s4-0-7
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s4-0-7-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s9-0-5-v1-8055011873499356394
-  namespace: '10'
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/10/sa/10-s9-0-5
-    to:
-    - operation:
-        methods:
-        - CALL
-        paths:
-        - /api
-  selector:
-    matchLabels:
-      app: s9-0-5-0
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: s2-0-6-v1--2389750490652359689
+  name: s2-0-6-v1-7100667840915549317
   namespace: '10'
 spec:
   rules:
@@ -3508,7 +106,91 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s7-0-1-v1-5053739130297840640
+  name: s7-0-0-v1-6422688884823751701
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s7-0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s7-0-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-1-v1--1519653480278117928
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0-1
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-1-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s9-0-3-v1--5223911531717510012
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0-3
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-3-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-4-v1--149953390026747667
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0-4
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-4-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s7-0-1-v1--7472411460595727530
   namespace: '10'
 spec:
   rules:
@@ -3529,7 +211,49 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s6-0-5-v1--8379800304881709396
+  name: s5-0-3-v1-521222098547716374
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s5-0-3
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s5-0-3-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s5-0-4-v1-5007171700479300383
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s5-0-4
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s5-0-4-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-5-v1--1649023578762248996
   namespace: '10'
 spec:
   rules:
@@ -3550,14 +274,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s1-0-8-v1-1373724850164908292
+  name: s2-0-v1-4502498796163626336
   namespace: '10'
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/10/sa/10-s1-0-8
+        - cluster.local/ns/10/sa/10-s2-0
     to:
     - operation:
         methods:
@@ -3566,12 +290,222 @@ spec:
         - /api
   selector:
     matchLabels:
-      app: s1-0-8-0
+      app: s2-0-0
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s6-0-7-v1-8158310797684588512
+  name: s2-0-v1--1699876500853104225
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s2-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s2-0-1
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s2-0-v1-421501093060407750
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s2-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s2-0-2
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s2-0-v1--1068725554804168446
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s2-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s2-0-3
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s2-0-v1-1670999148453231214
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s2-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s2-0-4
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s2-0-v1-5107274867591337423
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s2-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s2-0-5
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s2-0-v1-110033979315735793
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s2-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s2-0-6
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s2-0-v1-6434752445810508266
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s2-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s2-0-7
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s2-0-v1--3171108762461815927
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s2-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s2-0-8
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-2-v1--333653942178598907
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s6-0-2
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s6-0-2-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s0-0-0-v1--6136599456504221903
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s0-0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s0-0-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-7-v1--3552501811837330426
   namespace: '10'
 spec:
   rules:
@@ -3592,14 +526,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s0-0-2-v1-8059839870053090407
+  name: s8-0-3-v1--4636554765151629353
   namespace: '10'
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/10/sa/10-s0-0-2
+        - cluster.local/ns/10/sa/10-s8-0-3
     to:
     - operation:
         methods:
@@ -3608,19 +542,19 @@ spec:
         - /api
   selector:
     matchLabels:
-      app: s0-0-2-0
+      app: s8-0-3-0
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s9-0-0-v1-5597514984995135355
+  name: s7-0-2-v1-6981525052938178675
   namespace: '10'
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/10/sa/10-s9-0-0
+        - cluster.local/ns/10/sa/10-s7-0-2
     to:
     - operation:
         methods:
@@ -3629,19 +563,19 @@ spec:
         - /api
   selector:
     matchLabels:
-      app: s9-0-0-0
+      app: s7-0-2-0
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s1-0-4-v1--6639510326459672464
+  name: s0-0-3-v1--2511837362683482835
   namespace: '10'
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/10/sa/10-s1-0-4
+        - cluster.local/ns/10/sa/10-s0-0-3
     to:
     - operation:
         methods:
@@ -3650,19 +584,19 @@ spec:
         - /api
   selector:
     matchLabels:
-      app: s1-0-4-0
+      app: s0-0-3-0
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s8-0-0-v1--3092275741479365232
+  name: s7-0-5-v1-7206539489301012940
   namespace: '10'
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/10/sa/10-s8-0-0
+        - cluster.local/ns/10/sa/10-s7-0-5
     to:
     - operation:
         methods:
@@ -3671,19 +605,19 @@ spec:
         - /api
   selector:
     matchLabels:
-      app: s8-0-0-0
+      app: s7-0-5-0
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s2-0-0-v1-377777967503702553
+  name: s5-0-1-v1--1291652939739059241
   namespace: '10'
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/10/sa/10-s2-0-0
+        - cluster.local/ns/10/sa/10-s5-0-1
     to:
     - operation:
         methods:
@@ -3692,12 +626,642 @@ spec:
         - /api
   selector:
     matchLabels:
-      app: s2-0-0-0
+      app: s5-0-1-0
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s6-0-4-v1-5151561174713182501
+  name: s9-0-2-v1-524991431539584447
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0-2
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-2-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-0-v1-787473295133511526
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s5-0-6-v1--1386939687522120812
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s5-0-6
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s5-0-6-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s7-0-7-v1--4702763883541086297
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s7-0-7
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s7-0-7-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s8-0-v1--6135160124606960138
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s8-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s8-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s8-0-v1--2300406145835214904
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s8-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s8-0-1
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s8-0-v1-7907357910119901757
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s8-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s8-0-2
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s8-0-v1-1137393563466133485
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s8-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s8-0-3
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s8-0-v1-6441580597120164770
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s8-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s8-0-4
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s8-0-v1-4859185808050172532
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s8-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s8-0-5
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s8-0-v1--5294766380845954700
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s8-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s8-0-6
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s8-0-v1-5962855605367107681
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s8-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s8-0-7
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s8-0-v1--5110219047528720093
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s8-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s8-0-8
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-v1--2759171806843417857
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s6-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s6-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-v1--4044683088914681155
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s6-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s6-0-1
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-v1--8213056349366590816
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s6-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s6-0-2
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-v1-6397472328356166570
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s6-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s6-0-3
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-v1--6611839500526463389
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s6-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s6-0-4
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-v1-2303105287150370189
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s6-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s6-0-5
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-v1--8151756079211353687
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s6-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s6-0-6
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-v1--64063319866495133
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s6-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s6-0-7
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-v1-1530339164163394568
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s6-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s6-0-8
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s7-0-4-v1--1732716397564532862
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s7-0-4
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s7-0-4-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s8-0-8-v1--5478474509521067912
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s8-0-8
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s8-0-8-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-8-v1-9148908846672084027
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s6-0-8
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s6-0-8-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s0-0-5-v1-2461590104530935747
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s0-0-5
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s0-0-5-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s0-0-6-v1--1095732330571518445
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s0-0-6
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s0-0-6-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s7-0-6-v1-5582602041582212036
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s7-0-6
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s7-0-6-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-3-v1--1653281794416397007
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s6-0-3
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s6-0-3-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s0-0-4-v1-340364915130292855
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s0-0-4
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s0-0-4-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-4-v1--8810017661624376783
   namespace: '10'
 spec:
   rules:
@@ -3718,7 +1282,1435 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s6-0-6-v1--7255834950522726802
+  name: s8-0-5-v1--4017157128017329940
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s8-0-5
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s8-0-5-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s9-0-0-v1-53843178719193852
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s7-0-v1-2751654175788410184
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s7-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s7-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s7-0-v1--7099198128661805862
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s7-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s7-0-1
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s7-0-v1--1279355446575519623
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s7-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s7-0-2
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s7-0-v1--7393926465224844701
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s7-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s7-0-3
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s7-0-v1-2678443081831565420
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s7-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s7-0-4
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s7-0-v1--3684915677841157454
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s7-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s7-0-5
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s7-0-v1-1118652264884687584
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s7-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s7-0-6
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s7-0-v1-6586699050804744035
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s7-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s7-0-7
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s7-0-v1--483746682378605890
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s7-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s7-0-8
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s0-0-v1-83294283182526638
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s0-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s0-0-v1-3956556944646585426
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s0-0-1
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s0-0-v1--4784603260678379249
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s0-0-2
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s0-0-v1--4719393072120388266
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s0-0-3
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s0-0-v1--6207875703133666120
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s0-0-4
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s0-0-v1--5161969922387090476
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s0-0-5
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s0-0-v1--5893312375466675736
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s0-0-6
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s0-0-v1-8976494692358138654
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s0-0-7
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s0-0-v1--3631572432320050121
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s0-0-8
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-2-v1-8647491401318397635
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0-2
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-2-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s8-0-7-v1--4698681362274070324
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s8-0-7
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s8-0-7-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s9-0-7-v1--8541387677724702231
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0-7
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-7-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-1-v1--9176481415780592343
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s6-0-1
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s6-0-1-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-0-v1--2431552014095181146
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s2-0-1-v1-8937882092845716385
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s2-0-1
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s2-0-1-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s2-0-8-v1-6622496215298497260
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s2-0-8
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s2-0-8-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s2-0-3-v1--7312476710033471309
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s2-0-3
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s2-0-3-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-3-v1--3314887145746906014
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0-3
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-3-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s9-0-1-v1--1612833058920069350
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0-1
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-1-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s5-0-7-v1--1607776185341204910
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s5-0-7
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s5-0-7-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-3-v1--5357830949886015581
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0-3
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-3-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-4-v1-1420380797807426776
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0-4
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-4-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-2-v1--4589028915394231391
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0-2
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-2-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s5-0-0-v1--6263858120182704714
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s5-0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s5-0-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s9-0-4-v1-5957698207317265491
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0-4
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-4-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-7-v1-8912827954206928971
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0-7
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-7-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-5-v1--66229465733627146
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0-5
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-5-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-7-v1--3695347090566072845
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0-7
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-7-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-8-v1-7972334887567223432
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0-8
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-8-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s0-0-7-v1--3931720074205639384
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s0-0-7
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s0-0-7-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s2-0-0-v1-110642310840936988
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s2-0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s2-0-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s8-0-2-v1-7124764864433891570
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s8-0-2
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s8-0-2-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-7-v1--4489970836795684637
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0-7
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-7-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s7-0-8-v1--3144065785239894664
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s7-0-8
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s7-0-8-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s0-0-8-v1-7768327288250771707
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s0-0-8
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s0-0-8-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-8-v1--8126933052723260354
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0-8
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-8-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-v1-3330236107733453406
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-v1--515634834419054823
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-1
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-v1-4224067394482173932
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-2
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-v1-1528020331456418422
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-3
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-v1-7406484404365542994
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-4
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-v1--2384673117336158038
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-5
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-v1--8007554631216549507
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-6
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-v1--7844287808549065170
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-7
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-v1--2691909231669784267
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-8
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-1-v1-8097442412339415479
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0-1
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-1-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s2-0-4-v1-4643711067019437870
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s2-0-4
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s2-0-4-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-v1-5197145940275660429
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-v1-5617914113695780279
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-1
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-v1--4312859817871587071
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-2
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-v1-7947419109825853856
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-3
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-v1--7166055647668257636
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-4
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-v1-8038055100956226159
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-5
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-v1-5055894763149031972
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-6
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-v1-3156337888599903659
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-7
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-v1-1471001921444069125
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-8
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-0-v1--8076872671974282442
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s6-0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s6-0-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s6-0-6-v1--6247964190021179277
   namespace: '10'
 spec:
   rules:
@@ -3739,7 +2731,217 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s2-0-2-v1-5625700422955048789
+  name: s8-0-0-v1--8714431734417303635
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s8-0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s8-0-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s0-0-2-v1--4923067287684003483
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s0-0-2
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s0-0-2-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s8-0-4-v1--5440083703649009247
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s8-0-4
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s8-0-4-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-3-v1-3581757116873006750
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0-3
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-3-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s9-0-6-v1-2016273805955194664
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0-6
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-6-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-2-v1-800109992519469631
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0-2
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-2-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-1-v1--258303794376869666
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0-1
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-1-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-6-v1--5247967314891179613
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0-6
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-6-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s9-0-5-v1-5595313065457884785
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0-5
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-5-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-5-v1--3827224406315163954
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0-5
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-5-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s2-0-2-v1-7433140762551466253
   namespace: '10'
 spec:
   rules:
@@ -3760,14 +2962,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: s0-0-7-v1-8578078724563030266
+  name: s5-0-v1-8563397414567534946
   namespace: '10'
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/10/sa/10-s0-0-7
+        - cluster.local/ns/10/sa/10-s5-0
     to:
     - operation:
         methods:
@@ -3776,4 +2978,802 @@ spec:
         - /api
   selector:
     matchLabels:
-      app: s0-0-7-0
+      app: s5-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s5-0-v1-5333610187020767003
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s5-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s5-0-1
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s5-0-v1-3134714800917350723
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s5-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s5-0-2
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s5-0-v1--8067973125891166903
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s5-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s5-0-3
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s5-0-v1-9202954213852973338
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s5-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s5-0-4
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s5-0-v1-4118243769412281376
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s5-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s5-0-5
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s5-0-v1--4843888391455422063
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s5-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s5-0-6
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s5-0-v1--7695847838936151727
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s5-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s5-0-7
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s5-0-v1--4362629512335745453
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s5-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s5-0-8
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s8-0-6-v1-2969579655354794722
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s8-0-6
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s8-0-6-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s2-0-5-v1-4772190046225892068
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s2-0-5
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s2-0-5-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s5-0-2-v1-3191636048632762564
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s5-0-2
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s5-0-2-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-0-v1-3964540919570837932
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s5-0-8-v1--3304832226769256448
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s5-0-8
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s5-0-8-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s9-0-8-v1--6473209455264649623
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0-8
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-8-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s9-0-v1--6256793838493524346
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s9-0-v1--5061958739383510601
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-1
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s9-0-v1--8696938718935095543
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-2
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s9-0-v1--3382577751323649456
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-3
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s9-0-v1--8669102144589631105
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-4
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s9-0-v1--8725661095689006346
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-5
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s9-0-v1-3641174662376049319
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-6
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s9-0-v1-960328823824638549
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-7
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s9-0-v1-1573514629707031772
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s9-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s9-0-8
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-8-v1-1851698399814436236
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0-8
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-8-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s1-0-4-v1--5226692413445909031
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s1-0-4
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s1-0-4-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-6-v1--5195062895851490402
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0-6
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-6-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s8-0-1-v1--9130112501939749129
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s8-0-1
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s8-0-1-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-v1--2641194254015190027
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-v1--6337996635925405875
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-1
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-v1-6678934204580106089
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-2
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-v1-8773790657035865025
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-3
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-v1-7560935151768927488
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-4
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-v1-8876434392941125135
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-5
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-v1--271632219344786100
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-6
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-v1--6577653255406151617
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-7
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-v1-4358303410604377718
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-8
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s3-0-6-v1-3523061763975888848
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s3-0-6
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s3-0-6-0
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: s4-0-5-v1--2130832248687123339
+  namespace: '10'
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/10/sa/10-s4-0-5
+    to:
+    - operation:
+        methods:
+        - CALL
+        paths:
+        - /api
+  selector:
+    matchLabels:
+      app: s4-0-5-0

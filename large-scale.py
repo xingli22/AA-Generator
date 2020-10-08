@@ -329,7 +329,7 @@ if __name__ == '__main__':
 
     this_app = 4
     this_mode = 0
-    this_round = 1
+    this_round = 10
 
     app_name = apps[this_app]
     # clean_registration(registration_file)
