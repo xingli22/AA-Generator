@@ -1,0 +1,1 @@
+{"service": "s45-0-0", "version": "v1", "requests": [{"type": "http", "url": "*", "name": "s45-0-0-0", "path": "/api", "method": "CALL"}]}

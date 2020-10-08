@@ -1,0 +1,5 @@
+{
+  "service": "productpage",
+  "version": "v1",
+  "requests": []
+}
