@@ -1,0 +1,180 @@
+name: instance-management
+requests:
+  - target: cp-zookeeper
+    type: tcp
+    num: 33
+  - target: cp-kafka
+    type: tcp
+    num: 2
+---
+name: web-rest
+requests:
+  - target: device-management
+    type: grpc
+    num: 114
+  - target: instance-management
+    type: grpc
+    num: 17
+  - target: event-management
+    type: grpc
+    num: 41
+  - target: label-generation
+    type: grpc
+    num: 10
+  - target: asset-management
+    type: grpc
+    num: 10
+  - target: schedule-management
+    type: grpc
+    num: 15
+  - target: device-state
+    type: grpc
+    num: 1
+  - target: batch-operations
+    type: grpc
+    num: 7
+---
+name: event-sources
+requests:
+  - target: event-management
+    type: grpc
+    num: 1
+  - target: cp-kafka
+    type: tcp
+    num: 3
+---
+name: batch-operations
+requests:
+  - target: event-management
+    type: grpc
+    num: 1
+  - target: device-management
+    type: grpc
+    num: 5
+  - target: cp-kafka
+    type: tcp
+    num: 6
+  - target: mongodb
+    type: tcp
+    num: 10
+---
+name: inbound-processing
+requests:
+  - target: device-management
+    type: grpc
+    num: 2
+  - target: cp-kafka
+    type: tcp
+    num: 4
+---
+name: device-registration
+requests:
+  - target: device-management
+    type: grpc
+    num: 10
+  - target: cp-kafka
+    type: tcp
+    num: 4
+---
+name: event-search
+requests:
+  - target: solr
+    type: http
+    num: 4
+---
+name: label-generation
+requests:
+  - target: device-management
+    type: grpc
+    num: 8
+  - target: asset-management
+    type: grpc
+    num: 2
+---
+name: rule-processing
+requests:
+  - target: device-management
+    type: grpc
+    num: 1
+  - target: event-management
+    type: grpc
+    num: 1
+  - target: cp-kafka
+    type: tcp
+    num: 2
+---
+name: command-delivery
+requests:
+  - target: device-management
+    type: grpc
+    num: 6
+  - target: cp-kafka
+    type: tcp
+    num: 3
+---
+name: streaming-media
+requests:
+  - target: mongodb
+    type: tcp
+    num: 10
+---
+name: outbound-connectors
+requests:
+  - target: device-management
+    type: grpc
+    num: 13
+  - target: cp-kafka
+    type: tcp
+    num: 2
+---
+name: device-state
+requests:
+  - target: event-management
+    type: grpc
+    num: 1
+  - target: cp-kafka
+    type: tcp
+    num: 2
+  - target: mongodb
+    type: tcp
+    num: 5
+---
+name: device-management
+requests:
+  - target: cp-kafka
+    type: tcp
+    num: 1
+  - target: mongodb
+    type: tcp
+    num: 73
+---
+name: asset-management
+requests:
+  - target: mongodb
+    type: tcp
+    num: 10
+---
+name: event-management
+requests:
+  - target: device-management
+    type: grpc
+    num: 4
+  - target: cp-kafka
+    type: tcp
+    num: 4
+  - target: mongodb
+    type: tcp
+    num: 29
+  - target: influxdb
+    type: tcp
+    num: 11
+  - target: cassandra
+    type: tcp
+    num: 16
+---
+name: schedule-management
+requests:
+  - target: mongodb
+    type: tcp
+    num: 10
+---

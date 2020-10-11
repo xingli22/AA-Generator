@@ -1,0 +1,34 @@
+{
+  "service": "event-search",
+  "version": "v2",
+  "requests": [
+    {
+      "type": "http",
+      "url": "",
+      "name": "",
+      "method": "GET",
+      "path": "/0"
+    },
+    {
+      "type": "http",
+      "url": "",
+      "name": "",
+      "method": "GET",
+      "path": "/1"
+    },
+    {
+      "type": "http",
+      "url": "",
+      "name": "",
+      "method": "GET",
+      "path": "/2"
+    },
+    {
+      "type": "http",
+      "url": "",
+      "name": "",
+      "method": "GET",
+      "path": "/3"
+    }
+  ]
+}

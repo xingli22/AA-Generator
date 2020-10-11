@@ -1,3 +1,5 @@
+import json
+
 import yaml
 
 
@@ -10,6 +12,10 @@ def output_name(target, app_name, path):
     policy = open(path + app_name + '.yaml', 'w+')
     policy.write(str(target))
     policy.close()
+
+def json_write(target, path):
+    with open(path, 'w+') as f:
+        json.dump(target, f, indent=2)
 
 
 def phase_1_output(role, binding, app, service_name, path):

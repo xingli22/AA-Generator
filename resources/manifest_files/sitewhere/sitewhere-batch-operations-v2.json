@@ -1,0 +1,54 @@
+{
+  "service": "batch-operations",
+  "version": "v2",
+  "requests": [
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "event-management",
+      "path": "/0"
+    },
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "device-management",
+      "path": "/0"
+    },
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "device-management",
+      "path": "/1"
+    },
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "device-management",
+      "path": "/2"
+    },
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "device-management",
+      "path": "/3"
+    },
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "device-management",
+      "path": "/4"
+    },
+    {
+      "type": "tcp",
+      "url": "",
+      "name": "cp-kafka",
+      "port": "12345"
+    },
+    {
+      "type": "tcp",
+      "url": "",
+      "name": "mongodb",
+      "port": "12345"
+    }
+  ]
+}

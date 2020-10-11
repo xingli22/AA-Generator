@@ -1,0 +1,18 @@
+{
+  "service": "instance-management",
+  "version": "v1",
+  "requests": [
+    {
+      "type": "tcp",
+      "url": "",
+      "name": "cp-zookeeper",
+      "port": "12345"
+    },
+    {
+      "type": "tcp",
+      "url": "",
+      "name": "cp-kafka",
+      "port": "12345"
+    }
+  ]
+}

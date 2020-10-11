@@ -1,0 +1,24 @@
+{
+  "service": "device-state",
+  "version": "v1",
+  "requests": [
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "event-management",
+      "path": "/0"
+    },
+    {
+      "type": "tcp",
+      "url": "",
+      "name": "cp-kafka",
+      "port": "12345"
+    },
+    {
+      "type": "tcp",
+      "url": "",
+      "name": "mongodb",
+      "port": "12345"
+    }
+  ]
+}

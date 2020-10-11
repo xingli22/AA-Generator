@@ -26,14 +26,21 @@
       "type": "http",
       "url": "http://user/customers/*",
       "name": "user",
-      "path": "/customers/*",
+      "path": "*",
       "method": "GET"
     },
     {
       "type": "http",
       "url": "http://carts/carts/*/items",
       "name": "carts",
-      "path": "/carts/*",
+      "path": "*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://carts/carts/*/items",
+      "name": "catalog",
+      "path": "*",
       "method": "GET"
     }
   ]

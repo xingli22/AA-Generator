@@ -1,0 +1,66 @@
+{
+  "service": "label-generation",
+  "version": "v2",
+  "requests": [
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "device-management",
+      "path": "/0"
+    },
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "device-management",
+      "path": "/1"
+    },
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "device-management",
+      "path": "/2"
+    },
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "device-management",
+      "path": "/3"
+    },
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "device-management",
+      "path": "/4"
+    },
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "device-management",
+      "path": "/5"
+    },
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "device-management",
+      "path": "/6"
+    },
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "device-management",
+      "path": "/7"
+    },
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "asset-management",
+      "path": "/0"
+    },
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "asset-management",
+      "path": "/1"
+    }
+  ]
+}

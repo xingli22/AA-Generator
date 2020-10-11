@@ -1,0 +1,54 @@
+{
+  "service": "event-management",
+  "version": "v1",
+  "requests": [
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "device-management",
+      "path": "/0"
+    },
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "device-management",
+      "path": "/1"
+    },
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "device-management",
+      "path": "/2"
+    },
+    {
+      "type": "grpc",
+      "url": "",
+      "name": "device-management",
+      "path": "/3"
+    },
+    {
+      "type": "tcp",
+      "url": "",
+      "name": "cp-kafka",
+      "port": "12345"
+    },
+    {
+      "type": "tcp",
+      "url": "",
+      "name": "mongodb",
+      "port": "12345"
+    },
+    {
+      "type": "tcp",
+      "url": "",
+      "name": "influxdb",
+      "port": "12345"
+    },
+    {
+      "type": "tcp",
+      "url": "",
+      "name": "cassandra",
+      "port": "12345"
+    }
+  ]
+}

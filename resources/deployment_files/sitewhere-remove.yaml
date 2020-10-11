@@ -1,0 +1,2177 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: asset-management
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: microservice
+    version: v1
+  name: asset-management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: asset-management
+      version: v1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scheme: http
+        prometheus.io/scrape: 'true'
+      labels:
+        app: asset-management
+        app.kubernetes.io/name: asset-management
+        sitewhere.io/role: microservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: sitewhere.k8s.pod.ip
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: sitewhere.namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: sitewhere.instance.id
+          value: sitewhere
+        - name: sitewhere.metrics.port
+          value: '9090'
+        - name: sitewhere.zookeeper.host
+          value: cp-zookeeper
+        - name: sitewhere.zookeeper.port
+          value: '2181'
+        - name: sitewhere.kafka.bootstrap.servers
+          value: cp-kafka:9092
+        - name: sitewhere.kafka.defaultTopicReplicationFactor
+          value: '3'
+        - name: sitewhere.grpc.maxRetryCount
+          value: '7'
+        - name: sitewhere.grpc.initialBackoffSeconds
+          value: '11'
+        - name: sitewhere.grpc.maxBackoffSeconds
+          value: '700'
+        - name: sitewhere.grpc.backoffMultiplier
+          value: '1.6'
+        - name: sitewhere.grpc.resolveFQDN
+          value: 'false'
+        - name: mqtt.host
+          value: mosquitto
+        - name: mongodb.host
+          value: mongodb
+        - name: mongodb.replicaset
+          value: rs0
+        - name: tenantsdb.url
+          value: jdbc:postgresql://tenantsdb-headless.sitewhere.svc.cluster.local/tenantsdb
+        - name: tenantsdb.username
+          value: sitewhere
+        - name: tenantsdb.password
+          valueFrom:
+            secretKeyRef:
+              key: postgresql-password
+              name: tenantsdb
+        - name: warp10.url
+          value: http://warp10-headless.sitewhere.svc.cluster.local:8080/api/v0
+        - name: LOGGING_LEVEL_SITEWHERE
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_GRPC
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_KAFKA
+          value: INFO
+        - name: LOGGING_LEVEL_GRPC_INTERNAL
+          value: ERROR
+        - name: LOGGING_LEVEL_SPRING_BOOT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_CONTEXT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_SECURITY
+          value: INFO
+        - name: LOGGING_LEVEL_KAFKA
+          value: ERROR
+        - name: LOGGING_LEVEL_ZOOKEEPER
+          value: ERROR
+        - name: LOGGING_LEVEL_MONGODB
+          value: WARN
+        image: docker.io/sitewhere/service-asset-management:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: null
+          periodSeconds: 60
+        name: asset-management
+        ports:
+        - containerPort: 9000
+        - containerPort: 9001
+        - containerPort: 9090
+        readinessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: 150
+        resources:
+          limits:
+            cpu: 500m
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: batch-operations
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: microservice
+    version: v1
+  name: batch-operations
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: batch-operations
+      version: v1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scheme: http
+        prometheus.io/scrape: 'true'
+      labels:
+        app: batch-operations
+        app.kubernetes.io/name: batch-operations
+        sitewhere.io/role: microservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: sitewhere.k8s.pod.ip
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: sitewhere.namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: sitewhere.instance.id
+          value: sitewhere
+        - name: sitewhere.metrics.port
+          value: '9090'
+        - name: sitewhere.zookeeper.host
+          value: cp-zookeeper
+        - name: sitewhere.zookeeper.port
+          value: '2181'
+        - name: sitewhere.kafka.bootstrap.servers
+          value: cp-kafka:9092
+        - name: sitewhere.kafka.defaultTopicReplicationFactor
+          value: '3'
+        - name: sitewhere.grpc.maxRetryCount
+          value: '7'
+        - name: sitewhere.grpc.initialBackoffSeconds
+          value: '11'
+        - name: sitewhere.grpc.maxBackoffSeconds
+          value: '700'
+        - name: sitewhere.grpc.backoffMultiplier
+          value: '1.6'
+        - name: sitewhere.grpc.resolveFQDN
+          value: 'false'
+        - name: mqtt.host
+          value: mosquitto
+        - name: mongodb.host
+          value: mongodb
+        - name: mongodb.replicaset
+          value: rs0
+        - name: tenantsdb.url
+          value: jdbc:postgresql://tenantsdb-headless.sitewhere.svc.cluster.local/tenantsdb
+        - name: tenantsdb.username
+          value: sitewhere
+        - name: tenantsdb.password
+          valueFrom:
+            secretKeyRef:
+              key: postgresql-password
+              name: tenantsdb
+        - name: warp10.url
+          value: http://warp10-headless.sitewhere.svc.cluster.local:8080/api/v0
+        - name: LOGGING_LEVEL_SITEWHERE
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_GRPC
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_KAFKA
+          value: INFO
+        - name: LOGGING_LEVEL_GRPC_INTERNAL
+          value: ERROR
+        - name: LOGGING_LEVEL_SPRING_BOOT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_CONTEXT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_SECURITY
+          value: INFO
+        - name: LOGGING_LEVEL_KAFKA
+          value: ERROR
+        - name: LOGGING_LEVEL_ZOOKEEPER
+          value: ERROR
+        - name: LOGGING_LEVEL_MONGODB
+          value: WARN
+        image: docker.io/sitewhere/service-batch-operations:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: null
+          periodSeconds: 60
+        name: batch-operations
+        ports:
+        - containerPort: 9000
+        - containerPort: 9001
+        - containerPort: 9090
+        readinessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: 150
+        resources:
+          limits:
+            cpu: 500m
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: command-delivery
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: microservice
+    version: v1
+  name: command-delivery
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: command-delivery
+      version: v1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scheme: http
+        prometheus.io/scrape: 'true'
+      labels:
+        app: command-delivery
+        app.kubernetes.io/name: command-delivery
+        sitewhere.io/role: microservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: sitewhere.k8s.pod.ip
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: sitewhere.namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: sitewhere.instance.id
+          value: sitewhere
+        - name: sitewhere.metrics.port
+          value: '9090'
+        - name: sitewhere.zookeeper.host
+          value: cp-zookeeper
+        - name: sitewhere.zookeeper.port
+          value: '2181'
+        - name: sitewhere.kafka.bootstrap.servers
+          value: cp-kafka:9092
+        - name: sitewhere.kafka.defaultTopicReplicationFactor
+          value: '3'
+        - name: sitewhere.grpc.maxRetryCount
+          value: '7'
+        - name: sitewhere.grpc.initialBackoffSeconds
+          value: '11'
+        - name: sitewhere.grpc.maxBackoffSeconds
+          value: '700'
+        - name: sitewhere.grpc.backoffMultiplier
+          value: '1.6'
+        - name: sitewhere.grpc.resolveFQDN
+          value: 'false'
+        - name: mqtt.host
+          value: mosquitto
+        - name: mongodb.host
+          value: mongodb
+        - name: mongodb.replicaset
+          value: rs0
+        - name: tenantsdb.url
+          value: jdbc:postgresql://tenantsdb-headless.sitewhere.svc.cluster.local/tenantsdb
+        - name: tenantsdb.username
+          value: sitewhere
+        - name: tenantsdb.password
+          valueFrom:
+            secretKeyRef:
+              key: postgresql-password
+              name: tenantsdb
+        - name: warp10.url
+          value: http://warp10-headless.sitewhere.svc.cluster.local:8080/api/v0
+        - name: LOGGING_LEVEL_SITEWHERE
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_GRPC
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_KAFKA
+          value: INFO
+        - name: LOGGING_LEVEL_GRPC_INTERNAL
+          value: ERROR
+        - name: LOGGING_LEVEL_SPRING_BOOT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_CONTEXT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_SECURITY
+          value: INFO
+        - name: LOGGING_LEVEL_KAFKA
+          value: ERROR
+        - name: LOGGING_LEVEL_ZOOKEEPER
+          value: ERROR
+        - name: LOGGING_LEVEL_MONGODB
+          value: WARN
+        image: docker.io/sitewhere/service-command-delivery:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: null
+          periodSeconds: 60
+        name: command-delivery
+        ports:
+        - containerPort: 9001
+        - containerPort: 9090
+        readinessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: 150
+        resources:
+          limits:
+            cpu: 500m
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: device-management
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: microservice
+    version: v1
+  name: device-management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: device-management
+      version: v1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scheme: http
+        prometheus.io/scrape: 'true'
+      labels:
+        app: device-management
+        app.kubernetes.io/name: device-management
+        sitewhere.io/role: microservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: sitewhere.k8s.pod.ip
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: sitewhere.namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: sitewhere.instance.id
+          value: sitewhere
+        - name: sitewhere.metrics.port
+          value: '9090'
+        - name: sitewhere.zookeeper.host
+          value: cp-zookeeper
+        - name: sitewhere.zookeeper.port
+          value: '2181'
+        - name: sitewhere.kafka.bootstrap.servers
+          value: cp-kafka:9092
+        - name: sitewhere.kafka.defaultTopicReplicationFactor
+          value: '3'
+        - name: sitewhere.grpc.maxRetryCount
+          value: '7'
+        - name: sitewhere.grpc.initialBackoffSeconds
+          value: '11'
+        - name: sitewhere.grpc.maxBackoffSeconds
+          value: '700'
+        - name: sitewhere.grpc.backoffMultiplier
+          value: '1.6'
+        - name: sitewhere.grpc.resolveFQDN
+          value: 'false'
+        - name: mqtt.host
+          value: mosquitto
+        - name: mongodb.host
+          value: mongodb
+        - name: mongodb.replicaset
+          value: rs0
+        - name: tenantsdb.url
+          value: jdbc:postgresql://tenantsdb-headless.sitewhere.svc.cluster.local/tenantsdb
+        - name: tenantsdb.username
+          value: sitewhere
+        - name: tenantsdb.password
+          valueFrom:
+            secretKeyRef:
+              key: postgresql-password
+              name: tenantsdb
+        - name: warp10.url
+          value: http://warp10-headless.sitewhere.svc.cluster.local:8080/api/v0
+        - name: LOGGING_LEVEL_SITEWHERE
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_GRPC
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_KAFKA
+          value: INFO
+        - name: LOGGING_LEVEL_GRPC_INTERNAL
+          value: ERROR
+        - name: LOGGING_LEVEL_SPRING_BOOT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_CONTEXT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_SECURITY
+          value: INFO
+        - name: LOGGING_LEVEL_KAFKA
+          value: ERROR
+        - name: LOGGING_LEVEL_ZOOKEEPER
+          value: ERROR
+        - name: LOGGING_LEVEL_MONGODB
+          value: WARN
+        image: docker.io/sitewhere/service-device-management:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: null
+          periodSeconds: 60
+        name: device-management
+        ports:
+        - containerPort: 9000
+        - containerPort: 9001
+        - containerPort: 9090
+        readinessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: 150
+        resources:
+          limits:
+            cpu: 500m
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: device-registration
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: microservice
+    version: v1
+  name: device-registration
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: device-registration
+      version: v1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scheme: http
+        prometheus.io/scrape: 'true'
+      labels:
+        app: device-registration
+        app.kubernetes.io/name: device-registration
+        sitewhere.io/role: microservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: sitewhere.k8s.pod.ip
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: sitewhere.namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: sitewhere.instance.id
+          value: sitewhere
+        - name: sitewhere.metrics.port
+          value: '9090'
+        - name: sitewhere.zookeeper.host
+          value: cp-zookeeper
+        - name: sitewhere.zookeeper.port
+          value: '2181'
+        - name: sitewhere.kafka.bootstrap.servers
+          value: cp-kafka:9092
+        - name: sitewhere.kafka.defaultTopicReplicationFactor
+          value: '3'
+        - name: sitewhere.grpc.maxRetryCount
+          value: '7'
+        - name: sitewhere.grpc.initialBackoffSeconds
+          value: '11'
+        - name: sitewhere.grpc.maxBackoffSeconds
+          value: '700'
+        - name: sitewhere.grpc.backoffMultiplier
+          value: '1.6'
+        - name: sitewhere.grpc.resolveFQDN
+          value: 'false'
+        - name: mqtt.host
+          value: mosquitto
+        - name: mongodb.host
+          value: mongodb
+        - name: mongodb.replicaset
+          value: rs0
+        - name: tenantsdb.url
+          value: jdbc:postgresql://tenantsdb-headless.sitewhere.svc.cluster.local/tenantsdb
+        - name: tenantsdb.username
+          value: sitewhere
+        - name: tenantsdb.password
+          valueFrom:
+            secretKeyRef:
+              key: postgresql-password
+              name: tenantsdb
+        - name: warp10.url
+          value: http://warp10-headless.sitewhere.svc.cluster.local:8080/api/v0
+        - name: LOGGING_LEVEL_SITEWHERE
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_GRPC
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_KAFKA
+          value: INFO
+        - name: LOGGING_LEVEL_GRPC_INTERNAL
+          value: ERROR
+        - name: LOGGING_LEVEL_SPRING_BOOT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_CONTEXT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_SECURITY
+          value: INFO
+        - name: LOGGING_LEVEL_KAFKA
+          value: ERROR
+        - name: LOGGING_LEVEL_ZOOKEEPER
+          value: ERROR
+        - name: LOGGING_LEVEL_MONGODB
+          value: WARN
+        image: docker.io/sitewhere/service-device-registration:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: null
+          periodSeconds: 60
+        name: device-registration
+        ports:
+        - containerPort: 9001
+        - containerPort: 9090
+        readinessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: 150
+        resources:
+          limits:
+            cpu: 500m
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: device-state
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: microservice
+    version: v1
+  name: device-state
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: device-state
+      version: v1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scheme: http
+        prometheus.io/scrape: 'true'
+      labels:
+        app: device-state
+        app.kubernetes.io/name: device-state
+        sitewhere.io/role: microservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: sitewhere.k8s.pod.ip
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: sitewhere.namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: sitewhere.instance.id
+          value: sitewhere
+        - name: sitewhere.metrics.port
+          value: '9090'
+        - name: sitewhere.zookeeper.host
+          value: cp-zookeeper
+        - name: sitewhere.zookeeper.port
+          value: '2181'
+        - name: sitewhere.kafka.bootstrap.servers
+          value: cp-kafka:9092
+        - name: sitewhere.kafka.defaultTopicReplicationFactor
+          value: '3'
+        - name: sitewhere.grpc.maxRetryCount
+          value: '7'
+        - name: sitewhere.grpc.initialBackoffSeconds
+          value: '11'
+        - name: sitewhere.grpc.maxBackoffSeconds
+          value: '700'
+        - name: sitewhere.grpc.backoffMultiplier
+          value: '1.6'
+        - name: sitewhere.grpc.resolveFQDN
+          value: 'false'
+        - name: mqtt.host
+          value: mosquitto
+        - name: mongodb.host
+          value: mongodb
+        - name: mongodb.replicaset
+          value: rs0
+        - name: tenantsdb.url
+          value: jdbc:postgresql://tenantsdb-headless.sitewhere.svc.cluster.local/tenantsdb
+        - name: tenantsdb.username
+          value: sitewhere
+        - name: tenantsdb.password
+          valueFrom:
+            secretKeyRef:
+              key: postgresql-password
+              name: tenantsdb
+        - name: warp10.url
+          value: http://warp10-headless.sitewhere.svc.cluster.local:8080/api/v0
+        - name: LOGGING_LEVEL_SITEWHERE
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_GRPC
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_KAFKA
+          value: INFO
+        - name: LOGGING_LEVEL_GRPC_INTERNAL
+          value: ERROR
+        - name: LOGGING_LEVEL_SPRING_BOOT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_CONTEXT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_SECURITY
+          value: INFO
+        - name: LOGGING_LEVEL_KAFKA
+          value: ERROR
+        - name: LOGGING_LEVEL_ZOOKEEPER
+          value: ERROR
+        - name: LOGGING_LEVEL_MONGODB
+          value: WARN
+        image: docker.io/sitewhere/service-device-state:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: null
+          periodSeconds: 60
+        name: device-state
+        ports:
+        - containerPort: 9000
+        - containerPort: 9001
+        - containerPort: 9090
+        readinessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: 150
+        resources:
+          limits:
+            cpu: 500m
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: event-management
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: microservice
+    version: v1
+  name: event-management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: event-management
+      version: v1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scheme: http
+        prometheus.io/scrape: 'true'
+      labels:
+        app: event-management
+        app.kubernetes.io/name: event-management
+        sitewhere.io/role: microservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: sitewhere.k8s.pod.ip
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: sitewhere.namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: sitewhere.instance.id
+          value: sitewhere
+        - name: sitewhere.metrics.port
+          value: '9090'
+        - name: sitewhere.zookeeper.host
+          value: cp-zookeeper
+        - name: sitewhere.zookeeper.port
+          value: '2181'
+        - name: sitewhere.kafka.bootstrap.servers
+          value: cp-kafka:9092
+        - name: sitewhere.kafka.defaultTopicReplicationFactor
+          value: '3'
+        - name: sitewhere.grpc.maxRetryCount
+          value: '7'
+        - name: sitewhere.grpc.initialBackoffSeconds
+          value: '11'
+        - name: sitewhere.grpc.maxBackoffSeconds
+          value: '700'
+        - name: sitewhere.grpc.backoffMultiplier
+          value: '1.6'
+        - name: sitewhere.grpc.resolveFQDN
+          value: 'false'
+        - name: mqtt.host
+          value: mosquitto
+        - name: mongodb.host
+          value: mongodb
+        - name: mongodb.replicaset
+          value: rs0
+        - name: tenantsdb.url
+          value: jdbc:postgresql://tenantsdb-headless.sitewhere.svc.cluster.local/tenantsdb
+        - name: tenantsdb.username
+          value: sitewhere
+        - name: tenantsdb.password
+          valueFrom:
+            secretKeyRef:
+              key: postgresql-password
+              name: tenantsdb
+        - name: warp10.url
+          value: http://warp10-headless.sitewhere.svc.cluster.local:8080/api/v0
+        - name: LOGGING_LEVEL_SITEWHERE
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_GRPC
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_KAFKA
+          value: INFO
+        - name: LOGGING_LEVEL_GRPC_INTERNAL
+          value: ERROR
+        - name: LOGGING_LEVEL_SPRING_BOOT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_CONTEXT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_SECURITY
+          value: INFO
+        - name: LOGGING_LEVEL_KAFKA
+          value: ERROR
+        - name: LOGGING_LEVEL_ZOOKEEPER
+          value: ERROR
+        - name: LOGGING_LEVEL_MONGODB
+          value: WARN
+        image: docker.io/sitewhere/service-event-management:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: null
+          periodSeconds: 60
+        name: event-management
+        ports:
+        - containerPort: 9000
+        - containerPort: 9001
+        - containerPort: 9090
+        readinessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: 150
+        resources:
+          limits:
+            cpu: 500m
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: event-search
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: microservice
+    version: v1
+  name: event-search
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: event-search
+      version: v1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scheme: http
+        prometheus.io/scrape: 'true'
+      labels:
+        app: event-search
+        app.kubernetes.io/name: event-search
+        sitewhere.io/role: microservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: sitewhere.k8s.pod.ip
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: sitewhere.namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: sitewhere.instance.id
+          value: sitewhere
+        - name: sitewhere.metrics.port
+          value: '9090'
+        - name: sitewhere.zookeeper.host
+          value: cp-zookeeper
+        - name: sitewhere.zookeeper.port
+          value: '2181'
+        - name: sitewhere.kafka.bootstrap.servers
+          value: cp-kafka:9092
+        - name: sitewhere.kafka.defaultTopicReplicationFactor
+          value: '3'
+        - name: sitewhere.grpc.maxRetryCount
+          value: '7'
+        - name: sitewhere.grpc.initialBackoffSeconds
+          value: '11'
+        - name: sitewhere.grpc.maxBackoffSeconds
+          value: '700'
+        - name: sitewhere.grpc.backoffMultiplier
+          value: '1.6'
+        - name: sitewhere.grpc.resolveFQDN
+          value: 'false'
+        - name: mqtt.host
+          value: mosquitto
+        - name: mongodb.host
+          value: mongodb
+        - name: mongodb.replicaset
+          value: rs0
+        - name: tenantsdb.url
+          value: jdbc:postgresql://tenantsdb-headless.sitewhere.svc.cluster.local/tenantsdb
+        - name: tenantsdb.username
+          value: sitewhere
+        - name: tenantsdb.password
+          valueFrom:
+            secretKeyRef:
+              key: postgresql-password
+              name: tenantsdb
+        - name: warp10.url
+          value: http://warp10-headless.sitewhere.svc.cluster.local:8080/api/v0
+        - name: LOGGING_LEVEL_SITEWHERE
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_GRPC
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_KAFKA
+          value: INFO
+        - name: LOGGING_LEVEL_GRPC_INTERNAL
+          value: ERROR
+        - name: LOGGING_LEVEL_SPRING_BOOT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_CONTEXT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_SECURITY
+          value: INFO
+        - name: LOGGING_LEVEL_KAFKA
+          value: ERROR
+        - name: LOGGING_LEVEL_ZOOKEEPER
+          value: ERROR
+        - name: LOGGING_LEVEL_MONGODB
+          value: WARN
+        image: docker.io/sitewhere/service-event-search:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: null
+          periodSeconds: 60
+        name: event-search
+        ports:
+        - containerPort: 9000
+        - containerPort: 9001
+        - containerPort: 9090
+        readinessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: 150
+        resources:
+          limits:
+            cpu: 500m
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: event-sources
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: microservice
+    version: v1
+  name: event-sources
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: event-sources
+      version: v1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scheme: http
+        prometheus.io/scrape: 'true'
+      labels:
+        app: event-sources
+        app.kubernetes.io/name: event-sources
+        sitewhere.io/role: microservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: sitewhere.k8s.pod.ip
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: sitewhere.namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: sitewhere.instance.id
+          value: sitewhere
+        - name: sitewhere.metrics.port
+          value: '9090'
+        - name: sitewhere.zookeeper.host
+          value: cp-zookeeper
+        - name: sitewhere.zookeeper.port
+          value: '2181'
+        - name: sitewhere.kafka.bootstrap.servers
+          value: cp-kafka:9092
+        - name: sitewhere.kafka.defaultTopicReplicationFactor
+          value: '3'
+        - name: sitewhere.grpc.maxRetryCount
+          value: '7'
+        - name: sitewhere.grpc.initialBackoffSeconds
+          value: '11'
+        - name: sitewhere.grpc.maxBackoffSeconds
+          value: '700'
+        - name: sitewhere.grpc.backoffMultiplier
+          value: '1.6'
+        - name: sitewhere.grpc.resolveFQDN
+          value: 'false'
+        - name: mqtt.host
+          value: mosquitto
+        - name: mongodb.host
+          value: mongodb
+        - name: mongodb.replicaset
+          value: rs0
+        - name: tenantsdb.url
+          value: jdbc:postgresql://tenantsdb-headless.sitewhere.svc.cluster.local/tenantsdb
+        - name: tenantsdb.username
+          value: sitewhere
+        - name: tenantsdb.password
+          valueFrom:
+            secretKeyRef:
+              key: postgresql-password
+              name: tenantsdb
+        - name: warp10.url
+          value: http://warp10-headless.sitewhere.svc.cluster.local:8080/api/v0
+        - name: LOGGING_LEVEL_SITEWHERE
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_GRPC
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_KAFKA
+          value: INFO
+        - name: LOGGING_LEVEL_GRPC_INTERNAL
+          value: ERROR
+        - name: LOGGING_LEVEL_SPRING_BOOT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_CONTEXT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_SECURITY
+          value: INFO
+        - name: LOGGING_LEVEL_KAFKA
+          value: ERROR
+        - name: LOGGING_LEVEL_ZOOKEEPER
+          value: ERROR
+        - name: LOGGING_LEVEL_MONGODB
+          value: WARN
+        image: docker.io/sitewhere/service-event-sources:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: null
+          periodSeconds: 60
+        name: event-sources
+        ports:
+        - containerPort: 9001
+        - containerPort: 9090
+        readinessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: 150
+        resources:
+          limits:
+            cpu: 500m
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: inbound-processing
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: microservice
+    version: v1
+  name: inbound-processing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: inbound-processing
+      version: v1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scheme: http
+        prometheus.io/scrape: 'true'
+      labels:
+        app: inbound-processing
+        app.kubernetes.io/name: inbound-processing
+        sitewhere.io/role: microservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: sitewhere.k8s.pod.ip
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: sitewhere.namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: sitewhere.instance.id
+          value: sitewhere
+        - name: sitewhere.metrics.port
+          value: '9090'
+        - name: sitewhere.zookeeper.host
+          value: cp-zookeeper
+        - name: sitewhere.zookeeper.port
+          value: '2181'
+        - name: sitewhere.kafka.bootstrap.servers
+          value: cp-kafka:9092
+        - name: sitewhere.kafka.defaultTopicReplicationFactor
+          value: '3'
+        - name: sitewhere.grpc.maxRetryCount
+          value: '7'
+        - name: sitewhere.grpc.initialBackoffSeconds
+          value: '11'
+        - name: sitewhere.grpc.maxBackoffSeconds
+          value: '700'
+        - name: sitewhere.grpc.backoffMultiplier
+          value: '1.6'
+        - name: sitewhere.grpc.resolveFQDN
+          value: 'false'
+        - name: mqtt.host
+          value: mosquitto
+        - name: mongodb.host
+          value: mongodb
+        - name: mongodb.replicaset
+          value: rs0
+        - name: tenantsdb.url
+          value: jdbc:postgresql://tenantsdb-headless.sitewhere.svc.cluster.local/tenantsdb
+        - name: tenantsdb.username
+          value: sitewhere
+        - name: tenantsdb.password
+          valueFrom:
+            secretKeyRef:
+              key: postgresql-password
+              name: tenantsdb
+        - name: warp10.url
+          value: http://warp10-headless.sitewhere.svc.cluster.local:8080/api/v0
+        - name: LOGGING_LEVEL_SITEWHERE
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_GRPC
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_KAFKA
+          value: INFO
+        - name: LOGGING_LEVEL_GRPC_INTERNAL
+          value: ERROR
+        - name: LOGGING_LEVEL_SPRING_BOOT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_CONTEXT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_SECURITY
+          value: INFO
+        - name: LOGGING_LEVEL_KAFKA
+          value: ERROR
+        - name: LOGGING_LEVEL_ZOOKEEPER
+          value: ERROR
+        - name: LOGGING_LEVEL_MONGODB
+          value: WARN
+        image: docker.io/sitewhere/service-inbound-processing:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: null
+          periodSeconds: 60
+        name: inbound-processing
+        ports:
+        - containerPort: 9001
+        - containerPort: 9090
+        readinessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: 150
+        resources:
+          limits:
+            cpu: 500m
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: instance-management
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: microservice
+    version: v1
+  name: instance-management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: instance-management
+      version: v1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scheme: http
+        prometheus.io/scrape: 'true'
+      labels:
+        app: instance-management
+        app.kubernetes.io/name: instance-management
+        sitewhere.io/role: microservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: sitewhere.k8s.pod.ip
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: sitewhere.namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: sitewhere.instance.id
+          value: sitewhere
+        - name: sitewhere.metrics.port
+          value: '9090'
+        - name: sitewhere.zookeeper.host
+          value: cp-zookeeper
+        - name: sitewhere.zookeeper.port
+          value: '2181'
+        - name: sitewhere.kafka.bootstrap.servers
+          value: cp-kafka:9092
+        - name: sitewhere.kafka.defaultTopicReplicationFactor
+          value: '3'
+        - name: sitewhere.grpc.maxRetryCount
+          value: '7'
+        - name: sitewhere.grpc.initialBackoffSeconds
+          value: '11'
+        - name: sitewhere.grpc.maxBackoffSeconds
+          value: '700'
+        - name: sitewhere.grpc.backoffMultiplier
+          value: '1.6'
+        - name: sitewhere.grpc.resolveFQDN
+          value: 'false'
+        - name: mqtt.host
+          value: mosquitto
+        - name: mongodb.host
+          value: mongodb
+        - name: mongodb.replicaset
+          value: rs0
+        - name: tenantsdb.url
+          value: jdbc:postgresql://tenantsdb-headless.sitewhere.svc.cluster.local/tenantsdb
+        - name: tenantsdb.username
+          value: sitewhere
+        - name: tenantsdb.password
+          valueFrom:
+            secretKeyRef:
+              key: postgresql-password
+              name: tenantsdb
+        - name: warp10.url
+          value: http://warp10-headless.sitewhere.svc.cluster.local:8080/api/v0
+        - name: LOGGING_LEVEL_SITEWHERE
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_GRPC
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_KAFKA
+          value: INFO
+        - name: LOGGING_LEVEL_GRPC_INTERNAL
+          value: ERROR
+        - name: LOGGING_LEVEL_SPRING_BOOT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_CONTEXT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_SECURITY
+          value: INFO
+        - name: LOGGING_LEVEL_KAFKA
+          value: ERROR
+        - name: LOGGING_LEVEL_ZOOKEEPER
+          value: ERROR
+        - name: LOGGING_LEVEL_MONGODB
+          value: WARN
+        - name: sitewhere.syncope.host
+          value: syncope
+        - name: sitewhere.syncope.port
+          value: '8080'
+        image: docker.io/sitewhere/service-instance-management:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: null
+          periodSeconds: 60
+        name: instance-management
+        ports:
+        - containerPort: 9000
+        - containerPort: 9001
+        - containerPort: 9004
+        - containerPort: 9005
+        - containerPort: 9090
+        readinessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: 150
+        resources:
+          limits:
+            cpu: 500m
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: label-generation
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: microservice
+    version: v1
+  name: label-generation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: label-generation
+      version: v1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scheme: http
+        prometheus.io/scrape: 'true'
+      labels:
+        app: label-generation
+        app.kubernetes.io/name: label-generation
+        sitewhere.io/role: microservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: sitewhere.k8s.pod.ip
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: sitewhere.namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: sitewhere.instance.id
+          value: sitewhere
+        - name: sitewhere.metrics.port
+          value: '9090'
+        - name: sitewhere.zookeeper.host
+          value: cp-zookeeper
+        - name: sitewhere.zookeeper.port
+          value: '2181'
+        - name: sitewhere.kafka.bootstrap.servers
+          value: cp-kafka:9092
+        - name: sitewhere.kafka.defaultTopicReplicationFactor
+          value: '3'
+        - name: sitewhere.grpc.maxRetryCount
+          value: '7'
+        - name: sitewhere.grpc.initialBackoffSeconds
+          value: '11'
+        - name: sitewhere.grpc.maxBackoffSeconds
+          value: '700'
+        - name: sitewhere.grpc.backoffMultiplier
+          value: '1.6'
+        - name: sitewhere.grpc.resolveFQDN
+          value: 'false'
+        - name: mqtt.host
+          value: mosquitto
+        - name: mongodb.host
+          value: mongodb
+        - name: mongodb.replicaset
+          value: rs0
+        - name: tenantsdb.url
+          value: jdbc:postgresql://tenantsdb-headless.sitewhere.svc.cluster.local/tenantsdb
+        - name: tenantsdb.username
+          value: sitewhere
+        - name: tenantsdb.password
+          valueFrom:
+            secretKeyRef:
+              key: postgresql-password
+              name: tenantsdb
+        - name: warp10.url
+          value: http://warp10-headless.sitewhere.svc.cluster.local:8080/api/v0
+        - name: LOGGING_LEVEL_SITEWHERE
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_GRPC
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_KAFKA
+          value: INFO
+        - name: LOGGING_LEVEL_GRPC_INTERNAL
+          value: ERROR
+        - name: LOGGING_LEVEL_SPRING_BOOT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_CONTEXT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_SECURITY
+          value: INFO
+        - name: LOGGING_LEVEL_KAFKA
+          value: ERROR
+        - name: LOGGING_LEVEL_ZOOKEEPER
+          value: ERROR
+        - name: LOGGING_LEVEL_MONGODB
+          value: WARN
+        image: docker.io/sitewhere/service-label-generation:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: null
+          periodSeconds: 60
+        name: label-generation
+        ports:
+        - containerPort: 9000
+        - containerPort: 9001
+        - containerPort: 9090
+        readinessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: 150
+        resources:
+          limits:
+            cpu: 500m
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mosquitto
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: infrastructure
+    version: v1
+  name: mosquitto
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mosquitto
+      version: v1
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: 'false'
+      labels:
+        app: mosquitto
+        app.kubernetes.io/name: mosquitto
+        sitewhere.io/role: infrastructure
+        version: v1
+    spec:
+      containers:
+      - image: docker.io/eclipse-mosquitto:1.4.12
+        imagePullPolicy: IfNotPresent
+        name: mosquitto
+        ports:
+        - containerPort: 1883
+          name: tcp-mosquitto
+          protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: outbound-connectors
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: microservice
+    version: v1
+  name: outbound-connectors
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: outbound-connectors
+      version: v1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scheme: http
+        prometheus.io/scrape: 'true'
+      labels:
+        app: outbound-connectors
+        app.kubernetes.io/name: outbound-connectors
+        sitewhere.io/role: microservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: sitewhere.k8s.pod.ip
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: sitewhere.namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: sitewhere.instance.id
+          value: sitewhere
+        - name: sitewhere.metrics.port
+          value: '9090'
+        - name: sitewhere.zookeeper.host
+          value: cp-zookeeper
+        - name: sitewhere.zookeeper.port
+          value: '2181'
+        - name: sitewhere.kafka.bootstrap.servers
+          value: cp-kafka:9092
+        - name: sitewhere.kafka.defaultTopicReplicationFactor
+          value: '3'
+        - name: sitewhere.grpc.maxRetryCount
+          value: '7'
+        - name: sitewhere.grpc.initialBackoffSeconds
+          value: '11'
+        - name: sitewhere.grpc.maxBackoffSeconds
+          value: '700'
+        - name: sitewhere.grpc.backoffMultiplier
+          value: '1.6'
+        - name: sitewhere.grpc.resolveFQDN
+          value: 'false'
+        - name: mqtt.host
+          value: mosquitto
+        - name: mongodb.host
+          value: mongodb
+        - name: mongodb.replicaset
+          value: rs0
+        - name: tenantsdb.url
+          value: jdbc:postgresql://tenantsdb-headless.sitewhere.svc.cluster.local/tenantsdb
+        - name: tenantsdb.username
+          value: sitewhere
+        - name: tenantsdb.password
+          valueFrom:
+            secretKeyRef:
+              key: postgresql-password
+              name: tenantsdb
+        - name: warp10.url
+          value: http://warp10-headless.sitewhere.svc.cluster.local:8080/api/v0
+        - name: LOGGING_LEVEL_SITEWHERE
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_GRPC
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_KAFKA
+          value: INFO
+        - name: LOGGING_LEVEL_GRPC_INTERNAL
+          value: ERROR
+        - name: LOGGING_LEVEL_SPRING_BOOT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_CONTEXT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_SECURITY
+          value: INFO
+        - name: LOGGING_LEVEL_KAFKA
+          value: ERROR
+        - name: LOGGING_LEVEL_ZOOKEEPER
+          value: ERROR
+        - name: LOGGING_LEVEL_MONGODB
+          value: WARN
+        image: docker.io/sitewhere/service-outbound-connectors:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: null
+          periodSeconds: 60
+        name: outbound-connectors
+        ports:
+        - containerPort: 9001
+        - containerPort: 9090
+        readinessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: 150
+        resources:
+          limits:
+            cpu: 500m
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rule-processing
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: microservice
+    version: v1
+  name: rule-processing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: rule-processing
+      version: v1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scheme: http
+        prometheus.io/scrape: 'true'
+      labels:
+        app: rule-processing
+        app.kubernetes.io/name: rule-processing
+        sitewhere.io/role: microservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: sitewhere.k8s.pod.ip
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: sitewhere.namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: sitewhere.instance.id
+          value: sitewhere
+        - name: sitewhere.metrics.port
+          value: '9090'
+        - name: sitewhere.zookeeper.host
+          value: cp-zookeeper
+        - name: sitewhere.zookeeper.port
+          value: '2181'
+        - name: sitewhere.kafka.bootstrap.servers
+          value: cp-kafka:9092
+        - name: sitewhere.kafka.defaultTopicReplicationFactor
+          value: '3'
+        - name: sitewhere.grpc.maxRetryCount
+          value: '7'
+        - name: sitewhere.grpc.initialBackoffSeconds
+          value: '11'
+        - name: sitewhere.grpc.maxBackoffSeconds
+          value: '700'
+        - name: sitewhere.grpc.backoffMultiplier
+          value: '1.6'
+        - name: sitewhere.grpc.resolveFQDN
+          value: 'false'
+        - name: mqtt.host
+          value: mosquitto
+        - name: mongodb.host
+          value: mongodb
+        - name: mongodb.replicaset
+          value: rs0
+        - name: tenantsdb.url
+          value: jdbc:postgresql://tenantsdb-headless.sitewhere.svc.cluster.local/tenantsdb
+        - name: tenantsdb.username
+          value: sitewhere
+        - name: tenantsdb.password
+          valueFrom:
+            secretKeyRef:
+              key: postgresql-password
+              name: tenantsdb
+        - name: warp10.url
+          value: http://warp10-headless.sitewhere.svc.cluster.local:8080/api/v0
+        - name: LOGGING_LEVEL_SITEWHERE
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_GRPC
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_KAFKA
+          value: INFO
+        - name: LOGGING_LEVEL_GRPC_INTERNAL
+          value: ERROR
+        - name: LOGGING_LEVEL_SPRING_BOOT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_CONTEXT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_SECURITY
+          value: INFO
+        - name: LOGGING_LEVEL_KAFKA
+          value: ERROR
+        - name: LOGGING_LEVEL_ZOOKEEPER
+          value: ERROR
+        - name: LOGGING_LEVEL_MONGODB
+          value: WARN
+        image: docker.io/sitewhere/service-rule-processing:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: null
+          periodSeconds: 60
+        name: rule-processing
+        ports:
+        - containerPort: 9001
+        - containerPort: 9090
+        readinessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: 150
+        resources:
+          limits:
+            cpu: 500m
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: schedule-management
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: microservice
+    version: v1
+  name: schedule-management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: schedule-management
+      version: v1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scheme: http
+        prometheus.io/scrape: 'true'
+      labels:
+        app: schedule-management
+        app.kubernetes.io/name: schedule-management
+        sitewhere.io/role: microservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: sitewhere.k8s.pod.ip
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: sitewhere.namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: sitewhere.instance.id
+          value: sitewhere
+        - name: sitewhere.metrics.port
+          value: '9090'
+        - name: sitewhere.zookeeper.host
+          value: cp-zookeeper
+        - name: sitewhere.zookeeper.port
+          value: '2181'
+        - name: sitewhere.kafka.bootstrap.servers
+          value: cp-kafka:9092
+        - name: sitewhere.kafka.defaultTopicReplicationFactor
+          value: '3'
+        - name: sitewhere.grpc.maxRetryCount
+          value: '7'
+        - name: sitewhere.grpc.initialBackoffSeconds
+          value: '11'
+        - name: sitewhere.grpc.maxBackoffSeconds
+          value: '700'
+        - name: sitewhere.grpc.backoffMultiplier
+          value: '1.6'
+        - name: sitewhere.grpc.resolveFQDN
+          value: 'false'
+        - name: mqtt.host
+          value: mosquitto
+        - name: mongodb.host
+          value: mongodb
+        - name: mongodb.replicaset
+          value: rs0
+        - name: tenantsdb.url
+          value: jdbc:postgresql://tenantsdb-headless.sitewhere.svc.cluster.local/tenantsdb
+        - name: tenantsdb.username
+          value: sitewhere
+        - name: tenantsdb.password
+          valueFrom:
+            secretKeyRef:
+              key: postgresql-password
+              name: tenantsdb
+        - name: warp10.url
+          value: http://warp10-headless.sitewhere.svc.cluster.local:8080/api/v0
+        - name: LOGGING_LEVEL_SITEWHERE
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_GRPC
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_KAFKA
+          value: INFO
+        - name: LOGGING_LEVEL_GRPC_INTERNAL
+          value: ERROR
+        - name: LOGGING_LEVEL_SPRING_BOOT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_CONTEXT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_SECURITY
+          value: INFO
+        - name: LOGGING_LEVEL_KAFKA
+          value: ERROR
+        - name: LOGGING_LEVEL_ZOOKEEPER
+          value: ERROR
+        - name: LOGGING_LEVEL_MONGODB
+          value: WARN
+        image: docker.io/sitewhere/service-schedule-management:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: null
+          periodSeconds: 60
+        name: schedule-management
+        ports:
+        - containerPort: 9000
+        - containerPort: 9001
+        - containerPort: 9090
+        readinessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: 150
+        resources:
+          limits:
+            cpu: 500m
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: streaming-media
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: microservice
+    version: v1
+  name: streaming-media
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: streaming-media
+      version: v1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scheme: http
+        prometheus.io/scrape: 'true'
+      labels:
+        app: streaming-media
+        app.kubernetes.io/name: streaming-media
+        sitewhere.io/role: microservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: sitewhere.k8s.pod.ip
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: sitewhere.namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: sitewhere.instance.id
+          value: sitewhere
+        - name: sitewhere.metrics.port
+          value: '9090'
+        - name: sitewhere.zookeeper.host
+          value: cp-zookeeper
+        - name: sitewhere.zookeeper.port
+          value: '2181'
+        - name: sitewhere.kafka.bootstrap.servers
+          value: cp-kafka:9092
+        - name: sitewhere.kafka.defaultTopicReplicationFactor
+          value: '3'
+        - name: sitewhere.grpc.maxRetryCount
+          value: '7'
+        - name: sitewhere.grpc.initialBackoffSeconds
+          value: '11'
+        - name: sitewhere.grpc.maxBackoffSeconds
+          value: '700'
+        - name: sitewhere.grpc.backoffMultiplier
+          value: '1.6'
+        - name: sitewhere.grpc.resolveFQDN
+          value: 'false'
+        - name: mqtt.host
+          value: mosquitto
+        - name: mongodb.host
+          value: mongodb
+        - name: mongodb.replicaset
+          value: rs0
+        - name: tenantsdb.url
+          value: jdbc:postgresql://tenantsdb-headless.sitewhere.svc.cluster.local/tenantsdb
+        - name: tenantsdb.username
+          value: sitewhere
+        - name: tenantsdb.password
+          valueFrom:
+            secretKeyRef:
+              key: postgresql-password
+              name: tenantsdb
+        - name: warp10.url
+          value: http://warp10-headless.sitewhere.svc.cluster.local:8080/api/v0
+        - name: LOGGING_LEVEL_SITEWHERE
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_GRPC
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_KAFKA
+          value: INFO
+        - name: LOGGING_LEVEL_GRPC_INTERNAL
+          value: ERROR
+        - name: LOGGING_LEVEL_SPRING_BOOT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_CONTEXT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_SECURITY
+          value: INFO
+        - name: LOGGING_LEVEL_KAFKA
+          value: ERROR
+        - name: LOGGING_LEVEL_ZOOKEEPER
+          value: ERROR
+        - name: LOGGING_LEVEL_MONGODB
+          value: WARN
+        image: docker.io/sitewhere/service-streaming-media:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: null
+          periodSeconds: 60
+        name: streaming-media
+        ports:
+        - containerPort: 9000
+        - containerPort: 9001
+        - containerPort: 9090
+        readinessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: 150
+        resources:
+          limits:
+            cpu: 500m
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-rest
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sitewhere
+    helm.sh/chart: 0.2.9
+    sitewhere.io/role: microservice
+    version: v1
+  name: web-rest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: web-rest
+      version: v1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scheme: http
+        prometheus.io/scrape: 'true'
+      labels:
+        app: web-rest
+        app.kubernetes.io/name: web-rest
+        sitewhere.io/role: microservice
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: sitewhere.k8s.pod.ip
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: sitewhere.namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: sitewhere.instance.id
+          value: sitewhere
+        - name: sitewhere.metrics.port
+          value: '9090'
+        - name: sitewhere.zookeeper.host
+          value: cp-zookeeper
+        - name: sitewhere.zookeeper.port
+          value: '2181'
+        - name: sitewhere.kafka.bootstrap.servers
+          value: cp-kafka:9092
+        - name: sitewhere.kafka.defaultTopicReplicationFactor
+          value: '3'
+        - name: sitewhere.grpc.maxRetryCount
+          value: '7'
+        - name: sitewhere.grpc.initialBackoffSeconds
+          value: '11'
+        - name: sitewhere.grpc.maxBackoffSeconds
+          value: '700'
+        - name: sitewhere.grpc.backoffMultiplier
+          value: '1.6'
+        - name: sitewhere.grpc.resolveFQDN
+          value: 'false'
+        - name: mqtt.host
+          value: mosquitto
+        - name: mongodb.host
+          value: mongodb
+        - name: mongodb.replicaset
+          value: rs0
+        - name: tenantsdb.url
+          value: jdbc:postgresql://tenantsdb-headless.sitewhere.svc.cluster.local/tenantsdb
+        - name: tenantsdb.username
+          value: sitewhere
+        - name: tenantsdb.password
+          valueFrom:
+            secretKeyRef:
+              key: postgresql-password
+              name: tenantsdb
+        - name: warp10.url
+          value: http://warp10-headless.sitewhere.svc.cluster.local:8080/api/v0
+        - name: LOGGING_LEVEL_SITEWHERE
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_GRPC
+          value: INFO
+        - name: LOGGING_LEVEL_SITEWHERE_KAFKA
+          value: INFO
+        - name: LOGGING_LEVEL_GRPC_INTERNAL
+          value: ERROR
+        - name: LOGGING_LEVEL_SPRING_BOOT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_CONTEXT
+          value: INFO
+        - name: LOGGING_LEVEL_SPRING_SECURITY
+          value: INFO
+        - name: LOGGING_LEVEL_KAFKA
+          value: ERROR
+        - name: LOGGING_LEVEL_ZOOKEEPER
+          value: ERROR
+        - name: LOGGING_LEVEL_MONGODB
+          value: WARN
+        image: docker.io/sitewhere/service-web-rest:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: null
+          periodSeconds: 60
+        name: web-rest
+        ports:
+        - containerPort: 9001
+        - containerPort: 8080
+        - containerPort: 9090
+        readinessProbe:
+          exec:
+            command:
+            - /bin/grpc_health_probe
+            - -addr=:9003
+          initialDelaySeconds: 150
+        resources:
+          limits:
+            cpu: 500m
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
