@@ -680,7 +680,7 @@ items:
     labels:
       name: orders
       version: v1
-    name: orders
+    name: orders-v1
     namespace: sockshop
   spec:
     progressDeadlineSeconds: 2147483647
@@ -689,6 +689,7 @@ items:
     selector:
       matchLabels:
         name: orders
+        version: v1
     strategy:
       rollingUpdate:
         maxSurge: 1
@@ -699,6 +700,287 @@ items:
         creationTimestamp: null
         labels:
           name: orders
+          version: v1
+      spec:
+        serviceAccountName: sockshop-orders
+        containers:
+        - env:
+          - name: ZIPKIN
+            value: zipkin.jaeger.svc.cluster.local
+          - name: JAVA_OPTS
+            value: -Xms64m -Xmx128m -XX:PermSize=32m -XX:MaxPermSize=64m -XX:+UseG1GC
+              -Djava.security.egd=file:/dev/urandom
+          image: weaveworksdemos/orders:0.4.7
+          imagePullPolicy: IfNotPresent
+          name: orders
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources: {}
+          securityContext:
+            capabilities:
+              add:
+              - NET_BIND_SERVICE
+              drop:
+              - all
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 10001
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /tmp
+            name: tmp-volume
+        dnsPolicy: ClusterFirst
+        nodeSelector:
+          beta.kubernetes.io/os: linux
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - emptyDir:
+            medium: Memory
+          name: tmp-volume
+  status: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    creationTimestamp: null
+    labels:
+      name: orders
+      version: v2
+    name: orders-v2
+    namespace: sockshop
+  spec:
+    progressDeadlineSeconds: 2147483647
+    replicas: 1
+    revisionHistoryLimit: 2147483647
+    selector:
+      matchLabels:
+        name: orders
+        version: v2
+    strategy:
+      rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 1
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          name: orders
+          version: v2
+      spec:
+        serviceAccountName: sockshop-orders
+        containers:
+        - env:
+          - name: ZIPKIN
+            value: zipkin.jaeger.svc.cluster.local
+          - name: JAVA_OPTS
+            value: -Xms64m -Xmx128m -XX:PermSize=32m -XX:MaxPermSize=64m -XX:+UseG1GC
+              -Djava.security.egd=file:/dev/urandom
+          image: weaveworksdemos/orders:0.4.7
+          imagePullPolicy: IfNotPresent
+          name: orders
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources: {}
+          securityContext:
+            capabilities:
+              add:
+              - NET_BIND_SERVICE
+              drop:
+              - all
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 10001
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /tmp
+            name: tmp-volume
+        dnsPolicy: ClusterFirst
+        nodeSelector:
+          beta.kubernetes.io/os: linux
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - emptyDir:
+            medium: Memory
+          name: tmp-volume
+  status: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    creationTimestamp: null
+    labels:
+      name: orders
+      version: v3
+    name: orders-v3
+    namespace: sockshop
+  spec:
+    progressDeadlineSeconds: 2147483647
+    replicas: 1
+    revisionHistoryLimit: 2147483647
+    selector:
+      matchLabels:
+        name: orders
+        version: v3
+    strategy:
+      rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 1
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          name: orders
+          version: v3
+      spec:
+        serviceAccountName: sockshop-orders
+        containers:
+        - env:
+          - name: ZIPKIN
+            value: zipkin.jaeger.svc.cluster.local
+          - name: JAVA_OPTS
+            value: -Xms64m -Xmx128m -XX:PermSize=32m -XX:MaxPermSize=64m -XX:+UseG1GC
+              -Djava.security.egd=file:/dev/urandom
+          image: weaveworksdemos/orders:0.4.7
+          imagePullPolicy: IfNotPresent
+          name: orders
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources: {}
+          securityContext:
+            capabilities:
+              add:
+              - NET_BIND_SERVICE
+              drop:
+              - all
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 10001
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /tmp
+            name: tmp-volume
+        dnsPolicy: ClusterFirst
+        nodeSelector:
+          beta.kubernetes.io/os: linux
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - emptyDir:
+            medium: Memory
+          name: tmp-volume
+  status: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    creationTimestamp: null
+    labels:
+      name: orders
+      version: v4
+    name: orders-v4
+    namespace: sockshop
+  spec:
+    progressDeadlineSeconds: 2147483647
+    replicas: 1
+    revisionHistoryLimit: 2147483647
+    selector:
+      matchLabels:
+        name: orders
+        version: v4
+    strategy:
+      rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 1
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          name: orders
+          version: v4
+      spec:
+        serviceAccountName: sockshop-orders
+        containers:
+        - env:
+          - name: ZIPKIN
+            value: zipkin.jaeger.svc.cluster.local
+          - name: JAVA_OPTS
+            value: -Xms64m -Xmx128m -XX:PermSize=32m -XX:MaxPermSize=64m -XX:+UseG1GC
+              -Djava.security.egd=file:/dev/urandom
+          image: weaveworksdemos/orders:0.4.7
+          imagePullPolicy: IfNotPresent
+          name: orders
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources: {}
+          securityContext:
+            capabilities:
+              add:
+              - NET_BIND_SERVICE
+              drop:
+              - all
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 10001
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /tmp
+            name: tmp-volume
+        dnsPolicy: ClusterFirst
+        nodeSelector:
+          beta.kubernetes.io/os: linux
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - emptyDir:
+            medium: Memory
+          name: tmp-volume
+  status: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    creationTimestamp: null
+    labels:
+      name: orders
+      version: v5
+    name: orders-v5
+    namespace: sockshop
+  spec:
+    progressDeadlineSeconds: 2147483647
+    replicas: 1
+    revisionHistoryLimit: 2147483647
+    selector:
+      matchLabels:
+        name: orders
+        version: v5
+    strategy:
+      rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 1
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          name: orders
+          version: v5
       spec:
         serviceAccountName: sockshop-orders
         containers:

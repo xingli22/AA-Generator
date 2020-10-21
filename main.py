@@ -34,6 +34,8 @@ policy_r = {}
 policy_b = {}
 new_phase_1 = 0
 graph = Graph("")
+generation_time = {}
+
 
 
 def get_template():
@@ -320,7 +322,7 @@ def build_policy_with_version(current_node, permission):
     policy['metadata']['namespace'] = graph.application_name  # todo: need confirmation
     policy['spec']['selector']['matchLabels']['app'] = permission.target_service
 
-    service_account = graph.application_name + '-' + current_node.service_name
+    service_account = graph.application_name + '-' + current_node.service_name +'-'+ current_node.service_version
     if current_node.service_account != '':
         service_account = current_node.service_account
 
@@ -427,6 +429,7 @@ def policy_generation(app, ifversion, mode, islist):
     for yaml_data in deployment_data:
         if yaml_data is not None:
             if yaml_data.get('kind') == 'Deployment':  # deployment: generate from template
+                gen_time_1_s = time.time()
                 # build the node
                 if 'labels' not in yaml_data.get('metadata') and app != 'boutique':
                     print('[AA error]: deployment ' + yaml_data.get('metadata').get('name') + ' no labels')
@@ -450,6 +453,9 @@ def policy_generation(app, ifversion, mode, islist):
                 except FileNotFoundError:
                     print('[AA error]: ' + manifest_path + ' not found')
                     graph.add_node(node)
+                    gen_time_1_e = time.time()
+                    gen_time_1 = 1000 * (gen_time_1_e - gen_time_1_s)
+                    generation_time[service_name] = gen_time_1
                     continue
                 requests = manifest_file['requests']
                 for request in requests:
@@ -470,6 +476,9 @@ def policy_generation(app, ifversion, mode, islist):
                     node.set_covered()
                     if node in candidate_nodes:
                         candidate_nodes.remove(node)
+                gen_time_1_e = time.time()
+                gen_time_1 = 1000*(gen_time_1_e - gen_time_1_s)
+                generation_time[service_name] = gen_time_1
 
             elif yaml_data.get('kind') == 'Service':  # service: register it
                 # if 'labels' not in yaml_data.get('metadata'):
@@ -500,6 +509,7 @@ def policy_generation(app, ifversion, mode, islist):
     # finish deployment file analysis, start to generate policies
     build_start = time.time()
     for current_node in candidate_nodes:
+        gen_time_2_s = time.time()
         if len(current_node.permissions) != 0:
             for permission in current_node.permissions.values():
                 if permission.active is True and permission.generated is False:
@@ -511,6 +521,9 @@ def policy_generation(app, ifversion, mode, islist):
                     policies.append(policy)
         else:
             print('[AA error]: candidate does not have permissions')
+        gen_time_2_e = time.time()
+        gen_time_2 = (gen_time_2_e - gen_time_2_s)* 1000
+        generation_time[current_node.service_name] = generation_time[current_node.service_name] + gen_time_2
     build_end = time.time()
     build_time = (build_end - build_start) * 1000
     # pprint(roles)
@@ -689,7 +702,7 @@ def policy_generation_anyway(app, ifversion, mode, islist):
                     print('[AA error]: deployment ' + service_name + ' no version')
                 node = PermissionNode(service_name, service_version)
 
-                service_account = yaml_data.get('spec').get('template').get('spec').get('serviceAccountName')
+                service_account = None #yaml_data.get('spec').get('template').get('spec').get('serviceAccountName')
                 if service_account is not None:
                     node.set_service_account(service_account)
 
@@ -932,9 +945,9 @@ if __name__ == '__main__':
     version = False
     islist = False
 
-    this_app = 4
-    this_mode = 0
-    this_test = 0
+    this_app = 1
+    this_mode = 4
+    this_test = 1
     this_round =1
 
     app_name = apps[this_app]
@@ -951,6 +964,7 @@ if __name__ == '__main__':
     process_time_2 = []
     process_time_3 = []
     build_times = []
+    time_table={}
 
     for i in range(this_round):
         graph = Graph(app_name)
@@ -962,7 +976,9 @@ if __name__ == '__main__':
             print(len(policies))
             end_t = time.time()
             total_t = (end_t - start_t) * 1000
-            print(total_t)
+            # print(total_t)
+
+            #pprint(generation_time)
         else:
             start_time_1 = time.time()
             mode = modes[0]
@@ -971,6 +987,11 @@ if __name__ == '__main__':
             end_time_1 = time.time()
             total_time_1 = (end_time_1 - start_time_1) * 1000
             process_time_1.append(total_time_1)
+            # pprint(generation_time)
+            for (service_name, g_time) in generation_time.items():
+                if service_name not in time_table:
+                    time_table[service_name] = []
+                time_table[service_name].append(g_time)
 
             start_time_2 = time.time()
             mode = modes[1]
@@ -992,6 +1013,12 @@ if __name__ == '__main__':
 
         # build_times.append(build_time)
         # print(total_time)
+
+    for (service_name, g_times) in time_table.items():
+        mean_service = mean(g_times)
+        std_service = std(g_times)
+        print(service_name+ ' mean: %.2f, std: %.2f' %(round(mean_service,2), round(std_service,2)))
+
 
     mean_time_1 = mean(process_time_1)
     std_time_1 = std(process_time_1)

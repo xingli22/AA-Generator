@@ -11,13 +11,13 @@ name: web-rest
 requests:
   - target: device-management
     type: grpc
-    num: 114
+    num: 86 #114
   - target: instance-management
     type: grpc
     num: 17
   - target: event-management
     type: grpc
-    num: 41
+    num: 16 #41
   - target: label-generation
     type: grpc
     num: 10
@@ -26,7 +26,7 @@ requests:
     num: 10
   - target: schedule-management
     type: grpc
-    num: 15
+    num: 12 #15
   - target: device-state
     type: grpc
     num: 1

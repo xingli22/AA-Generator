@@ -1,33 +1,14 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: batch-operations-v1--1763911967986573697
+  name: device-registration-v2-2738688384154507883
   namespace: sitewhere
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-batch-operations
-    to:
-    - operation:
-        paths:
-        - /0
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: batch-operations-v1--6522912765457300176
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-batch-operations
+        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
     to:
     - operation:
         paths:
@@ -39,14 +20,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: batch-operations-v1--1912757630078643713
+  name: device-registration-v2--1131546202968356375
   namespace: sitewhere
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-batch-operations
+        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
     to:
     - operation:
         paths:
@@ -58,14 +39,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: batch-operations-v1-4594912521468575498
+  name: device-registration-v2--3214574381856627150
   namespace: sitewhere
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-batch-operations
+        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
     to:
     - operation:
         paths:
@@ -77,14 +58,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: batch-operations-v1--1447450868974307796
+  name: device-registration-v2-2949332027356917145
   namespace: sitewhere
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-batch-operations
+        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
     to:
     - operation:
         paths:
@@ -96,14 +77,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: batch-operations-v1-3429129327525711325
+  name: device-registration-v2-3201497677865288425
   namespace: sitewhere
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-batch-operations
+        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
     to:
     - operation:
         paths:
@@ -115,185 +96,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: batch-operations-v1-5105470508882255115
+  name: device-registration-v2-6742828324325467068
   namespace: sitewhere
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-batch-operations
-    to:
-    - operation:
-        ports:
-        - '12345'
-  selector:
-    matchLabels:
-      app: cp-kafka
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: batch-operations-v1-744852025380996588
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-batch-operations
-    to:
-    - operation:
-        ports:
-        - '12345'
-  selector:
-    matchLabels:
-      app: mongodb
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: event-sources-v1--1763911967986573697
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-event-sources
-    to:
-    - operation:
-        paths:
-        - /0
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: event-sources-v1-5105470508882255115
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-event-sources
-    to:
-    - operation:
-        ports:
-        - '12345'
-  selector:
-    matchLabels:
-      app: cp-kafka
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: command-delivery-v1--6522912765457300176
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-command-delivery
-    to:
-    - operation:
-        paths:
-        - /0
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: command-delivery-v1--1912757630078643713
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-command-delivery
-    to:
-    - operation:
-        paths:
-        - /1
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: command-delivery-v1-4594912521468575498
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-command-delivery
-    to:
-    - operation:
-        paths:
-        - /2
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: command-delivery-v1--1447450868974307796
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-command-delivery
-    to:
-    - operation:
-        paths:
-        - /3
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: command-delivery-v1-3429129327525711325
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-command-delivery
-    to:
-    - operation:
-        paths:
-        - /4
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: command-delivery-v1--7843392069542932402
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-command-delivery
+        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
     to:
     - operation:
         paths:
@@ -305,14 +115,90 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: command-delivery-v1-5105470508882255115
+  name: device-registration-v2--7721605016575645295
   namespace: sitewhere
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-command-delivery
+        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
+    to:
+    - operation:
+        paths:
+        - /6
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: device-registration-v2-2464859620533962303
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
+    to:
+    - operation:
+        paths:
+        - /7
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: device-registration-v2-5413454754887543013
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
+    to:
+    - operation:
+        paths:
+        - /8
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: device-registration-v2-6513976655369348865
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
+    to:
+    - operation:
+        paths:
+        - /9
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: device-registration-v2--3355117559464515939
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
     to:
     - operation:
         ports:
@@ -324,14 +210,33 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: device-state-v1--1763911967986573697
+  name: rule-processing-v2-2738688384154507883
   namespace: sitewhere
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-device-state
+        - cluster.local/ns/sitewhere/sa/sitewhere-rule-processing
+    to:
+    - operation:
+        paths:
+        - /0
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: rule-processing-v2--4829469864935579609
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-rule-processing
     to:
     - operation:
         paths:
@@ -343,14 +248,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: device-state-v1-5105470508882255115
+  name: rule-processing-v2--3355117559464515939
   namespace: sitewhere
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-device-state
+        - cluster.local/ns/sitewhere/sa/sitewhere-rule-processing
     to:
     - operation:
         ports:
@@ -362,83 +267,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: device-state-v1-744852025380996588
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-device-state
-    to:
-    - operation:
-        ports:
-        - '12345'
-  selector:
-    matchLabels:
-      app: mongodb
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: inbound-processing-v1--6522912765457300176
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-inbound-processing
-    to:
-    - operation:
-        paths:
-        - /0
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: inbound-processing-v1--1912757630078643713
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-inbound-processing
-    to:
-    - operation:
-        paths:
-        - /1
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: inbound-processing-v1-5105470508882255115
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-inbound-processing
-    to:
-    - operation:
-        ports:
-        - '12345'
-  selector:
-    matchLabels:
-      app: cp-kafka
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: streaming-media-v1-744852025380996588
+  name: streaming-media-v2--5181324675871591718
   namespace: sitewhere
 spec:
   rules:
@@ -457,3035 +286,33 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: web-rest-v1--6522912765457300176
+  name: device-management-v2--3355117559464515939
   namespace: sitewhere
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+        - cluster.local/ns/sitewhere/sa/sitewhere-device-management
     to:
     - operation:
-        paths:
-        - /0
+        ports:
+        - '12345'
   selector:
     matchLabels:
-      app: device-management
+      app: cp-kafka
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: web-rest-v1--1912757630078643713
+  name: device-management-v2--5181324675871591718
   namespace: sitewhere
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /1
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-4594912521468575498
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /2
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--1447450868974307796
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /3
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-3429129327525711325
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /4
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--7843392069542932402
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /5
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--4630414742665364868
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /6
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-5433938459870860016
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /7
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--6594637365761834603
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /8
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-8633530350329795851
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /9
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-9216537197482762393
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /10
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--7522457781898349738
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /11
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--6171326789293311739
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /12
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--4298179422164310093
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /13
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-5425521367317145421
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /14
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-7046568209216384958
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /15
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--1410808219703028401
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /16
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-6189350293576734499
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /17
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--8539921174322396714
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /18
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-5289927710922353047
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /19
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--4357935201058911780
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /20
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-6859889586077633179
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /21
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-591596908228737992
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /22
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--7421543951454025859
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /23
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-3256654185559157721
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /24
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--1785362710331757556
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /25
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--2379528813166013394
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /26
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-465350974889008630
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /27
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-8109479148764638194
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /28
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-8133127827834104457
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /29
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-421054516917077318
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /30
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--3838570716926483966
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /31
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--7876014005111635499
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /32
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--3817866161312483207
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /33
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--4523178712717287326
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /34
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-4280843982923171983
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /35
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-3401303647534553661
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /36
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-7981671625027626671
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /37
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--2428285647594127651
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /38
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--7139058238981788325
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /39
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-8369544536130415796
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /40
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-7738279442007667661
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /41
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-4091126609067909960
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /42
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-8897728777460045099
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /43
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-1601180900351028742
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /44
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-2418131515581151284
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /45
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--445744069000145182
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /46
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--2600881941427332508
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /47
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-814606188569753612
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /48
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-2711621236998659477
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /49
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--8565377859554025245
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /50
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-7125344574114041549
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /51
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-4225849061319012945
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /52
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-3634960543287159209
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /53
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--6056189472563503083
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /54
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-7223779258543319936
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /55
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-8446865994518822485
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /56
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-5797511799450173663
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /57
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--8532165112981572221
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /58
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--8618032089988982383
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /59
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--138600849356131033
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /60
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-1103640481243827618
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /61
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-6229891885492224621
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /62
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--7270333202193073109
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /63
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--2117218490172536885
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /64
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--8389702604781674015
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /65
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--8119789037983643305
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /66
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--3154816499835382859
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /67
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--3880040732704682125
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /68
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--1331716371321923212
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /69
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--6967731781444112615
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /70
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-8022107611225716341
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /71
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--2831350555447769499
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /72
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-7484367365668779425
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /73
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-15161692525292798
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /74
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-1404600669555286297
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /75
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-7219267002503112652
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /76
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--2299370284977817490
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /77
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--4970256163611006536
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /78
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--1790274468520453566
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /79
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--7162184881079673067
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /80
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--6277445867521434484
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /81
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--2797547847518867695
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /82
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-8538675468740148471
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /83
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--5356378928645299919
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /84
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--9151507465795074266
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /85
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-5361727274858412361
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /0
-  selector:
-    matchLabels:
-      app: instance-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-7284476178906450836
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /1
-  selector:
-    matchLabels:
-      app: instance-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--7880433960247958817
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /2
-  selector:
-    matchLabels:
-      app: instance-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-1304124105988610885
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /3
-  selector:
-    matchLabels:
-      app: instance-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-5918597306144238637
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /4
-  selector:
-    matchLabels:
-      app: instance-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-6408433504985064995
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /5
-  selector:
-    matchLabels:
-      app: instance-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--3329296343025715571
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /6
-  selector:
-    matchLabels:
-      app: instance-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-8528652777042081992
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /7
-  selector:
-    matchLabels:
-      app: instance-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-348103346474464758
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /8
-  selector:
-    matchLabels:
-      app: instance-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--2694588490794619841
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /9
-  selector:
-    matchLabels:
-      app: instance-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--7460549893298921483
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /10
-  selector:
-    matchLabels:
-      app: instance-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-2702989121558511673
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /11
-  selector:
-    matchLabels:
-      app: instance-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-6398562857679790842
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /12
-  selector:
-    matchLabels:
-      app: instance-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--6705859367825767353
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /13
-  selector:
-    matchLabels:
-      app: instance-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--1667712846500540889
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /14
-  selector:
-    matchLabels:
-      app: instance-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--8448916542050331674
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /15
-  selector:
-    matchLabels:
-      app: instance-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--748508971304481347
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /16
-  selector:
-    matchLabels:
-      app: instance-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--1763911967986573697
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /0
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-1181081944702770169
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /1
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--1714269761663463601
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /2
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--2713851627650399789
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /3
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-4866971045910903907
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /4
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-6295009000096998140
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /5
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-8695576794061110530
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /6
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--8208163663938742331
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /7
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-3500588414077603245
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /8
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-4172612120115420974
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /9
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-6108358720721146088
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /10
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--4071390449202377772
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /11
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-3644177049094258543
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /12
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--5531569519227954053
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /13
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-7955729764909651783
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /14
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--1799519289011468468
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /15
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--992664416602466421
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /0
-  selector:
-    matchLabels:
-      app: label-generation
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--8335510595285096018
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /1
-  selector:
-    matchLabels:
-      app: label-generation
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--5379486848059787932
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /2
-  selector:
-    matchLabels:
-      app: label-generation
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-9027564863474023386
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /3
-  selector:
-    matchLabels:
-      app: label-generation
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-6904830336202973822
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /4
-  selector:
-    matchLabels:
-      app: label-generation
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--8391472549886917678
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /5
-  selector:
-    matchLabels:
-      app: label-generation
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--3425287613946411549
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /6
-  selector:
-    matchLabels:
-      app: label-generation
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-6528729645898977423
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /7
-  selector:
-    matchLabels:
-      app: label-generation
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--6058351793896376803
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /8
-  selector:
-    matchLabels:
-      app: label-generation
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-44581931925059075
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /9
-  selector:
-    matchLabels:
-      app: label-generation
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-3683174970948430544
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /0
-  selector:
-    matchLabels:
-      app: asset-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-6132531110433931920
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /1
-  selector:
-    matchLabels:
-      app: asset-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--6071521847165110898
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /2
-  selector:
-    matchLabels:
-      app: asset-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-5371907454473865804
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /3
-  selector:
-    matchLabels:
-      app: asset-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-8171636842550377527
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /4
-  selector:
-    matchLabels:
-      app: asset-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-9214342750987198719
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /5
-  selector:
-    matchLabels:
-      app: asset-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-2305085719460241586
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /6
-  selector:
-    matchLabels:
-      app: asset-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--850436185536155745
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /7
-  selector:
-    matchLabels:
-      app: asset-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--8562456254214799874
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /8
-  selector:
-    matchLabels:
-      app: asset-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-6989394191500724099
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /9
-  selector:
-    matchLabels:
-      app: asset-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--3804216878906131234
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /0
-  selector:
-    matchLabels:
-      app: schedule-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--5378007626334916836
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /1
-  selector:
-    matchLabels:
-      app: schedule-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--1215088874766464310
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /2
-  selector:
-    matchLabels:
-      app: schedule-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--1248576697452388835
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /3
-  selector:
-    matchLabels:
-      app: schedule-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--8749017870652508624
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /4
-  selector:
-    matchLabels:
-      app: schedule-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--8133857768042979059
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /5
-  selector:
-    matchLabels:
-      app: schedule-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-5611906675692290096
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /6
-  selector:
-    matchLabels:
-      app: schedule-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-7884671625151298723
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /7
-  selector:
-    matchLabels:
-      app: schedule-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-7726754945380608593
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /8
-  selector:
-    matchLabels:
-      app: schedule-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-2428703257693867363
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /9
-  selector:
-    matchLabels:
-      app: schedule-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--8202756199379437156
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /10
-  selector:
-    matchLabels:
-      app: schedule-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-3016006017701095427
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /11
-  selector:
-    matchLabels:
-      app: schedule-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--2898877529711334773
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /0
-  selector:
-    matchLabels:
-      app: device-state
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--6012254905969596249
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /0
-  selector:
-    matchLabels:
-      app: batch-operations
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-6686085398268060127
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /1
-  selector:
-    matchLabels:
-      app: batch-operations
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1--6690806409680291583
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /2
-  selector:
-    matchLabels:
-      app: batch-operations
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-1678343432087548546
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /3
-  selector:
-    matchLabels:
-      app: batch-operations
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-5717711570329017922
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /4
-  selector:
-    matchLabels:
-      app: batch-operations
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-5113983022546849277
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /5
-  selector:
-    matchLabels:
-      app: batch-operations
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: web-rest-v1-8762492821547735327
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
-    to:
-    - operation:
-        paths:
-        - /6
-  selector:
-    matchLabels:
-      app: batch-operations
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: asset-management-v1-744852025380996588
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-asset-management
+        - cluster.local/ns/sitewhere/sa/sitewhere-device-management
     to:
     - operation:
         ports:
@@ -3497,691 +324,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: rule-processing-v1--6522912765457300176
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-rule-processing
-    to:
-    - operation:
-        paths:
-        - /0
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: rule-processing-v1--1763911967986573697
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-rule-processing
-    to:
-    - operation:
-        paths:
-        - /0
-  selector:
-    matchLabels:
-      app: event-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: rule-processing-v1-5105470508882255115
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-rule-processing
-    to:
-    - operation:
-        ports:
-        - '12345'
-  selector:
-    matchLabels:
-      app: cp-kafka
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: event-management-v1--6522912765457300176
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-event-management
-    to:
-    - operation:
-        paths:
-        - /0
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: event-management-v1--1912757630078643713
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-event-management
-    to:
-    - operation:
-        paths:
-        - /1
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: event-management-v1-4594912521468575498
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-event-management
-    to:
-    - operation:
-        paths:
-        - /2
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: event-management-v1--1447450868974307796
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-event-management
-    to:
-    - operation:
-        paths:
-        - /3
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: event-management-v1-5105470508882255115
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-event-management
-    to:
-    - operation:
-        ports:
-        - '12345'
-  selector:
-    matchLabels:
-      app: cp-kafka
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: event-management-v1-744852025380996588
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-event-management
-    to:
-    - operation:
-        ports:
-        - '12345'
-  selector:
-    matchLabels:
-      app: mongodb
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: event-management-v1--2954646131326582302
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-event-management
-    to:
-    - operation:
-        ports:
-        - '12345'
-  selector:
-    matchLabels:
-      app: influxdb
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: event-management-v1-1127982320691408000
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-event-management
-    to:
-    - operation:
-        ports:
-        - '12345'
-  selector:
-    matchLabels:
-      app: cassandra
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: device-registration-v1--6522912765457300176
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
-    to:
-    - operation:
-        paths:
-        - /0
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: device-registration-v1--1912757630078643713
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
-    to:
-    - operation:
-        paths:
-        - /1
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: device-registration-v1-4594912521468575498
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
-    to:
-    - operation:
-        paths:
-        - /2
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: device-registration-v1--1447450868974307796
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
-    to:
-    - operation:
-        paths:
-        - /3
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: device-registration-v1-3429129327525711325
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
-    to:
-    - operation:
-        paths:
-        - /4
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: device-registration-v1--7843392069542932402
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
-    to:
-    - operation:
-        paths:
-        - /5
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: device-registration-v1--4630414742665364868
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
-    to:
-    - operation:
-        paths:
-        - /6
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: device-registration-v1-5433938459870860016
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
-    to:
-    - operation:
-        paths:
-        - /7
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: device-registration-v1--6594637365761834603
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
-    to:
-    - operation:
-        paths:
-        - /8
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: device-registration-v1-8633530350329795851
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
-    to:
-    - operation:
-        paths:
-        - /9
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: device-registration-v1-5105470508882255115
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-device-registration
-    to:
-    - operation:
-        ports:
-        - '12345'
-  selector:
-    matchLabels:
-      app: cp-kafka
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: outbound-connectors-v1--6522912765457300176
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
-    to:
-    - operation:
-        paths:
-        - /0
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: outbound-connectors-v1--1912757630078643713
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
-    to:
-    - operation:
-        paths:
-        - /1
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: outbound-connectors-v1-4594912521468575498
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
-    to:
-    - operation:
-        paths:
-        - /2
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: outbound-connectors-v1--1447450868974307796
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
-    to:
-    - operation:
-        paths:
-        - /3
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: outbound-connectors-v1-3429129327525711325
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
-    to:
-    - operation:
-        paths:
-        - /4
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: outbound-connectors-v1--7843392069542932402
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
-    to:
-    - operation:
-        paths:
-        - /5
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: outbound-connectors-v1--4630414742665364868
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
-    to:
-    - operation:
-        paths:
-        - /6
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: outbound-connectors-v1-5433938459870860016
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
-    to:
-    - operation:
-        paths:
-        - /7
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: outbound-connectors-v1--6594637365761834603
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
-    to:
-    - operation:
-        paths:
-        - /8
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: outbound-connectors-v1-8633530350329795851
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
-    to:
-    - operation:
-        paths:
-        - /9
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: outbound-connectors-v1-9216537197482762393
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
-    to:
-    - operation:
-        paths:
-        - /10
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: outbound-connectors-v1--7522457781898349738
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
-    to:
-    - operation:
-        paths:
-        - /11
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: outbound-connectors-v1--6171326789293311739
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
-    to:
-    - operation:
-        paths:
-        - /12
-  selector:
-    matchLabels:
-      app: device-management
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: outbound-connectors-v1-5105470508882255115
-  namespace: sitewhere
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
-    to:
-    - operation:
-        ports:
-        - '12345'
-  selector:
-    matchLabels:
-      app: cp-kafka
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: schedule-management-v1-744852025380996588
+  name: schedule-management-v2--5181324675871591718
   namespace: sitewhere
 spec:
   rules:
@@ -4200,7 +343,216 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: label-generation-v1--6522912765457300176
+  name: device-state-v2--4829469864935579609
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-device-state
+    to:
+    - operation:
+        paths:
+        - /0
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: device-state-v2--3355117559464515939
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-device-state
+    to:
+    - operation:
+        ports:
+        - '12345'
+  selector:
+    matchLabels:
+      app: cp-kafka
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: device-state-v2--5181324675871591718
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-device-state
+    to:
+    - operation:
+        ports:
+        - '12345'
+  selector:
+    matchLabels:
+      app: mongodb
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: command-delivery-v2-2738688384154507883
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-command-delivery
+    to:
+    - operation:
+        paths:
+        - /0
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: command-delivery-v2--1131546202968356375
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-command-delivery
+    to:
+    - operation:
+        paths:
+        - /1
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: command-delivery-v2--3214574381856627150
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-command-delivery
+    to:
+    - operation:
+        paths:
+        - /2
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: command-delivery-v2-2949332027356917145
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-command-delivery
+    to:
+    - operation:
+        paths:
+        - /3
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: command-delivery-v2-3201497677865288425
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-command-delivery
+    to:
+    - operation:
+        paths:
+        - /4
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: command-delivery-v2-6742828324325467068
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-command-delivery
+    to:
+    - operation:
+        paths:
+        - /5
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: command-delivery-v2--3355117559464515939
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-command-delivery
+    to:
+    - operation:
+        ports:
+        - '12345'
+  selector:
+    matchLabels:
+      app: cp-kafka
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: asset-management-v2--5181324675871591718
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-asset-management
+    to:
+    - operation:
+        ports:
+        - '12345'
+  selector:
+    matchLabels:
+      app: mongodb
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: label-generation-v2-2738688384154507883
   namespace: sitewhere
 spec:
   rules:
@@ -4219,7 +571,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: label-generation-v1--1912757630078643713
+  name: label-generation-v2--1131546202968356375
   namespace: sitewhere
 spec:
   rules:
@@ -4238,7 +590,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: label-generation-v1-4594912521468575498
+  name: label-generation-v2--3214574381856627150
   namespace: sitewhere
 spec:
   rules:
@@ -4257,7 +609,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: label-generation-v1--1447450868974307796
+  name: label-generation-v2-2949332027356917145
   namespace: sitewhere
 spec:
   rules:
@@ -4276,7 +628,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: label-generation-v1-3429129327525711325
+  name: label-generation-v2-3201497677865288425
   namespace: sitewhere
 spec:
   rules:
@@ -4295,7 +647,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: label-generation-v1--7843392069542932402
+  name: label-generation-v2-6742828324325467068
   namespace: sitewhere
 spec:
   rules:
@@ -4314,7 +666,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: label-generation-v1--4630414742665364868
+  name: label-generation-v2--7721605016575645295
   namespace: sitewhere
 spec:
   rules:
@@ -4333,7 +685,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: label-generation-v1-5433938459870860016
+  name: label-generation-v2-2464859620533962303
   namespace: sitewhere
 spec:
   rules:
@@ -4352,7 +704,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: label-generation-v1-3683174970948430544
+  name: label-generation-v2-7929748942930495798
   namespace: sitewhere
 spec:
   rules:
@@ -4371,7 +723,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: label-generation-v1-6132531110433931920
+  name: label-generation-v2--2310176876539079653
   namespace: sitewhere
 spec:
   rules:
@@ -4390,14 +742,261 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: device-management-v1-5105470508882255115
+  name: outbound-connectors-v2-2738688384154507883
   namespace: sitewhere
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-device-management
+        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
+    to:
+    - operation:
+        paths:
+        - /0
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: outbound-connectors-v2--1131546202968356375
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
+    to:
+    - operation:
+        paths:
+        - /1
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: outbound-connectors-v2--3214574381856627150
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
+    to:
+    - operation:
+        paths:
+        - /2
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: outbound-connectors-v2-2949332027356917145
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
+    to:
+    - operation:
+        paths:
+        - /3
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: outbound-connectors-v2-3201497677865288425
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
+    to:
+    - operation:
+        paths:
+        - /4
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: outbound-connectors-v2-6742828324325467068
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
+    to:
+    - operation:
+        paths:
+        - /5
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: outbound-connectors-v2--7721605016575645295
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
+    to:
+    - operation:
+        paths:
+        - /6
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: outbound-connectors-v2-2464859620533962303
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
+    to:
+    - operation:
+        paths:
+        - /7
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: outbound-connectors-v2-5413454754887543013
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
+    to:
+    - operation:
+        paths:
+        - /8
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: outbound-connectors-v2-6513976655369348865
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
+    to:
+    - operation:
+        paths:
+        - /9
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: outbound-connectors-v2--5684529082389405504
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
+    to:
+    - operation:
+        paths:
+        - /10
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: outbound-connectors-v2--6705153132113973918
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
+    to:
+    - operation:
+        paths:
+        - /11
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: outbound-connectors-v2-5119860068273280017
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
+    to:
+    - operation:
+        paths:
+        - /12
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: outbound-connectors-v2--3355117559464515939
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-outbound-connectors
     to:
     - operation:
         ports:
@@ -4409,26 +1008,45 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: device-management-v1-744852025380996588
+  name: event-sources-v2--4829469864935579609
   namespace: sitewhere
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/sitewhere/sa/sitewhere-device-management
+        - cluster.local/ns/sitewhere/sa/sitewhere-event-sources
+    to:
+    - operation:
+        paths:
+        - /0
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: event-sources-v2--3355117559464515939
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-event-sources
     to:
     - operation:
         ports:
         - '12345'
   selector:
     matchLabels:
-      app: mongodb
+      app: cp-kafka
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: instance-management-v1--6350188767414097422
+  name: instance-management-v2--9041838969016206208
   namespace: sitewhere
 spec:
   rules:
@@ -4447,7 +1065,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: instance-management-v1-5105470508882255115
+  name: instance-management-v2--3355117559464515939
   namespace: sitewhere
 spec:
   rules:
@@ -4462,3 +1080,3385 @@ spec:
   selector:
     matchLabels:
       app: cp-kafka
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: inbound-processing-v2-2738688384154507883
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-inbound-processing
+    to:
+    - operation:
+        paths:
+        - /0
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: inbound-processing-v2--1131546202968356375
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-inbound-processing
+    to:
+    - operation:
+        paths:
+        - /1
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: inbound-processing-v2--3355117559464515939
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-inbound-processing
+    to:
+    - operation:
+        ports:
+        - '12345'
+  selector:
+    matchLabels:
+      app: cp-kafka
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-2738688384154507883
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /0
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--1131546202968356375
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /1
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--3214574381856627150
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /2
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-2949332027356917145
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /3
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-3201497677865288425
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /4
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-6742828324325467068
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /5
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--7721605016575645295
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /6
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-2464859620533962303
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /7
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-5413454754887543013
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /8
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-6513976655369348865
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /9
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--5684529082389405504
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /10
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--6705153132113973918
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /11
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-5119860068273280017
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /12
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--6751917286320392434
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /13
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-17713989802057591
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /14
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--7372232882723758921
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /15
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--1636208955161533754
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /16
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-8667042131155788953
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /17
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--4603283955361466789
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /18
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--8250921202853164979
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /19
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--5356737775640052904
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /20
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--3297825642621331766
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /21
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-7794662156167733927
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /22
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--4405535656751236798
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /23
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-1314671925255727059
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /24
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--4556494049513579773
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /25
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-4783018986046623604
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /26
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-666254109927583311
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /27
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-5080810204014865815
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /28
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-3735703688293170522
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /29
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--1270271721474030306
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /30
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-7158604810631820378
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /31
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--6011071560172266406
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /32
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--257681560909305237
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /33
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--6232104767608347598
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /34
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--6014402606031303483
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /35
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-5173303614916367132
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /36
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--8506049413572081218
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /37
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-5520212700247294880
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /38
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--1047671966210385412
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /39
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--8577543116202202558
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /40
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-6014566793347748737
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /41
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-1647415980906180682
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /42
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--4297302111012348845
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /43
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--3007873148378703581
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /44
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--7087638175364777792
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /45
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-5226363090379690802
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /46
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--3929841562790542336
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /47
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-5020672759466684134
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /48
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--3565491910647316579
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /49
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--2185109217582311895
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /50
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--2694875858408293113
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /51
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--5010180415624921305
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /52
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-810474419566190283
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /53
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-8943633854548340169
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /54
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-2808394512141052822
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /55
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-7354649770926162333
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /56
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--1712757697246430056
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /57
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-6702753941269314605
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /58
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-3703489584032409925
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /59
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-9126564231812718557
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /60
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-8306441221052507202
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /61
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-4975006853535227319
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /62
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--4451715423454208037
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /63
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-4929288025628582984
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /64
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-6043487328956396653
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /65
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-8954260669786272019
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /66
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-3354504191236063471
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /67
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--9138695479708412344
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /68
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-735052110284462621
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /69
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--6327376147914931146
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /70
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--2922492233066047675
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /71
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--3537093014676892306
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /72
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-6515671493861146487
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /73
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-5775685721634908811
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /74
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--6386388493086382074
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /75
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--2515298969077196172
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /76
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-2301414013994049262
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /77
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-5442645562120876811
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /78
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-4151315664078989475
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /79
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-5270739372997604508
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /80
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--4784702793758163381
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /81
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-8311673142287054418
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /82
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-1654173144568825211
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /83
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--8464174438355048467
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /84
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-7511796194033476556
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /85
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--1229020474549467145
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /0
+  selector:
+    matchLabels:
+      app: instance-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-5288643189688221738
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /1
+  selector:
+    matchLabels:
+      app: instance-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--7900679231643834364
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /2
+  selector:
+    matchLabels:
+      app: instance-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-1555331655995452231
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /3
+  selector:
+    matchLabels:
+      app: instance-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--6139360151085113574
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /4
+  selector:
+    matchLabels:
+      app: instance-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-2088960483194736465
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /5
+  selector:
+    matchLabels:
+      app: instance-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-1424939722330582420
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /6
+  selector:
+    matchLabels:
+      app: instance-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-69941588508121037
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /7
+  selector:
+    matchLabels:
+      app: instance-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-5794542057604771974
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /8
+  selector:
+    matchLabels:
+      app: instance-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--6032696297663641968
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /9
+  selector:
+    matchLabels:
+      app: instance-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-3985411558221944674
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /10
+  selector:
+    matchLabels:
+      app: instance-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--7986781591769916245
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /11
+  selector:
+    matchLabels:
+      app: instance-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--107910568466484554
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /12
+  selector:
+    matchLabels:
+      app: instance-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--3699515208116826515
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /13
+  selector:
+    matchLabels:
+      app: instance-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-1934104992205663046
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /14
+  selector:
+    matchLabels:
+      app: instance-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--91941583260975968
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /15
+  selector:
+    matchLabels:
+      app: instance-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-8649018108100406552
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /16
+  selector:
+    matchLabels:
+      app: instance-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--4829469864935579609
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /0
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--8058023515778032092
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /1
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--2940931388601295471
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /2
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-4692742142939489014
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /3
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--21685842858870820
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /4
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--3258799892232595331
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /5
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-8771851666860202570
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /6
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-3667657933074675677
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /7
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-779268739059583897
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /8
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-1721883289001755140
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /9
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--8346530519728369801
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /10
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-4643101838705873555
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /11
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-6576530236002224236
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /12
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-6228186793646407942
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /13
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--5658865313354427454
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /14
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--5534236096288287577
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /15
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-5130990807013832077
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /0
+  selector:
+    matchLabels:
+      app: label-generation
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-481956189872942456
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /1
+  selector:
+    matchLabels:
+      app: label-generation
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--8970406245676440382
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /2
+  selector:
+    matchLabels:
+      app: label-generation
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-2655200501402412090
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /3
+  selector:
+    matchLabels:
+      app: label-generation
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-3794932056484168581
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /4
+  selector:
+    matchLabels:
+      app: label-generation
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-2179097170568500535
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /5
+  selector:
+    matchLabels:
+      app: label-generation
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-1166380679579527959
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /6
+  selector:
+    matchLabels:
+      app: label-generation
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-8627434070322513857
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /7
+  selector:
+    matchLabels:
+      app: label-generation
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--7513279614312505247
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /8
+  selector:
+    matchLabels:
+      app: label-generation
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-8718057816327063255
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /9
+  selector:
+    matchLabels:
+      app: label-generation
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-7929748942930495798
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /0
+  selector:
+    matchLabels:
+      app: asset-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--2310176876539079653
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /1
+  selector:
+    matchLabels:
+      app: asset-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-8731909106691661027
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /2
+  selector:
+    matchLabels:
+      app: asset-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-4874969148342372021
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /3
+  selector:
+    matchLabels:
+      app: asset-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--8899716952541040413
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /4
+  selector:
+    matchLabels:
+      app: asset-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--8473308868607856238
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /5
+  selector:
+    matchLabels:
+      app: asset-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--7836654916802237866
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /6
+  selector:
+    matchLabels:
+      app: asset-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--6347687751581180234
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /7
+  selector:
+    matchLabels:
+      app: asset-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--2281068822056880493
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /8
+  selector:
+    matchLabels:
+      app: asset-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-540035650595797869
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /9
+  selector:
+    matchLabels:
+      app: asset-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-7834542279968712772
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /0
+  selector:
+    matchLabels:
+      app: schedule-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-5585600910524766826
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /1
+  selector:
+    matchLabels:
+      app: schedule-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-492589295635676297
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /2
+  selector:
+    matchLabels:
+      app: schedule-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-8585700162925754447
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /3
+  selector:
+    matchLabels:
+      app: schedule-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--9020483067981525284
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /4
+  selector:
+    matchLabels:
+      app: schedule-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--3997449819648032104
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /5
+  selector:
+    matchLabels:
+      app: schedule-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--474488129992239679
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /6
+  selector:
+    matchLabels:
+      app: schedule-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--2916417540461811210
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /7
+  selector:
+    matchLabels:
+      app: schedule-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-659600363754204819
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /8
+  selector:
+    matchLabels:
+      app: schedule-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-4532752084807791462
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /9
+  selector:
+    matchLabels:
+      app: schedule-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--7019429050658671259
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /10
+  selector:
+    matchLabels:
+      app: schedule-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-2562639788531263074
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /11
+  selector:
+    matchLabels:
+      app: schedule-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-177980549062097123
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /0
+  selector:
+    matchLabels:
+      app: device-state
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-5478738545721239731
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /0
+  selector:
+    matchLabels:
+      app: batch-operations
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--1544697798603409082
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /1
+  selector:
+    matchLabels:
+      app: batch-operations
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--3098246594817317133
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /2
+  selector:
+    matchLabels:
+      app: batch-operations
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--2182118792245494280
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /3
+  selector:
+    matchLabels:
+      app: batch-operations
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2-6034809051299675503
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /4
+  selector:
+    matchLabels:
+      app: batch-operations
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--5734640352567652001
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /5
+  selector:
+    matchLabels:
+      app: batch-operations
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: web-rest-v2--7054406360499984121
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-web-rest
+    to:
+    - operation:
+        paths:
+        - /6
+  selector:
+    matchLabels:
+      app: batch-operations
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: batch-operations-v2--4829469864935579609
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-batch-operations
+    to:
+    - operation:
+        paths:
+        - /0
+  selector:
+    matchLabels:
+      app: event-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: batch-operations-v2-2738688384154507883
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-batch-operations
+    to:
+    - operation:
+        paths:
+        - /0
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: batch-operations-v2--1131546202968356375
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-batch-operations
+    to:
+    - operation:
+        paths:
+        - /1
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: batch-operations-v2--3214574381856627150
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-batch-operations
+    to:
+    - operation:
+        paths:
+        - /2
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: batch-operations-v2-2949332027356917145
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-batch-operations
+    to:
+    - operation:
+        paths:
+        - /3
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: batch-operations-v2-3201497677865288425
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-batch-operations
+    to:
+    - operation:
+        paths:
+        - /4
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: batch-operations-v2--3355117559464515939
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-batch-operations
+    to:
+    - operation:
+        ports:
+        - '12345'
+  selector:
+    matchLabels:
+      app: cp-kafka
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: batch-operations-v2--5181324675871591718
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-batch-operations
+    to:
+    - operation:
+        ports:
+        - '12345'
+  selector:
+    matchLabels:
+      app: mongodb
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: event-management-v2-2738688384154507883
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-event-management
+    to:
+    - operation:
+        paths:
+        - /0
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: event-management-v2--1131546202968356375
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-event-management
+    to:
+    - operation:
+        paths:
+        - /1
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: event-management-v2--3214574381856627150
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-event-management
+    to:
+    - operation:
+        paths:
+        - /2
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: event-management-v2-2949332027356917145
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-event-management
+    to:
+    - operation:
+        paths:
+        - /3
+  selector:
+    matchLabels:
+      app: device-management
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: event-management-v2--3355117559464515939
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-event-management
+    to:
+    - operation:
+        ports:
+        - '12345'
+  selector:
+    matchLabels:
+      app: cp-kafka
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: event-management-v2--5181324675871591718
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-event-management
+    to:
+    - operation:
+        ports:
+        - '12345'
+  selector:
+    matchLabels:
+      app: mongodb
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: event-management-v2--8072873246440996149
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-event-management
+    to:
+    - operation:
+        ports:
+        - '12345'
+  selector:
+    matchLabels:
+      app: influxdb
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: event-management-v2-4077970073173896718
+  namespace: sitewhere
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/sitewhere/sa/sitewhere-event-management
+    to:
+    - operation:
+        ports:
+        - '12345'
+  selector:
+    matchLabels:
+      app: cassandra

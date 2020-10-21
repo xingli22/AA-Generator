@@ -1,0 +1,202 @@
+{
+  "service": "front-end",
+  "version": "v3",
+  "requests": [
+    {
+      "type": "http",
+      "url": "http://carts/carts/*/items",
+      "name": "carts",
+      "path": "/carts/*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://carts/carts/*",
+      "name": "carts",
+      "path": "/carts/*",
+      "method": "DELETE"
+    },
+    {
+      "type": "http",
+      "url": "http://carts/carts/*/items/*",
+      "name": "carts",
+      "path": "/carts/*",
+      "method": "DELETE"
+    },
+    {
+      "type": "http",
+      "url": "http://carts/carts/*/items",
+      "name": "carts",
+      "path": "/carts/*",
+      "method": "POST"
+    },
+    {
+      "type": "http",
+      "url": "http://catalogue/catalogue/*",
+      "name": "catalogue",
+      "path": "/catalogue/*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://carts/carts/*/items",
+      "name": "carts",
+      "path": "/carts/*",
+      "method": "PATCH"
+    },
+    {
+      "type": "http",
+      "url": "http://catalogue/catalogue/images*",
+      "name": "catalogue",
+      "path": "/catalogue/images*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://catalogue/catalogue*",
+      "name": "catalogue",
+      "path": "/catalogue*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://catalogue/tags/tags",
+      "name": "catalogue",
+      "path": "/tags/tags",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://orders/orders/search/customerId?sort=date&custId=*",
+      "name": "orders",
+      "path": "/orders/search/customerId?sort=date&custId=*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://orders/orders/*",
+      "name": "orders",
+      "path": "/orders/*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://user/customers/*",
+      "name": "user",
+      "path": "/customers/*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://orders/orders",
+      "name": "orders",
+      "path": "/orders",
+      "method": "POST"
+    },
+    {
+      "type": "http",
+      "url": "http://user/customers",
+      "name": "user",
+      "path": "/customers",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://user/cards/*",
+      "name": "user",
+      "path": "/cards/*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://user/cards",
+      "name": "user",
+      "path": "/cards",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://user/addresses",
+      "name": "user",
+      "path": "/addresses",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://user/customers",
+      "name": "user",
+      "path": "/customers",
+      "method": "POST"
+    },
+    {
+      "type": "http",
+      "url": "http://user/addresses",
+      "name": "user",
+      "path": "/addresses",
+      "method": "POST"
+    },
+    {
+      "type": "http",
+      "url": "http://user/customers/*/cards",
+      "name": "user",
+      "path": "/customers/*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://user/customers/*/addresses",
+      "name": "user",
+      "path": "/customers/*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://user/cards",
+      "name": "user",
+      "path": "/cards",
+      "method": "POST"
+    },
+    {
+      "type": "http",
+      "url": "http://user/customers/*",
+      "name": "user",
+      "path": "/customers/*",
+      "method": "DELETE"
+    },
+    {
+      "type": "http",
+      "url": "http://user/addresses/*",
+      "name": "user",
+      "path": "/addresses/*",
+      "method": "DELETE"
+    },
+    {
+      "type": "http",
+      "url": "http://user/cards/*",
+      "name": "user",
+      "path": "/cards/*",
+      "method": "DELETE"
+    },
+    {
+      "type": "http",
+      "url": "http://user/register",
+      "name": "user",
+      "path": "/register",
+      "method": "POST"
+    },
+    {
+      "type": "http",
+      "url": "http://carts/carts/*/merge?sessionId=*",
+      "name": "carts",
+      "path": "/carts/*",
+      "method": "GET"
+    },
+    {
+      "type": "http",
+      "url": "http://user/login",
+      "name": "user",
+      "path": "/login",
+      "method": "GET"
+    }
+  ]
+}

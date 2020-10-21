@@ -110,5 +110,5 @@ def dep_gen(version):
 
 if __name__ == '__main__':
     old_way()
-    dep_gen('v1')
-    dep_gen('v2')
+    # dep_gen('v1')
+    # dep_gen('v2')

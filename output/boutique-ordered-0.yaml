@@ -1,235 +1,7 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: cartservice-v1-518227665940194886
-  namespace: boutique
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/boutique/sa/boutique-cartservice
-    to:
-    - operation:
-        ports:
-        - '6379'
-  selector:
-    matchLabels:
-      app: redis-cart
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: frontend-v1--7298540982335645288
-  namespace: boutique
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/boutique/sa/boutique-frontend
-    to:
-    - operation:
-        paths:
-        - /hipstershop.ProductCatalogService/ListProducts
-  selector:
-    matchLabels:
-      app: productcatalogservice
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: frontend-v1-6079486578235172267
-  namespace: boutique
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/boutique/sa/boutique-frontend
-    to:
-    - operation:
-        paths:
-        - /hipstershop.ProductCatalogService/GetProduct
-  selector:
-    matchLabels:
-      app: productcatalogservice
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: frontend-v1-7682069969264564680
-  namespace: boutique
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/boutique/sa/boutique-frontend
-    to:
-    - operation:
-        paths:
-        - /hipstershop.CurrencyService/Convert
-  selector:
-    matchLabels:
-      app: currencyservice
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: frontend-v1--483574126733234095
-  namespace: boutique
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/boutique/sa/boutique-frontend
-    to:
-    - operation:
-        paths:
-        - /hipstershop.CurrencyService/GetSupportedCurrencies
-  selector:
-    matchLabels:
-      app: currencyservice
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: frontend-v1-1172296801455983559
-  namespace: boutique
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/boutique/sa/boutique-frontend
-    to:
-    - operation:
-        paths:
-        - /hipstershop.CartService/AddItem
-  selector:
-    matchLabels:
-      app: cartservice
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: frontend-v1-5830685938547989135
-  namespace: boutique
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/boutique/sa/boutique-frontend
-    to:
-    - operation:
-        paths:
-        - /hipstershop.CartService/GetCart
-  selector:
-    matchLabels:
-      app: cartservice
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: frontend-v1--792716997278619049
-  namespace: boutique
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/boutique/sa/boutique-frontend
-    to:
-    - operation:
-        paths:
-        - /hipstershop.CartService/EmptyCart
-  selector:
-    matchLabels:
-      app: cartservice
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: frontend-v1-6734546565026613608
-  namespace: boutique
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/boutique/sa/boutique-frontend
-    to:
-    - operation:
-        paths:
-        - /hipstershop.RecommendationService/ListRecommendations
-  selector:
-    matchLabels:
-      app: recommendationservice
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: frontend-v1-3604208190701817912
-  namespace: boutique
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/boutique/sa/boutique-frontend
-    to:
-    - operation:
-        paths:
-        - /hipstershop.ShippingService/GetQuote
-  selector:
-    matchLabels:
-      app: shippingservice
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: frontend-v1--3876499632934868368
-  namespace: boutique
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/boutique/sa/boutique-frontend
-    to:
-    - operation:
-        paths:
-        - /hipstershop.CheckoutService/PlaceOrder
-  selector:
-    matchLabels:
-      app: checkoutservice
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: frontend-v1--8600290489643360030
-  namespace: boutique
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/boutique/sa/boutique-frontend
-    to:
-    - operation:
-        paths:
-        - /hipstershop.AdService/GetAds
-  selector:
-    matchLabels:
-      app: adservice
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: recommendationservice-v1--7298540982335645288
+  name: recommendationservice-v1-1322931612835145696
   namespace: boutique
 spec:
   rules:
@@ -248,7 +20,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v1--4475419576801293836
+  name: checkoutservice-v1-1815710346394436337
   namespace: boutique
 spec:
   rules:
@@ -267,7 +39,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v1-6079486578235172267
+  name: checkoutservice-v1--2421569225890475177
   namespace: boutique
 spec:
   rules:
@@ -286,7 +58,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v1-7682069969264564680
+  name: checkoutservice-v1-293906662065302042
   namespace: boutique
 spec:
   rules:
@@ -305,7 +77,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v1-5830685938547989135
+  name: checkoutservice-v1-6492218992721370115
   namespace: boutique
 spec:
   rules:
@@ -324,7 +96,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v1--792716997278619049
+  name: checkoutservice-v1--8666806531658546197
   namespace: boutique
 spec:
   rules:
@@ -343,7 +115,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v1--3000243520376075563
+  name: checkoutservice-v1-6864734213982733802
   namespace: boutique
 spec:
   rules:
@@ -362,7 +134,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v1-3604208190701817912
+  name: checkoutservice-v1-2514990274013894853
   namespace: boutique
 spec:
   rules:
@@ -381,7 +153,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: checkoutservice-v1--1993821251676618685
+  name: checkoutservice-v1-5895831172080475322
   namespace: boutique
 spec:
   rules:
@@ -396,3 +168,231 @@ spec:
   selector:
     matchLabels:
       app: shippingservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: cartservice-v1--6273830350936580749
+  namespace: boutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/boutique/sa/boutique-cartservice
+    to:
+    - operation:
+        ports:
+        - '6379'
+  selector:
+    matchLabels:
+      app: redis-cart
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1-1322931612835145696
+  namespace: boutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/boutique/sa/boutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.ProductCatalogService/ListProducts
+  selector:
+    matchLabels:
+      app: productcatalogservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1--2421569225890475177
+  namespace: boutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/boutique/sa/boutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.ProductCatalogService/GetProduct
+  selector:
+    matchLabels:
+      app: productcatalogservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1-293906662065302042
+  namespace: boutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/boutique/sa/boutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.CurrencyService/Convert
+  selector:
+    matchLabels:
+      app: currencyservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1-8817603739325735255
+  namespace: boutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/boutique/sa/boutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.CurrencyService/GetSupportedCurrencies
+  selector:
+    matchLabels:
+      app: currencyservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1--1792793566383705234
+  namespace: boutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/boutique/sa/boutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.CartService/AddItem
+  selector:
+    matchLabels:
+      app: cartservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1-6492218992721370115
+  namespace: boutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/boutique/sa/boutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.CartService/GetCart
+  selector:
+    matchLabels:
+      app: cartservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1--8666806531658546197
+  namespace: boutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/boutique/sa/boutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.CartService/EmptyCart
+  selector:
+    matchLabels:
+      app: cartservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1-5739455832270436113
+  namespace: boutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/boutique/sa/boutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.RecommendationService/ListRecommendations
+  selector:
+    matchLabels:
+      app: recommendationservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1-2514990274013894853
+  namespace: boutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/boutique/sa/boutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.ShippingService/GetQuote
+  selector:
+    matchLabels:
+      app: shippingservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1-3931648519160160452
+  namespace: boutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/boutique/sa/boutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.CheckoutService/PlaceOrder
+  selector:
+    matchLabels:
+      app: checkoutservice
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-v1-2106238273857663216
+  namespace: boutique
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/boutique/sa/boutique-frontend
+    to:
+    - operation:
+        paths:
+        - /hipstershop.AdService/GetAds
+  selector:
+    matchLabels:
+      app: adservice

@@ -1,7 +1,85 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: workshopmanagementeventhandler-v2-7744352817145689074
+  name: invoiceservice-v2--8642873726785107126
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-invoiceservice
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /seq
+  selector:
+    matchLabels:
+      app: logserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: invoiceservice-v2-6910656044639462912
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-invoiceservice
+    to:
+    - operation:
+        ports:
+        - '5672'
+  selector:
+    matchLabels:
+      app: rabbitmq
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: invoiceservice-v2--583955617885892842
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-invoiceservice
+    to:
+    - operation:
+        ports:
+        - '1433'
+  selector:
+    matchLabels:
+      app: sqlserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: invoiceservice-v2--6907065752281582469
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-invoiceservice
+    to:
+    - operation:
+        ports:
+        - '25'
+  selector:
+    matchLabels:
+      app: mailserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: workshopmanagementeventhandler-v2--8642873726785107126
   namespace: pitstop
 spec:
   rules:
@@ -22,7 +100,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: workshopmanagementeventhandler-v2-6833061494364899507
+  name: workshopmanagementeventhandler-v2-6910656044639462912
   namespace: pitstop
 spec:
   rules:
@@ -41,7 +119,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: workshopmanagementeventhandler-v2-2698517513010042616
+  name: workshopmanagementeventhandler-v2--583955617885892842
   namespace: pitstop
 spec:
   rules:
@@ -60,45 +138,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: customermanagementapi-v2-6833061494364899507
-  namespace: pitstop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/pitstop/sa/pitstop-customermanagementapi
-    to:
-    - operation:
-        ports:
-        - '5672'
-  selector:
-    matchLabels:
-      app: rabbitmq
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: customermanagementapi-v2-2698517513010042616
-  namespace: pitstop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/pitstop/sa/pitstop-customermanagementapi
-    to:
-    - operation:
-        ports:
-        - '1433'
-  selector:
-    matchLabels:
-      app: sqlserver
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: auditlogservice-v2-7744352817145689074
+  name: auditlogservice-v2--8642873726785107126
   namespace: pitstop
 spec:
   rules:
@@ -119,7 +159,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: auditlogservice-v2-6833061494364899507
+  name: auditlogservice-v2-6910656044639462912
   namespace: pitstop
 spec:
   rules:
@@ -138,14 +178,35 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: vehiclemanagementapi-v2-6833061494364899507
+  name: notificationservice-v2--8642873726785107126
   namespace: pitstop
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/pitstop/sa/pitstop-vehiclemanagementapi
+        - cluster.local/ns/pitstop/sa/pitstop-notificationservice
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /seq
+  selector:
+    matchLabels:
+      app: logserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: notificationservice-v2-6910656044639462912
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-notificationservice
     to:
     - operation:
         ports:
@@ -157,14 +218,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: vehiclemanagementapi-v2-2698517513010042616
+  name: notificationservice-v2--583955617885892842
   namespace: pitstop
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/pitstop/sa/pitstop-vehiclemanagementapi
+        - cluster.local/ns/pitstop/sa/pitstop-notificationservice
     to:
     - operation:
         ports:
@@ -176,7 +237,64 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: workshopmanagementapi-v2-7744352817145689074
+  name: notificationservice-v2--6907065752281582469
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-notificationservice
+    to:
+    - operation:
+        ports:
+        - '25'
+  selector:
+    matchLabels:
+      app: mailserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: customermanagementapi-v2-6910656044639462912
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-customermanagementapi
+    to:
+    - operation:
+        ports:
+        - '5672'
+  selector:
+    matchLabels:
+      app: rabbitmq
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: customermanagementapi-v2--583955617885892842
+  namespace: pitstop
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/pitstop/sa/pitstop-customermanagementapi
+    to:
+    - operation:
+        ports:
+        - '1433'
+  selector:
+    matchLabels:
+      app: sqlserver
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: workshopmanagementapi-v2--8642873726785107126
   namespace: pitstop
 spec:
   rules:
@@ -197,7 +315,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: workshopmanagementapi-v2-6833061494364899507
+  name: workshopmanagementapi-v2-6910656044639462912
   namespace: pitstop
 spec:
   rules:
@@ -216,7 +334,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: workshopmanagementapi-v2-2698517513010042616
+  name: workshopmanagementapi-v2--583955617885892842
   namespace: pitstop
 spec:
   rules:
@@ -235,7 +353,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: webapp-v2-7744352817145689074
+  name: webapp-v2--8642873726785107126
   namespace: pitstop
 spec:
   rules:
@@ -256,7 +374,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: webapp-v2-4552189182114541606
+  name: webapp-v2--4296313400056048524
   namespace: pitstop
 spec:
   rules:
@@ -277,7 +395,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: webapp-v2--6144305812710212865
+  name: webapp-v2-573472525156182410
   namespace: pitstop
 spec:
   rules:
@@ -298,7 +416,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: webapp-v2--6164972405441898961
+  name: webapp-v2-2110184764715496993
   namespace: pitstop
 spec:
   rules:
@@ -319,7 +437,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: webapp-v2--1990175929358624239
+  name: webapp-v2--756080170506581586
   namespace: pitstop
 spec:
   rules:
@@ -340,7 +458,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: webapp-v2-1147266284113988368
+  name: webapp-v2-6544331473168751791
   namespace: pitstop
 spec:
   rules:
@@ -361,7 +479,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: webapp-v2-5081155238240210619
+  name: webapp-v2--6620555626172014139
   namespace: pitstop
 spec:
   rules:
@@ -382,7 +500,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: webapp-v2-6320169838080265281
+  name: webapp-v2--3104050002891889593
   namespace: pitstop
 spec:
   rules:
@@ -403,7 +521,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: webapp-v2--8869922159144799330
+  name: webapp-v2--851368077704037363
   namespace: pitstop
 spec:
   rules:
@@ -424,7 +542,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: webapp-v2-1885140163458218009
+  name: webapp-v2-8838768128503807522
   namespace: pitstop
 spec:
   rules:
@@ -445,7 +563,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: webapp-v2--8086669905422111169
+  name: webapp-v2-1884763047085050070
   namespace: pitstop
 spec:
   rules:
@@ -466,7 +584,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: webapp-v2--5882637614377307929
+  name: webapp-v2-7456996980953202426
   namespace: pitstop
 spec:
   rules:
@@ -487,7 +605,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: webapp-v2-127011674221880214
+  name: webapp-v2--919775377511136472
   namespace: pitstop
 spec:
   rules:
@@ -508,7 +626,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: webapp-v2--5680040564267922887
+  name: webapp-v2--8782473076786067107
   namespace: pitstop
 spec:
   rules:
@@ -529,7 +647,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: webapp-v2-538645907242522154
+  name: webapp-v2-5955658105459772605
   namespace: pitstop
 spec:
   rules:
@@ -550,35 +668,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: invoiceservice-v2-7744352817145689074
+  name: vehiclemanagementapi-v2-6910656044639462912
   namespace: pitstop
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/pitstop/sa/pitstop-invoiceservice
-    to:
-    - operation:
-        methods:
-        - POST
-        paths:
-        - /seq
-  selector:
-    matchLabels:
-      app: logserver
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: invoiceservice-v2-6833061494364899507
-  namespace: pitstop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/pitstop/sa/pitstop-invoiceservice
+        - cluster.local/ns/pitstop/sa/pitstop-vehiclemanagementapi
     to:
     - operation:
         ports:
@@ -590,14 +687,14 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: invoiceservice-v2-2698517513010042616
+  name: vehiclemanagementapi-v2--583955617885892842
   namespace: pitstop
 spec:
   rules:
   - from:
     - source:
         principals:
-        - cluster.local/ns/pitstop/sa/pitstop-invoiceservice
+        - cluster.local/ns/pitstop/sa/pitstop-vehiclemanagementapi
     to:
     - operation:
         ports:
@@ -609,104 +706,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: invoiceservice-v2--5198372924628053668
-  namespace: pitstop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/pitstop/sa/pitstop-invoiceservice
-    to:
-    - operation:
-        ports:
-        - '25'
-  selector:
-    matchLabels:
-      app: mailserver
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: notificationservice-v2-7744352817145689074
-  namespace: pitstop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/pitstop/sa/pitstop-notificationservice
-    to:
-    - operation:
-        methods:
-        - POST
-        paths:
-        - /seq
-  selector:
-    matchLabels:
-      app: logserver
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: notificationservice-v2-6833061494364899507
-  namespace: pitstop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/pitstop/sa/pitstop-notificationservice
-    to:
-    - operation:
-        ports:
-        - '5672'
-  selector:
-    matchLabels:
-      app: rabbitmq
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: notificationservice-v2-2698517513010042616
-  namespace: pitstop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/pitstop/sa/pitstop-notificationservice
-    to:
-    - operation:
-        ports:
-        - '1433'
-  selector:
-    matchLabels:
-      app: sqlserver
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: notificationservice-v2--5198372924628053668
-  namespace: pitstop
-spec:
-  rules:
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/pitstop/sa/pitstop-notificationservice
-    to:
-    - operation:
-        ports:
-        - '25'
-  selector:
-    matchLabels:
-      app: mailserver
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: timeservice-v2-7744352817145689074
+  name: timeservice-v2--8642873726785107126
   namespace: pitstop
 spec:
   rules:
@@ -727,7 +727,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: timeservice-v2-6833061494364899507
+  name: timeservice-v2-6910656044639462912
   namespace: pitstop
 spec:
   rules:
